@@ -26,8 +26,9 @@ public class User {
     public Map<Integer,Chat> getChats(){return this.chat;}
 
     public Map<Integer,Boolean> getUsersBlocks(){return this.blockUser;}
-    public void setBlock(int i, boolean p){this.blockUser.put(i, p);}
+    public void setBlock(int id, boolean p){this.blockUser.put(id, p);}
     public boolean Check_User_Blocked(int i){return this.blockUser.get((Integer)i);}
+    public void removeBlock(int userId) { this.blockUser.remove(userId);}
 
     public void AddFriends(int idFriend){
         this.friends.add(idFriend);

@@ -22,7 +22,7 @@ public class App extends Application{
         user.setEmail("mar");
         user.setPassword("1234");
         user.setName("Marcela");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
         List_User.getPoint(10).add(user); //inicialização da lista de usuarios
 
         Depoimento dep1 = new Depoimento();
@@ -39,7 +39,7 @@ public class App extends Application{
         user.setEmail("manu");
         user.setPassword("1234");
         user.setName("Manuela");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
         List_User.getPoint(5).add(user);
 
        // user.getList_Solicit().add(0);
@@ -56,7 +56,7 @@ public class App extends Application{
         user.setEmail("madu");
         user.setPassword("1234");
         user.setName("Maria Eduarda");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download.jpg");
         List_User.getPoint(5).add(user);
 
             

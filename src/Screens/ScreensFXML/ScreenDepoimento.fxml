@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="594.0" style="-fx-background-color: rgb(255,255,255);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="594.0" style="-fx-background-color: rgb(245,245,245);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnPublic" layoutX="319.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#publicDepoimento" prefHeight="42.0" prefWidth="143.0" stylesheets="@CSS/ButtonsLogin.css" text="Publicar" textFill="WHITE">
          <cursor>

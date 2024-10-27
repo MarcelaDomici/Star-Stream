@@ -86,6 +86,7 @@ public class DepoimentoScreen {
 
         _FriendProfile.getPane().effectProperty().set(null);
         _FriendProfile.getPane().toFront();
+        _FriendProfile.getPane().setDisable(false);
         this.stage.close();
     }
 }

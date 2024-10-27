@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="383.0" style="-fx-background-color: rgb(255,255,255);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="383.0" style="-fx-background-color: rgb(245,245,245);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnEdit" layoutX="219.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#editText" prefHeight="42.0" prefWidth="143.0" stylesheets="@CSS/ButtonsLogin.css" text="Editar" textFill="WHITE">
          <cursor>

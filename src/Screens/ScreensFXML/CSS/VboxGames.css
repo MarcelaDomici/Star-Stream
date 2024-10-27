@@ -1,0 +1,10 @@
+.vbox {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.vbox:hover {
+    -fx-background-color: rgb(135, 206, 250, 0.5); /* Azul claro com 50% de transparência */
+    -fx-background-radius: 5px;
+}
+

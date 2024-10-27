@@ -198,12 +198,12 @@
                      <children>
                         <HBox fx:id="Hbox_to_ScreenDepoimento" onMouseClicked="#goToDepoimento" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="addDepoiment" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Imagens/plus.png" />
+                                    <Image url="@Imagens/add_public.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="31.0" prefWidth="181.0" text="Depoimento">
+                              <Label fx:id="lblDepoiment" prefHeight="31.0" prefWidth="181.0" text="Depoimento">
                                  <padding>
                                     <Insets left="10.0" top="15.0" />
                                  </padding>

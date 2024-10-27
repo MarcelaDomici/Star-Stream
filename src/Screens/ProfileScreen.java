@@ -1,6 +1,7 @@
 package Screens;
 
 import java.io.FileInputStream;
+import java.util.Optional;
 
 import Body.Depoimento;
 import Body.Post;
@@ -11,7 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -218,6 +222,7 @@ public class ProfileScreen implements Uptable{
                     try {
                         new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
                         pane.effectProperty().set(new MotionBlur(3.0,15.0));
+                        pane.setDisable(true);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -287,8 +292,22 @@ public class ProfileScreen implements Uptable{
 
                 imageTrash.setOnMouseClicked(event->{
 
-                    user.getDepoimentos().remove(depoimento);
-                    initialize();
+                    Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle("Aviso!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Tem certeza que deseja excluir este depoimento?");
+
+                        ButtonType buttonTypeOne = new ButtonType("Sim");
+                        ButtonType buttonTypeTwo = new ButtonType("Cancelar");
+
+                        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == buttonTypeOne){
+                           user.getDepoimentos().remove(depoimento);
+                           initialize(); 
+                        }
+                    
                 });
 
                 HBox hBoxLeft = new HBox(10); 
@@ -402,6 +421,7 @@ public class ProfileScreen implements Uptable{
         try{
             new EditProfile(id, this, cityUser, relationShipUser, nameUser, imageSetProfile).getStage().show();
             pane.effectProperty().set(new MotionBlur(3.0,15.0));
+            pane.setDisable(true);
             }catch(Exception ie){
             ie.printStackTrace();   
             }

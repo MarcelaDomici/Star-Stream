@@ -1,5 +1,7 @@
 package Screens;
 
+import java.io.FileNotFoundException;
+
 import Body.Chat;
 import Body.Message;
 import javafx.fxml.FXML;
@@ -54,9 +56,10 @@ public class EditMessage {
     public Stage getStage(){return this.stage;}
     
     @FXML
-    private void editText(MouseEvent event) {
+    private void editText(MouseEvent event) throws FileNotFoundException {
         this.chat.editMessage(this.message.getId(), this.textMessage.getText());
         this._chatScreen.genareteViewChat(idFriend);
+        _chatScreen.genarateChats();
         this.cancel(null);
     }
 
@@ -64,6 +67,7 @@ public class EditMessage {
     private void cancel(MouseEvent event) {
         _chatScreen.getPane().effectProperty().set(null);
         _chatScreen.getPane().toFront();
+        _chatScreen.getPane().setDisable(false);
         this.stage.close();
     }
 

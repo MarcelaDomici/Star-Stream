@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +32,7 @@ import javafx.stage.Stage;
 public class FriendsScreen {
     private Stage stage = new Stage();
     private static int id =0;
+    private Pane pane;
 
     @FXML
     private Label btnCommunity;
@@ -62,24 +64,31 @@ public class FriendsScreen {
     @FXML
     private VBox vboxNoticeFriends;
 
+    @FXML
+    private ImageView imgBlocks;
+
         public FriendsScreen(int i)throws Exception{
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenFriends.fxml"));
             loader.setController(this);
-            Pane pane = loader.load();
+            pane = loader.load();
             stage.setScene(new Scene(pane));
             stage.setTitle("Tela Amigos");
             stage.setResizable(false);
             this.userName.setText(List_User.getPoint(i).user[id].getName());
         }
+
     public Stage getStage(){return this.stage;}
+    public Pane getPane(){return this.pane;}
 
     @FXML
-    private void initialize(){
+    public void initialize(){
         try{
             this.vboxFrinds.getChildren().clear();
             this.vboxNoticeFriends.getChildren().clear();
             this.vboxOtherFriends.getChildren().clear();
+
+            imgBlocks.setCursor(Cursor.HAND);
 
             ArrayList<Integer> sort = new ArrayList<>();
             sort.addAll(List_User.getPoint(id).user[id].getFriends());
@@ -146,8 +155,8 @@ public class FriendsScreen {
                         if (result.get() == buttonTypeOne){
                             List_User.getPoint(idFriend).user[id].removeFriends(idFriend);
                             List_User.getPoint(0).user[idFriend].removeFriends(id);
-                            List_User.getPoint(0).user[id].setBlock(idFriend, false);
-                            List_User.getPoint(0).user[idFriend].setBlock(id, true);        
+                            List_User.getPoint(0).user[id].setBlock(idFriend, false);//usuario
+                            List_User.getPoint(0).user[idFriend].setBlock(id, true);//amigo      
                             initialize();
                         }
  
@@ -405,6 +414,20 @@ public class FriendsScreen {
         }catch(Exception ie){
             ie.printStackTrace();
         }
+    }
+
+
+    @FXML
+    void goToBlocksScreen(MouseEvent event) {
+
+        try{
+            new BlocksScreen(id, this).getStage().show();
+            pane.effectProperty().set(new MotionBlur(3.0,15.0));
+            pane.setDisable(true);
+
+            }catch(Exception ie){
+            ie.printStackTrace();   
+            }
     }
 
     @FXML

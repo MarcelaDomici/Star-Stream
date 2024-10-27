@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/NOTIFICACAO.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/settings.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="255.0" layoutX="524.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/home%20logoStar2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="exitToHome" fitHeight="60.0" fitWidth="60.0" layoutX="21.0" layoutY="10.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/backTo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="600.0" layoutY="89.0" text="Jogos">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <VBox fx:id="Vbox_Bloquinhos" layoutX="112.0" layoutY="149.0" onMouseClicked="#goToBloquinhos" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Bloquinhos">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+      <VBox fx:id="Vbox_JogoVelha" layoutX="112.0" layoutY="429.0" onMouseClicked="#goToJogoVelha" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Jogo da Velha">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+      <VBox fx:id="Vbox_Cobrinha" layoutX="509.0" layoutY="149.0" onMouseClicked="#goToCobrinha" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%202.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Cobrinha">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+      <VBox fx:id="Vbox_SpaceInvaders" layoutX="512.0" layoutY="429.0" onMouseClicked="#goToSpaceInvaders" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Space Invaders">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+      <VBox fx:id="Vbox_Pong" layoutX="902.0" layoutY="149.0" onMouseClicked="#goToPong" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Pong">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+      <VBox fx:id="Vbox_QuebraBlocos" layoutX="902.0" layoutY="429.0" onMouseClicked="#goToQuebraBlocos" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+         <children>
+            <Pane prefHeight="222.0" prefWidth="263.0">
+               <children>
+                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagens/bloquinhos%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label text=" Quebra-Blocos">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
+   </children>
+</Pane>

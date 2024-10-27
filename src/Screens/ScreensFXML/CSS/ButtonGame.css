@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'MyCustomFont2'; /* Nome único para a fonte */
+    src: url('./FontPoppins/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.button {
+    -fx-background-color: rgb(123, 56, 255);
+    -fx-font-family: 'MyCustomFont2';
+    -fx-font-weight: bold;
+    -fx-font-size: 16px; /* Inclua 'px' para especificar a unidade */
+
+    /* Definindo o tamanho do botão */
+    -fx-pref-width: 113px;  /* Largura preferida */
+    -fx-pref-height: 20px;  /* Altura preferida */
+}
+
+.button:hover {
+    -fx-background-color: rgb(9, 215, 242);
+}

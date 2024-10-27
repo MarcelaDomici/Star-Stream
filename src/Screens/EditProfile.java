@@ -221,6 +221,7 @@ public class EditProfile {
     private void cancel(MouseEvent event) {
         _ProfileScreen.getPane().effectProperty().set(null);
         _ProfileScreen.getPane().toFront();
+        _ProfileScreen.getPane().setDisable(false);
         this.stage.close();
     }
 }

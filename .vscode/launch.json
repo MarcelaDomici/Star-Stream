@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BrickBreakerGame",
+            "request": "launch",
+            "mainClass": "Screens.BrickBreakerGame",
+            "projectName": "Social-Media-Data-Structures_b4e26c58"
+        },
+        {
+            "type": "java",
+            "name": "JogoDaVelhaPC",
+            "request": "launch",
+            "mainClass": "Screens.JogoDaVelhaPC",
+            "projectName": "Social-Media-Data-Structures_b4e26c58"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Social-Media-Data-Structures_b4e26c58"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

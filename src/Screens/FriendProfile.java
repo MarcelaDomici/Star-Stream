@@ -82,6 +82,12 @@ public class FriendProfile {
     @FXML
     private Pane PanePrivProfileDep;
 
+    @FXML
+    private Label lblDepoiment;
+
+    @FXML
+    private ImageView addDepoiment;
+    
     public FriendProfile(int newId, int newIdFriend, String newVisibilidadeProfile, String newnoDep)throws Exception{
 
             id = newId;
@@ -98,22 +104,32 @@ public class FriendProfile {
 
             pane.requestFocus();
 
+            Hbox_to_ScreenDepoimento.setVisible(false);
+            Hbox_to_ScreenDepoimento.setDisable(true);
+
+            if(noDepoim != "nao pode"){
+
+                Hbox_to_ScreenDepoimento.setVisible(true);
+                Hbox_to_ScreenDepoimento.setDisable(false);
+            }
+    
+
     }
 
     public Stage getStage(){return this.stage;}
     public Pane getPane(){return this.pane;}
+
     
     @FXML    
     public void initialize(){
 
-        Hbox_to_ScreenDepoimento.setVisible(false);
-        Hbox_to_ScreenDepoimento.setManaged(false);
-
-        if(noDepoim == "nao pode"){
+        
+        if(noDepoim != "nao pode"){
 
             Hbox_to_ScreenDepoimento.setVisible(true);
-            Hbox_to_ScreenDepoimento.setManaged(true);
+            Hbox_to_ScreenDepoimento.setDisable(false);
         }
+
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
@@ -240,6 +256,7 @@ public class FriendProfile {
                     try {
                         new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
                         pane.effectProperty().set(new MotionBlur(3.0,15.0));
+                        pane.setDisable(true);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -382,6 +399,7 @@ public class FriendProfile {
         try{
             new DepoimentoScreen(id, idFriend, this).getStage().show();
             pane.effectProperty().set(new MotionBlur(3.0,15.0));
+            pane.setDisable(true);
 
             }catch(Exception ie){
             ie.printStackTrace();   

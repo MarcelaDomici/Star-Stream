@@ -197,6 +197,7 @@ public class HomeScreen implements Uptable{
                         try {
                             new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
                             pane.effectProperty().set(new MotionBlur(3.0,15.0));
+                            pane.setDisable(true);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -394,8 +395,10 @@ public class HomeScreen implements Uptable{
     }
 
     @FXML
-    void goToGames(MouseEvent event) {
+    void goToGames(MouseEvent event) throws Exception {
 
+        new GamesScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML

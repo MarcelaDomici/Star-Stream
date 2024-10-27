@@ -149,7 +149,7 @@ public class ChatScreen {
     public Pane getPane(){return this.pane;}
 
 
-    //gerar o chat em si anterior
+    //gerar o chat em si 
     public void genareteViewChat(int friendUserId) {
         idFriend = friendUserId;
         this.vboxViewChat.getChildren().clear();
@@ -171,6 +171,7 @@ public class ChatScreen {
                     try {
                         new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage().show();
                         this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                        pane.setDisable(true);
                     } catch (Exception ie) {
                         ie.printStackTrace();
                     }
@@ -258,7 +259,7 @@ public class ChatScreen {
 
 
     //gerar lista de amigos que ja se tem conversa
-    private void genarateChats()throws FileNotFoundException{
+    public void genarateChats()throws FileNotFoundException{
         this.chats= new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
         this.vboxSelectChat.getChildren().clear();
 

@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
@@ -219,10 +220,17 @@
             </ScrollPane>
          </children>
       </Pane>
-      <Label layoutX="960.0" layoutY="116.0" text="Solicitação de Amizade">
+      <Label layoutX="967.0" layoutY="113.0" text="Solicitação de Amizade">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
+      <ImageView fx:id="imgBlocks" fitHeight="66.0" fitWidth="121.0" layoutX="786.0" layoutY="116.0" onMouseClicked="#goToBlocksScreen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/users_bloq.png" />
+         </image>
+      </ImageView>
+      <Line endX="903.0" endY="-3.0517578125E-5" layoutX="384.0" layoutY="486.0" startX="-100.0" stroke="#7b38ff" strokeWidth="3.0" />
+      <Line endX="528.2786254882812" endY="2.0" layoutX="431.0" layoutY="76.0" startX="528.2786254882812" startY="409.9999694824219" stroke="#7b38ff" strokeWidth="3.0" />
    </children>
 </Pane>

@@ -181,6 +181,7 @@ public class CommentScreen {
     @FXML
     private void backScreen(MouseEvent event) {
         this.otherPane.effectProperty().set(null);
+        otherPane.setDisable(false);
         this.stage.close();
     }
 
