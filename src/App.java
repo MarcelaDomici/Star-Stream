@@ -1,4 +1,6 @@
 import Body.Depoimento;
+import Body.ManagerPosts;
+import Body.Post;
 import Body.User;
 import Screens.LoginScreen;
 import Structs.List_User;
@@ -31,6 +33,17 @@ public class App extends Application{
         Depoimento dep2 = new Depoimento();
         dep2.setDepoimento("Amigo estou aqui...");
         dep2.setIdAmg(0);
+
+
+        Post post = new Post();
+        post.setId((short)0);
+        post.setIduser((short)0);
+        post.setImagem("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download_(1).jpg");
+        post.setTitle("Titulo para Testes");
+        post.setPostTxt("Texto para testes do Posts Texto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes");
+        List_User.getPoint(0).user[0].getPosts().add(post);
+        ManagerPosts.geralPosts.add(post);
+
 
         user = new User();
         user.setAge(19);

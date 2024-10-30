@@ -6,10 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -62,16 +64,41 @@ public class GenarateEmail{
     @FXML
     private void genareteNewPass(MouseEvent event) throws InterruptedException, EmailException{
         if(this.txtEmail.getText().length()!=0){
+
+            //se ele existe 
             if(List_User.getPoint(0).checkExistUser(this.txtEmail.getText())){
-                List_User.getPoint(0).user[List_User.getPoint(0).getId(this.txtEmail.getText())].setPassword(String.valueOf(new SendEmail(this.txtEmail.getText()).getCode()));
+
+                int id = List_User.getPoint(2).getId(txtEmail.getText());
+                new SendEmail().sendPasswordEmail(txtEmail.getText(), id);
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Informações Importantes");
+                alert.setHeaderText("E-mail enviado!");
+
+                // Cria uma TextArea para o texto longo
+                alert.setContentText(
+                    "Um e-mail com a sua nova senha foi enviado. Por favor,\n" +
+                    "verifique sua caixa de entrada ou spam. Caso não \n" +
+                    "o encontre, verifique se o endereço de e-mail foi\n" +
+                    "digitado corretamente.\n\n" +
+                    "Lembre-se de alterar essa senha após efetuar o login."
+                );
+
+                // Exibe o alerta
+                alert.showAndWait();
+                
+                //sai da tela
                 backToLogin(null);
-            }else {
+            }
+            else {
                 Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Aviso!");
 				alert.setHeaderText(null);
 				alert.setContentText("Usuário não existente.");
 				alert.showAndWait();
             }
+
+
         }else{
             Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Aviso!");

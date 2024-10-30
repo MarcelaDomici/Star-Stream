@@ -207,6 +207,7 @@ public class FriendProfile {
                 Text text = new Text(post.getPostTxt());
                 TextFlow txtPost = new TextFlow();
                 txtPost.setStyle("-fx-font-size: 14px");
+                txtPost.setMaxWidth(400);
                 txtPost.setCache(false);
                 txtPost.setCacheShape(false);
                 txtPost.setCenterShape(false);
@@ -244,38 +245,109 @@ public class FriendProfile {
                     );
                  }
                 
-                Hyperlink comment = new Hyperlink("Comentários "+String.valueOf(post.getComments().size()));
-                comment.setCache(false);
-                comment.setCacheShape(false);
-                comment.setBorder(null);
-                comment.setFocusTraversable(false);
+                 Hyperlink comment = new Hyperlink("Comentários " + String.valueOf(post.getComments().size()));
+                 comment.setCache(false);
+                 comment.setCacheShape(false);
+                 comment.setBorder(null);
+                 comment.setFocusTraversable(false);
+                 comment.setPadding(new Insets(6, 0, 0, 2));
+                 comment.setUnderline(false);
+                 comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;");
+                 comment.setOnMouseEntered(
+                         event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
+                 comment.setOnMouseExited(
+                         event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
+                 comment.setOnAction(event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
 
-                like.setOnMouseClicked(event->generateLikes(post, like,lblQntLikes,likesQnt));
+                 like.setOnMouseClicked(event -> generateLikes(post, like, lblQntLikes, likesQnt));
 
-                comment.setOnMouseClicked(event ->{
-                    try {
-                        new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
-                        pane.effectProperty().set(new MotionBlur(3.0,15.0));
-                        pane.setDisable(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+                 comment.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
 
-                comment.setUnderline(true);
+                 ImageView comentImg = new ImageView(
+                         new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/comment_post.PNG")));
+                 comentImg.setFitHeight(30);
+                 comentImg.setFitWidth(30);
+                 comentImg.setPreserveRatio(true);
+                 comentImg.setCursor(Cursor.HAND);
 
-                HBox box1 = new HBox(2);
-                box1.getChildren().addAll(new HBox((double)5,like,lblQntLikes),comment);
-                box1.setPadding(new Insets(10,10,10,100));
-                box1.setSpacing(280);
+                 comentImg.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
 
-                HBox box2 = new HBox(3);
-                box2.getChildren().addAll(txtPost);
-                box2.setPadding(new Insets(0,0,0,100));
-                txtPost.setPrefWidth(800);
+                 HBox boxComents = new HBox(2);
+                 boxComents.getChildren().addAll(comentImg, comment);
 
-                vBox.getChildren().addAll(hBox,titlePost,box2,box,box1); 
-                this.vBoxPrincipal.getChildren().add(vBox);
+                 boxComents.setCursor(Cursor.HAND);
+                 boxComents.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
+
+                 ImageView encaminharImg = new ImageView(
+                         new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/share_icon.PNG")));
+                 encaminharImg.setFitHeight(30);
+                 encaminharImg.setFitWidth(30);
+                 encaminharImg.setPreserveRatio(true);
+
+                 Label encaminharMSG = new Label("Encaminhar");
+                 encaminharMSG.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;");
+                 encaminharMSG.setPadding(new Insets(6, 0, 0, 2));
+
+                 HBox boxEncaminhar = new HBox(2);
+                 boxEncaminhar.getChildren().addAll(encaminharImg, encaminharMSG);
+                 boxEncaminhar.setCursor(Cursor.HAND);
+
+                 boxEncaminhar.setOnMouseClicked(event -> {
+                     try {
+                         new EncaminharScreen(id, pane, post).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
+
+                 HBox boxLikes = new HBox(2);
+                 boxLikes.getChildren().addAll(like, lblQntLikes);
+
+                 Region spacer1 = new Region();
+                 Region spacer2 = new Region();
+                 Region spacer3 = new Region();
+                 spacer1.setPrefWidth(60);
+                 spacer2.setPrefWidth(60);
+                 spacer3.setPrefWidth(95);
+
+                 HBox box1 = new HBox();
+                 box1.getChildren().addAll(spacer3, boxLikes, spacer1, boxComents, spacer2, boxEncaminhar);
+                 box1.setPadding(new Insets(10, 15, 10, 10));
+
+                 HBox box2 = new HBox(3);
+                 box2.getChildren().addAll(txtPost);
+                 box2.setPadding(new Insets(0, 0, 0, 100));
+                 txtPost.setPrefWidth(800);
+
+                 vBox.getChildren().addAll(hBox, titlePost, box2, box, box1);
+                 this.vBoxPrincipal.getChildren().add(vBox);
             }
 
             }

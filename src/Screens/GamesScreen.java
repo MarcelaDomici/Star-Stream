@@ -50,7 +50,7 @@ public class GamesScreen {
             loader.setController(this);
             Pane pane = loader.load();
             this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Chat");
+            this.stage.setTitle("Jogos");
             this.stage.setResizable(false);
 
             pane.requestFocus();

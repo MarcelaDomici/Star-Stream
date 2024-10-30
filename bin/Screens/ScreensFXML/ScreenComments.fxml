@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="880.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="880.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="600.0" prefWidth="440.0" style="-fx-background-color: black;">
+      <Pane prefHeight="620.0" prefWidth="440.0" style="-fx-background-color: black;">
          <children>
             <ImageView fx:id="ImageImgPost" fitHeight="468.0" fitWidth="406.0" layoutX="16.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="441.0" prefHeight="202.0" prefWidth="440.0" style="-fx-background-color: white;">
+      <Pane layoutX="441.0" prefHeight="215.0" prefWidth="440.0" style="-fx-background-color: white;">
          <children>
             <ImageView fx:id="ImageUser" fitHeight="57.0" fitWidth="55.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +37,7 @@
                   <Font name="Open Sans Bold" size="15.0" />
                </font>
             </Label>
-            <Line endX="333.0" layoutX="107.0" layoutY="202.0" startX="-107.0" stroke="#7b38ff" strokeWidth="3.0" />
+            <Line endX="333.0" layoutX="107.0" layoutY="212.0" startX="-107.0" stroke="#7b38ff" strokeWidth="3.0" />
             <TextArea fx:id="txtPublicArgs" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="16.0" layoutY="95.0" prefHeight="98.0" prefWidth="406.0" scaleShape="false" style="-fx-border-style: none;" wrapText="true">
                <cursor>
                   <Cursor fx:constant="NONE" />
@@ -55,18 +55,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Label fx:id="lblDateTime" layoutX="332.0" layoutY="193.0" prefHeight="17.0" prefWidth="90.0" text="24/10/2024 13:56" textFill="#666565">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane layoutX="441.0" layoutY="206.0" prefHeight="395.0" prefWidth="440.0" style="-fx-background-color: rgb(245,245,245);">
+      <Pane layoutX="441.0" layoutY="214.0" prefHeight="406.0" prefWidth="440.0" style="-fx-background-color: rgb(245,245,245);">
          <children>
-            <ScrollPane prefHeight="348.0" prefWidth="440.0" style="-fx-background-color: rgb(245,245,245);" stylesheets="@CSS/ScrollPane.css">
+            <ScrollPane fx:id="scroolPane" prefHeight="364.0" prefWidth="440.0" style="-fx-background-color: rgb(245,245,245);" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vBoxComments" prefHeight="346.0" prefWidth="438.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vBoxComments" prefHeight="362.0" prefWidth="438.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
-            <Line endX="317.0" layoutX="124.0" layoutY="348.0" startX="-124.0" stroke="#7b38ff" strokeWidth="3.0" />
-            <TextField fx:id="txtNewComment" layoutX="8.0" layoutY="354.0" prefHeight="30.0" prefWidth="380.0" promptText="Faça um comentário..." stylesheets="@CSS/txtEmailLogin.css" />
-            <Button fx:id="btnLike" layoutX="404.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#doLike" prefHeight="24.0" prefWidth="28.0" />
+            <Line endX="317.0" layoutX="123.0" layoutY="366.0" startX="-124.0" stroke="#7b38ff" strokeWidth="3.0" />
+            <TextField fx:id="txtNewComment" layoutY="369.0" prefHeight="36.0" prefWidth="386.0" promptText="Faça um comentário..." stylesheets="@CSS/txtEmailLogin.css" />
+            <Button fx:id="btnLike" layoutX="398.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#doLike" prefHeight="24.0" prefWidth="28.0" />
          </children>
       </Pane>
    </children>

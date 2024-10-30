@@ -53,7 +53,7 @@ public class BlocksScreen {
             loader.setController(this);
             pane = loader.load();
             this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Depoimento");
+            this.stage.setTitle("Usu´rios Bloqueados");
             this.stage.setResizable(false);
             this.stage.initStyle(StageStyle.UNDECORATED);
 

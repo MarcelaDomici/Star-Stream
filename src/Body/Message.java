@@ -6,9 +6,19 @@ public class Message {
     private short id=0,receptor=0,sender=0;  
     private String txtMessage=null, photoToMessage=null;
     private LocalDateTime dateTimeSent;// mudei aqui
+    private Post post=null;
 
-     public Message() {
+    
+    public Message() {
         this.dateTimeSent = LocalDateTime.now();  // Armazenar a data e hora atual
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public short getId() {

@@ -37,6 +37,7 @@ public class ProfileScreen implements Uptable{
     private Stage stage = new Stage();
     private static int id=0;
     private Pane pane;
+    private User userNow;
 
     @FXML
     private HBox EditProfile;
@@ -79,8 +80,9 @@ public class ProfileScreen implements Uptable{
 
     
         public ProfileScreen(int newId)throws Exception{
-
             id=newId;
+            userNow = List_User.getPoint(2).user[id];
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
             loader.setController(this);
             pane = loader.load();
@@ -171,6 +173,7 @@ public class ProfileScreen implements Uptable{
                 Text text = new Text(post.getPostTxt());
                 TextFlow txtPost = new TextFlow();
                 txtPost.setStyle("-fx-font-size: 14px");
+                txtPost.setMaxWidth(400);
                 txtPost.setCache(false);
                 txtPost.setCacheShape(false);
                 txtPost.setCenterShape(false);
@@ -210,42 +213,109 @@ public class ProfileScreen implements Uptable{
                     );
                  }
                 
-                Hyperlink comment = new Hyperlink("Comentários "+String.valueOf(post.getComments().size()));
-                comment.setCache(false);
-                comment.setCacheShape(false);
-                comment.setBorder(null);
-                comment.setFocusTraversable(false);
+                 Hyperlink comment = new Hyperlink("Comentários " + String.valueOf(post.getComments().size()));
+                 comment.setCache(false);
+                 comment.setCacheShape(false);
+                 comment.setBorder(null);
+                 comment.setFocusTraversable(false);
+                 comment.setPadding(new Insets(6, 0, 0, 2));
+                 comment.setUnderline(false);
+                 comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;");
+                 comment.setOnMouseEntered(
+                         event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
+                 comment.setOnMouseExited(
+                         event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
+                 comment.setOnAction(event -> comment.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;"));
 
-                like.setOnMouseClicked(event->generateLikes(post, like,lblQntLikes,likesQnt));
+                 like.setOnMouseClicked(event -> generateLikes(post, like, lblQntLikes, likesQnt));
 
-                comment.setOnMouseClicked(event ->{
-                    try {
-                        new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
-                        pane.effectProperty().set(new MotionBlur(3.0,15.0));
-                        pane.setDisable(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+                 comment.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
 
-                comment.setUnderline(true);
+                 ImageView comentImg = new ImageView(
+                         new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/comment_post.PNG")));
+                 comentImg.setFitHeight(30);
+                 comentImg.setFitWidth(30);
+                 comentImg.setPreserveRatio(true);
+                 comentImg.setCursor(Cursor.HAND);
 
-                HBox box1 = new HBox(2);
-                box1.getChildren().addAll(new HBox((double)5,like,lblQntLikes),comment);
-                box1.setPadding(new Insets(10,10,10,100));
-                box1.setSpacing(280);
+                 comentImg.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
 
+                 HBox boxComents = new HBox(2);
+                 boxComents.getChildren().addAll(comentImg, comment);
 
-                //adicionando ao box2 texto do post
-                HBox box2 = new HBox(3);
-                box2.getChildren().addAll(txtPost);
-                box2.setPadding(new Insets(0,0,0,100));
-                txtPost.setPrefWidth(800);
+                 boxComents.setCursor(Cursor.HAND);
+                 boxComents.setOnMouseClicked(event -> {
+                     try {
+                         new CommentScreen(id, post, pane, comment, like, lblQntLikes).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
 
+                 ImageView encaminharImg = new ImageView(
+                         new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/share_icon.PNG")));
+                 encaminharImg.setFitHeight(30);
+                 encaminharImg.setFitWidth(30);
+                 encaminharImg.setPreserveRatio(true);
 
-                //adicionando tudo
-                vBox.getChildren().addAll(hBox,titlePost,box2,box,box1); 
-                this.vBoxPrincipal.getChildren().add(vBox);
+                 Label encaminharMSG = new Label("Encaminhar");
+                 encaminharMSG.setStyle("-fx-font-size: 12.5px; -fx-text-fill: black;");
+                 encaminharMSG.setPadding(new Insets(6, 0, 0, 2));
+
+                 HBox boxEncaminhar = new HBox(2);
+                 boxEncaminhar.getChildren().addAll(encaminharImg, encaminharMSG);
+                 boxEncaminhar.setCursor(Cursor.HAND);
+
+                 boxEncaminhar.setOnMouseClicked(event -> {
+                     try {
+                         new EncaminharScreen(id, pane, post).getStage().show();
+                         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                         pane.setDisable(true);
+
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 });
+
+                 HBox boxLikes = new HBox(2);
+                 boxLikes.getChildren().addAll(like, lblQntLikes);
+
+                 Region spacer1 = new Region();
+                 Region spacer2 = new Region();
+                 Region spacer3 = new Region();
+                 spacer1.setPrefWidth(60);
+                 spacer2.setPrefWidth(60);
+                 spacer3.setPrefWidth(95);
+
+                 HBox box1 = new HBox();
+                 box1.getChildren().addAll(spacer3, boxLikes, spacer1, boxComents, spacer2, boxEncaminhar);
+                 box1.setPadding(new Insets(10, 15, 10, 10));
+
+                 HBox box2 = new HBox(3);
+                 box2.getChildren().addAll(txtPost);
+                 box2.setPadding(new Insets(0, 0, 0, 100));
+                 txtPost.setPrefWidth(800);
+
+                 vBox.getChildren().addAll(hBox, titlePost, box2, box, box1);
+                 this.vBoxPrincipal.getChildren().add(vBox);
             }
  
 
@@ -258,95 +328,125 @@ public class ProfileScreen implements Uptable{
             //depoimentos do profile
             this.vBoxDepoiment.setSpacing((double)10);
             for(int i = user.getDepoimentos().size()-1;i>=0;--i){
-                Depoimento depoimento = user.getDepoimentos().get(i);   
-                VBox vBox = new VBox(5);//conjunto do depoimento
-                HBox hBoxProfile = new HBox(2); //icon perfil, nome, lixeira
-                hBoxProfile.setSpacing(3);
 
-                int idepAMG = depoimento.getIdAmg();
+                Depoimento depoimento = user.getDepoimentos().get(i);  
 
-                // Imagem do perfil da postagem
-                ImageView imageIcon = (List_User.getPoint(id).user[idepAMG].getPhotoProfile() != null) 
-                    ? new ImageView(new Image(new FileInputStream(List_User.getPoint(id).user[idepAMG].getPhotoProfile()))) 
-                    : new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")));
+                int indexF = depoimento.getIdAmg();
 
-                imageIcon.setFitHeight(50);
-                imageIcon.setFitWidth(50);
-                Circle circle = new Circle(25, 25, 25);
-                imageIcon.setClip(circle);
-                imageIcon.setPreserveRatio(true);
-
-                // label nome
-                Label nameUser = new Label(List_User.getPoint(0).user[idepAMG].getName());
-                nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
-                nameUser.setPadding(new Insets(13, 0, 0, 11)); 
-
-                // Lixeira
-                ImageView imageTrash = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/deletar_dep.PNG")));
-
-                imageTrash.setFitHeight(30);
-                imageTrash.setFitWidth(30);
-                imageTrash.setPreserveRatio(true);
-
-                imageTrash.setCursor(Cursor.HAND);
-
-                imageTrash.setOnMouseClicked(event->{
-
-                    Alert alert = new Alert(AlertType.WARNING);
-                        alert.setTitle("Aviso!");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Tem certeza que deseja excluir este depoimento?");
-
-                        ButtonType buttonTypeOne = new ButtonType("Sim");
-                        ButtonType buttonTypeTwo = new ButtonType("Cancelar");
-
-                        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
-
-                        Optional<ButtonType> result = alert.showAndWait();
-                        if (result.get() == buttonTypeOne){
-                           user.getDepoimentos().remove(depoimento);
-                           initialize(); 
-                        }
-                    
-                });
-
-                HBox hBoxLeft = new HBox(10); 
-                hBoxLeft.getChildren().addAll(imageIcon, nameUser);
-
-                Region spacer = new Region();
-                HBox.setHgrow(spacer, Priority.ALWAYS); 
-
-                hBoxProfile = new HBox();
-                hBoxProfile.getChildren().addAll(hBoxLeft, spacer, imageTrash);
-                hBoxProfile.setPadding(new Insets(10, 15, 10, 10)); 
-
+                if(userNow.checkFriend(indexF) == 0){
                 
-                //texto depoimento
-                Text text = new Text(depoimento.getDepoimento());
-                TextFlow txtDep = new TextFlow();
-                txtDep.setStyle("-fx-font-size: 14px");
-                txtDep.setCache(false);
-                txtDep.setCacheShape(false);
-                txtDep.setCenterShape(false);
-                txtDep.setFocusTraversable(false);
-                txtDep.getChildren().add(text);
+                    VBox vBox = new VBox(5);//conjunto do depoimento
+                    HBox hBoxProfile = new HBox(2); //icon perfil, nome, lixeira
+                    hBoxProfile.setSpacing(3);
 
-                HBox box2 = new HBox(3);
-                box2.getChildren().addAll(txtDep);
-                box2.setPadding(new Insets(0,0,0,90));
-                txtDep.setPrefWidth(800);
+                    int idepAMG = depoimento.getIdAmg();
 
-                //data e hora depoimento
-                Text dateTimeText = new Text(depoimento.getFormattedDateTime());
-                dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
-                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                dateTimeFlow.setPadding(new Insets(0, 0, 0, 500));
+                    // Imagem do perfil da postagem
+                    ImageView imageIcon = (List_User.getPoint(id).user[idepAMG].getPhotoProfile() != null) 
+                        ? new ImageView(new Image(new FileInputStream(List_User.getPoint(id).user[idepAMG].getPhotoProfile()))) 
+                        : new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")));
 
-                //adicionando tudo
-                vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
-                vBox.getChildren().addAll(hBoxProfile,box2,dateTimeFlow); 
-                this.vBoxDepoiment.getChildren().add(vBox);
+                    imageIcon.setFitHeight(50);
+                    imageIcon.setFitWidth(50);
+                    Circle circle = new Circle(25, 25, 25);
+                    imageIcon.setClip(circle);
+                    imageIcon.setPreserveRatio(true);
 
+                    // label nome
+                    Label nameUser = new Label(List_User.getPoint(0).user[idepAMG].getName());
+                    nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
+                    nameUser.setPadding(new Insets(13, 0, 0, 11)); 
+
+                    imageIcon.setCursor(Cursor.HAND);
+                    nameUser.setCursor(Cursor.HAND);
+
+                    String dep = "pode";
+                    String perfilVisi = "amigos <3";
+                    imageIcon.setOnMouseClicked(event->{
+                        try {
+                            new FriendProfile(id, indexF, perfilVisi, dep).getStage().show();
+                            this.stage.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    nameUser.setOnMouseClicked(event->{
+                        try {
+                            new FriendProfile(id, indexF, perfilVisi, dep).getStage().show();
+                            this.stage.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    // Lixeira
+                    ImageView imageTrash = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/deletar_dep.PNG")));
+
+                    imageTrash.setFitHeight(30);
+                    imageTrash.setFitWidth(30);
+                    imageTrash.setPreserveRatio(true);
+
+                    imageTrash.setCursor(Cursor.HAND);
+
+                    imageTrash.setOnMouseClicked(event->{
+
+                        Alert alert = new Alert(AlertType.WARNING);
+                            alert.setTitle("Aviso!");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Tem certeza que deseja excluir este depoimento?");
+
+                            ButtonType buttonTypeOne = new ButtonType("Sim");
+                            ButtonType buttonTypeTwo = new ButtonType("Cancelar");
+
+                            alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == buttonTypeOne){
+                            user.getDepoimentos().remove(depoimento);
+                            initialize(); 
+                            }
+                        
+                    });
+
+                    HBox hBoxLeft = new HBox(10); 
+                    hBoxLeft.getChildren().addAll(imageIcon, nameUser);
+
+                    Region spacer = new Region();
+                    HBox.setHgrow(spacer, Priority.ALWAYS); 
+
+                    hBoxProfile = new HBox();
+                    hBoxProfile.getChildren().addAll(hBoxLeft, spacer, imageTrash);
+                    hBoxProfile.setPadding(new Insets(10, 15, 10, 10)); 
+
+                    
+                    //texto depoimento
+                    Text text = new Text(depoimento.getDepoimento());
+                    TextFlow txtDep = new TextFlow();
+                    txtDep.setStyle("-fx-font-size: 14px");
+                    txtDep.setCache(false);
+                    txtDep.setCacheShape(false);
+                    txtDep.setCenterShape(false);
+                    txtDep.setFocusTraversable(false);
+                    txtDep.getChildren().add(text);
+
+                    HBox box2 = new HBox(3);
+                    box2.getChildren().addAll(txtDep);
+                    box2.setPadding(new Insets(0,0,0,90));
+                    txtDep.setPrefWidth(800);
+
+                    //data e hora depoimento
+                    Text dateTimeText = new Text(depoimento.getFormattedDateTime());
+                    dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 500));
+
+                    //adicionando tudo
+                    vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
+                    vBox.getChildren().addAll(hBoxProfile,box2,dateTimeFlow); 
+                    this.vBoxDepoiment.getChildren().add(vBox);
+
+                }
             }
 
 

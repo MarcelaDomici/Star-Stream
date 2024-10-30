@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -7,26 +9,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="ExitSearchUserScreen" fitHeight="33.0" fitWidth="38.0" layoutX="313.0" layoutY="27.0" onMouseClicked="#ExitBlockScreen" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Imagens/x_black.png" />
-         </image>
-      </ImageView>
-      <ScrollPane fx:id="ScrollUsers" layoutX="9.0" layoutY="81.0" prefHeight="420.0" prefWidth="337.0">
+      <ScrollPane fx:id="ScrollUsers" layoutY="113.0" prefHeight="399.0" prefWidth="355.0">
          <content>
-            <VBox fx:id="VboxUsers" prefHeight="418.0" prefWidth="336.0" />
+            <VBox fx:id="VboxUsers" prefHeight="396.0" prefWidth="352.0" />
          </content>
       </ScrollPane>
-      <Line endX="253.0" endY="-7.62939453125E-6" layoutX="102.0" layoutY="79.0" startX="-100.0" stroke="#8c52ff" strokeWidth="3.0" />
-      <TextField fx:id="txtSearchUser" layoutX="14.0" layoutY="25.0" prefHeight="36.0" prefWidth="254.0" promptText="Pesquise um usuário aqui..." stylesheets="@CSS/txtEmailLogin.css" />
-      <ImageView fx:id="btnSearchUser" fitHeight="33.0" fitWidth="38.0" layoutX="275.0" layoutY="27.0" onMouseClicked="#SearchUser" pickOnBounds="true" preserveRatio="true">
+      <Line endX="253.0" endY="-7.62939453125E-6" layoutX="100.0" layoutY="111.0" startX="-100.0" stroke="#8c52ff" strokeWidth="3.0" />
+      <TextField fx:id="txtSearchUser" layoutX="12.0" layoutY="60.0" prefHeight="36.0" prefWidth="290.0" promptText="Pesquise uma conta aqui..." stylesheets="@CSS/txtEmailLogin.css" />
+      <ImageView fx:id="imgSearchUser" fitHeight="33.0" fitWidth="38.0" layoutX="308.0" layoutY="62.0" onMouseClicked="#SearchUser" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Imagens/search_users.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="67.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/Rectangle_Fix.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="12.0" layoutY="6.0" text="Pesquisar conta" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="ExitScreen" fitHeight="33.0" fitWidth="38.0" layoutX="316.0" layoutY="8.0" onMouseClicked="#ExitSearchUsersScreen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/x_white.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </Pane>

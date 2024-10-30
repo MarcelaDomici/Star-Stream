@@ -75,7 +75,7 @@
                <children>
                   <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Imagens/bloquinhos%201.png" />
+                        <Image url="@Imagens/jogoDaVelha.png" />
                      </image>
                   </ImageView>
                </children>
@@ -111,34 +111,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <VBox fx:id="Vbox_SpaceInvaders" layoutX="512.0" layoutY="429.0" onMouseClicked="#goToSpaceInvaders" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
-         <children>
-            <Pane prefHeight="222.0" prefWidth="263.0">
-               <children>
-                  <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Imagens/bloquinhos%201.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label text=" Space Invaders">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
       <VBox fx:id="Vbox_Pong" layoutX="902.0" layoutY="149.0" onMouseClicked="#goToPong" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
          <children>
             <Pane prefHeight="222.0" prefWidth="263.0">
                <children>
                   <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Imagens/bloquinhos%201.png" />
+                        <Image url="@Imagens/pong.png" />
                      </image>
                   </ImageView>
                </children>
@@ -153,13 +132,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <VBox fx:id="Vbox_QuebraBlocos" layoutX="902.0" layoutY="429.0" onMouseClicked="#goToQuebraBlocos" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
+      <VBox fx:id="Vbox_QuebraBlocos" layoutX="509.0" layoutY="429.0" onMouseClicked="#goToQuebraBlocos" prefHeight="265.0" prefWidth="262.0" styleClass="vbox" stylesheets="@CSS/VboxGames.css">
          <children>
             <Pane prefHeight="222.0" prefWidth="263.0">
                <children>
                   <ImageView fitHeight="224.0" fitWidth="251.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Imagens/bloquinhos%201.png" />
+                        <Image url="@Imagens/quebraBlocos.png" />
                      </image>
                   </ImageView>
                </children>

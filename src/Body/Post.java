@@ -1,12 +1,19 @@
 package Body;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Post {
     private short id, iduser;
     private String title, postTxt, imagem;
+    private LocalDateTime dateTimeSent;
     private ArrayList<Comments> commentsList = new ArrayList<>();
     private ArrayList<Integer> likes = new ArrayList<>();
+
+    public Post(){
+        this.dateTimeSent = LocalDateTime.now();  // Armazenar a data e hora atual
+    }
 
     public void addLike(int idUser){
         if(this.checkLike(idUser)!=0)this.likes.add(idUser);
@@ -65,5 +72,15 @@ public class Post {
     }
     public void setIduser(short iduser) {
         this.iduser = iduser;
+    }
+
+    
+    public LocalDateTime getDateTimeSent() {
+        return dateTimeSent;
+    }
+
+    public String getFormattedDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return this.dateTimeSent.format(formatter);
     }
 }

@@ -11,12 +11,16 @@ public class List_User {
     private List_User(int newValues){
         user = new User[newValues];
     }
+
     public static List_User getPoint(int newValues){
         if(point==null&& newValues!=0){
             point = new List_User(newValues);
         }
         return point;
     }
+
+    public User[] getListaDeUsuarios(){return user;}
+
     public void add(User user){
         if((this.lastUser+1)==this.user.length){
             Alert alert = new Alert(AlertType.WARNING);

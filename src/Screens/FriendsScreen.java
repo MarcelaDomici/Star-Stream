@@ -67,6 +67,9 @@ public class FriendsScreen {
     @FXML
     private ImageView imgBlocks;
 
+    @FXML
+    private HBox hboxSearchUser;
+
         public FriendsScreen(int i)throws Exception{
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenFriends.fxml"));
@@ -347,7 +350,11 @@ public class FriendsScreen {
                 int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");
 
                 Label nameFriend = new Label(user[solicit.get(i)].getName().substring(0, string_Name));
-                nameFriend.setPadding(new Insets(15,0,0,0));
+                nameFriend.setStyle(
+                        "-fx-font-family: Poppins;"+
+                        "-fx-font-size: 16;"
+                    );
+                nameFriend.setPadding(new Insets(10,0,0,0));
                 nameFriend.setPrefWidth(80);
 
                 imgIconProfile.setCursor(Cursor.HAND);
@@ -418,16 +425,12 @@ public class FriendsScreen {
 
 
     @FXML
-    void goToBlocksScreen(MouseEvent event) {
+    void goToBlocksScreen(MouseEvent event) throws Exception {
 
-        try{
             new BlocksScreen(id, this).getStage().show();
             pane.effectProperty().set(new MotionBlur(3.0,15.0));
             pane.setDisable(true);
 
-            }catch(Exception ie){
-            ie.printStackTrace();   
-            }
     }
 
     @FXML
@@ -458,5 +461,13 @@ public class FriendsScreen {
     void goToProfileTop(MouseEvent event) throws Exception {
         new ProfileScreen(id).getStage().show();
         this.stage.close();
+    }
+
+    @FXML
+    void goToSearchUserScreen(MouseEvent event) throws Exception {
+        
+        new SearchUserScreen(id, this).getStage().show();
+        pane.effectProperty().set(new MotionBlur(3.0,15.0));
+        pane.setDisable(true);
     }
 }
