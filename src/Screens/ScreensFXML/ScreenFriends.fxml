@@ -16,15 +16,7 @@
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ImageView fx:id="imageSetProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" onMouseClicked="#goToProfileTop" pickOnBounds="true" style="-fx-effect: solid;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <image>
-                  <Image url="@Imagens/PERFIL.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1141.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/NOTIFICACAO.png" />
                </image>
@@ -32,7 +24,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1057.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/settings.png" />
                </image>
@@ -45,9 +37,9 @@
                   <Image url="@Imagens/home%20logoStar2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exitToHome" fitHeight="60.0" fitWidth="60.0" layoutX="16.0" layoutY="9.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="exitToHome" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="16.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/backTo.png" />
+                  <Image url="@Imagens/home.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -95,36 +87,6 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Imagens/friends.png" />
-                                 </image>
-                              </ImageView>
-                              <Label prefHeight="31.0" prefWidth="181.0" text="Amigos">
-                                 <padding>
-                                    <Insets left="10.0" top="15.0" />
-                                 </padding>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </HBox>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="242.0">
-                     <padding>
-                        <Insets left="10.0" top="25.0" />
-                     </padding>
-                     <children>
-                        <HBox styleClass="hbox" stylesheets="@CSS/Hbox.css">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
                                     <Image url="@Imagens/community.png" />
                                  </image>
                               </ImageView>
@@ -159,6 +121,36 @@
                                  </image>
                               </ImageView>
                               <Label fx:id="btnToChat" prefHeight="31.0" prefWidth="181.0" text="Chat">
+                                 <padding>
+                                    <Insets left="10.0" top="15.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="266.0">
+                     <padding>
+                        <Insets left="10.0" top="25.0" />
+                     </padding>
+                     <children>
+                        <HBox onMouseClicked="#goToGames" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Imagens/jogos_retro.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="btnToGames" prefHeight="31.0" prefWidth="181.0" text="Jogos">
                                  <padding>
                                     <Insets left="10.0" top="15.0" />
                                  </padding>

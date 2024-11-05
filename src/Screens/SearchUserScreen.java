@@ -75,6 +75,8 @@ public class SearchUserScreen {
                 pane.requestFocus();
             });
 
+            //atualizando a partir do enter
+            /* 
              this.stage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
                 if(key.getCode()==KeyCode.ENTER && this.txtSearchUser.getText().length()!=0){
                     try{    
@@ -83,7 +85,19 @@ public class SearchUserScreen {
                         ie.printStackTrace();
                     }
                 }
+            });*/
+
+            //atualiza campo de pesquisa dinamicamente
+            this.txtSearchUser.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue.isEmpty()) {
+                    try {
+                        this.searchUserTrue();
+                    } catch (Exception ie) {
+                        ie.printStackTrace();
+                    }
+                }
             });
+            
 
     }
     public Stage getStage(){return this.stage;}

@@ -33,9 +33,9 @@
                   <Image url="@Imagens/home%20logoStar2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exitToHome" fitHeight="60.0" fitWidth="60.0" layoutX="21.0" layoutY="10.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="exitToHome" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="16.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/backTo.png" />
+                  <Image url="@Imagens/home.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

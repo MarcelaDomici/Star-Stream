@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="118.0" layoutY="27.0" prefHeight="42.0" prefWidth="234.0" text="Titulo publicação:">
+         <font>
+            <Font name="Open Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="130.0" prefHeight="42.0" prefWidth="234.0" text="Publicação:">
+         <font>
+            <Font name="Open Sans Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField layoutX="118.0" layoutY="69.0" prefHeight="50.0" prefWidth="464.0" promptText="Digite um Título" stylesheets="@CSS/txtEmailLogin.css" />
+      <Button layoutX="373.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#PublicPost" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonsLogin.css" text="Publicar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="144.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#CancelPost" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonRed.css" text="Cancelar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TextArea cacheShape="false" centerShape="false" focusTraversable="false" layoutX="115.0" layoutY="180.0" prefHeight="172.0" prefWidth="464.0" promptText="Digite sua Publicação" scaleShape="false" stylesheets="@CSS/textAreaPublication.css" wrapText="true">
+         <styleClass>
+            <String fx:value="viewport" />
+            <String fx:value="scroll-pane" />
+            <String fx:value="content" />
+            <String fx:value="corner" />
+            <String fx:value="decrement-arrow" />
+            <String fx:value="decrement-button" />
+            <String fx:value="increment-arrow" />
+            <String fx:value="increment-button" />
+            <String fx:value="scroll-bar" />
+            <String fx:value="scroll-pane" />
+            <String fx:value="thumb" />
+            <String fx:value="track" />
+            <String fx:value="viewport" />
+            <String fx:value="text-area" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextArea>
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="118.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/image_photo_public.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="211.0" layoutY="370.0" mnemonicParsing="false" onMouseClicked="#chooseFile" prefHeight="60.0" prefWidth="325.0" stylesheets="@CSS/ButtonsLogin.css" text="Escolher Arquivo" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</Pane>

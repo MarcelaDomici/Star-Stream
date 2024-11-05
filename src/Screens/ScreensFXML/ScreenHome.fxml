@@ -58,7 +58,7 @@
                                     <Image url="@Imagens/PERFIL.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="userName" prefHeight="31.0" prefWidth="181.0" text="UserName">
+                              <Label fx:id="myUserName" prefHeight="31.0" prefWidth="181.0" text="UserName">
                                  <padding>
                                     <Insets left="10.0" top="15.0" />
                                  </padding>
@@ -108,7 +108,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_goToCommunity" onMouseClicked="#goToCommunity" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

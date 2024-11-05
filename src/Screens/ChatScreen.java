@@ -56,6 +56,9 @@ public class ChatScreen {
     private HBox Hbox_to_ScreenPublic;
 
     @FXML
+    private HBox Hbox_to_ScreenGames;
+
+    @FXML
     private ImageView exitToHome;
 
     @FXML
@@ -99,9 +102,11 @@ public class ChatScreen {
 
     private ImageView chatProfileImage;
 
-    public ChatScreen(int i) throws Exception {
-        id = i;
+    //codigo tela 1
+    public ChatScreen(int newId) throws Exception {
+        id = newId;
         this.chats = new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenChat.fxml"));
         loader.setController(this);
         this.pane = loader.load();
@@ -202,9 +207,9 @@ public class ChatScreen {
                         postLink.setFocusTraversable(false);
                         postLink.setPadding(new Insets(6, 0, 0, 2));
                         postLink.setUnderline(true);
-                        postLink.setStyle("-fx-font-size: 17; -fx-text-fill: lightblue;");
+                        postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;");
                         postLink.setOnMouseEntered(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
-                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
+                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
                         postLink.setOnAction(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
 
                         postLink.setOnMouseClicked(event -> {
@@ -245,10 +250,10 @@ public class ChatScreen {
                         postLink.setFocusTraversable(false);
                         postLink.setPadding(new Insets(6, 0, 0, 2));
                         postLink.setUnderline(true);
-                        postLink.setStyle("-fx-font-size: 17; -fx-text-fill: darkblue;");
-                        postLink.setOnMouseEntered(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: black;"));
-                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: black;"));
-                        postLink.setOnAction(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: black;"));
+                        postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;");
+                        postLink.setOnMouseEntered(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
+                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
+                        postLink.setOnAction(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
 
                         postLink.setOnMouseClicked(event -> {
 
@@ -264,7 +269,7 @@ public class ChatScreen {
                         TextFlow textFlow = new TextFlow(postLink);
                         textFlow.setStyle(
                                 "-fx-background-radius: 20px;" +
-                                        "-fx-background-color: rgb(211,211,211);" +
+                                        "-fx-background-color: #323739;" +
                                         "-fx-border-color: transparent;" +
                                         "-fx-border-radius: 20px;");
                         textFlow.setPadding(new Insets(5, 20, 5, 20));
@@ -315,6 +320,7 @@ public class ChatScreen {
                         vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
                         Text text = new Text(chat.get(i).getTxtMessage());
                         text.setStyle("-fx-font-size: 17;");
+                        //text.setFill(Paint.valueOf("rgb(255,255,255)"));
                         text.setFill(Paint.valueOf("rgb(255,255,255)"));
                         TextFlow textFlow = new TextFlow(text);
                         textFlow.setStyle(
@@ -336,11 +342,11 @@ public class ChatScreen {
                         vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
                         Text text = new Text(chat.get(i).getTxtMessage());
                         text.setStyle("-fx-font-size: 17;");
-                        text.setFill(Paint.valueOf("rgb(0,0,0)"));
+                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
                         TextFlow textFlow = new TextFlow(text);
                         textFlow.setStyle(
                                 "-fx-background-radius: 20px;" +
-                                        "-fx-background-color: rgb(211,211,211);" +
+                                        "-fx-background-color: #323739;" +
                                         "-fx-border-color: transparent;" +
                                         "-fx-border-radius: 20px;");
                         textFlow.setPadding(new Insets(5, 20, 5, 20));
@@ -621,8 +627,10 @@ public class ChatScreen {
         this.pane.requestFocus();
     }
 
+    
     @FXML
     private void backToLogin(MouseEvent event) throws Exception {
+
         new HomeScreen(id).getStage().show();
         this.stage.close();
     }
@@ -642,20 +650,24 @@ public class ChatScreen {
     @FXML
     private void goToPublic(MouseEvent event) throws Exception {
         try {
-            // Crie a tela de publicação e passe a HomeScreen como parâmetro
+            
             PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), null);
             publicationScreen.getStage().show();
 
-            // Efeito de MotionBlur
             pane.effectProperty().set(new MotionBlur(3.0, 15.0));
-
             publicationScreen.getStage().setOnHidden(event1 -> {
-                pane.effectProperty().set(null); // Remove o efeito após fechar
+                pane.effectProperty().set(null); 
             });
 
         } catch (Exception ie) {
             ie.printStackTrace();
         }
+    }
+
+    @FXML
+    void goToGames(MouseEvent event) throws Exception{
+        new GamesScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML

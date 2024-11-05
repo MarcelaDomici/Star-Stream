@@ -121,11 +121,7 @@ public class EditProfile {
                 this.profileImage.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
                 this.profileImage.setFitHeight(71);
                 this.profileImage.setFitWidth(71);
-
-                // Criar um círculo para o clipping
-                Circle circle = new Circle(35.5, 35.5, 35.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
+                Circle circle = new Circle(35.5, 35.5, 35.5);
                 profileImage.setClip(circle);
             }
 

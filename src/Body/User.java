@@ -20,6 +20,7 @@ public class User {
     private ArrayDeque<Integer> dequeChat = new ArrayDeque<>();
     private Map<Integer,Chat> chat = new HashMap<>();
     private ArrayList<Depoimento> depoimento = new ArrayList<>();
+    private ArrayList<Integer> communitysUser = new ArrayList<>();
     
     public List<Integer> getList_Solicit(){return this.list_solicit;}
     public ArrayDeque<Integer> getDequeChat(){return this.dequeChat;}
@@ -29,6 +30,26 @@ public class User {
     public void setBlock(int id, boolean p){this.blockUser.put(id, p);}
     public boolean Check_User_Blocked(int i){return this.blockUser.get((Integer)i);}
     public void removeBlock(int userId) { this.blockUser.remove(userId);}
+
+    public void AddCommunity(int IdCommunity){
+        communitysUser.add(IdCommunity);
+    }
+
+    public void removeCommunity(int idCommunity){
+        for(int i =0;i<communitysUser.size();++i){
+            if(communitysUser.get(i)==idCommunity){
+                communitysUser.remove(i);
+                return;
+            }
+        }
+    }
+
+    public int checkCommunity(int id){
+        for(int i =0;i<communitysUser.size();++i){
+            if(communitysUser.get(i)==id) return 0;
+        }
+        return 1;
+    }
 
     public void AddFriends(int idFriend){
         this.friends.add(idFriend);
@@ -118,7 +139,8 @@ public class User {
         this.profileVisibility = profileVisibility;
     }
 
-
+    
+    public ArrayList<Integer> getCommunitysUser() {return communitysUser;}
     public ArrayList<Post> getPosts(){return this.postUser;}
     public ArrayList<Depoimento> getDepoimentos(){return depoimento;}
 

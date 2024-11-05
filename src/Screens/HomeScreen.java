@@ -44,6 +44,9 @@ public class HomeScreen implements Uptable {
     private User userNow;
 
     @FXML
+    private HBox Hbox_goToCommunity;
+
+    @FXML
     private HBox hBoxUserProfile;
 
     @FXML
@@ -62,7 +65,7 @@ public class HomeScreen implements Uptable {
     private VBox vboxPost;
 
     @FXML
-    private Label userName;
+    private Label myUserName;
 
     @FXML
     private TextArea luckyDay;
@@ -108,7 +111,8 @@ public class HomeScreen implements Uptable {
         vboxPost.getChildren().clear();
         vboxSugest.getChildren().clear();
 
-        this.userName.setText(List_User.getPoint(0).user[id].getName());
+        this.myUserName.setText(List_User.getPoint(0).user[id].getName());
+
         try {
             this.vboxPost.setSpacing((double) 10);
             for (int i = ManagerPosts.geralPosts.size() - 1; i >= 0; --i) {
@@ -162,7 +166,7 @@ public class HomeScreen implements Uptable {
                         }
                     });
 
-                    userName.setOnMouseClicked(event -> {
+                    nameUser.setOnMouseClicked(event -> {
                         try {
                             new FriendProfile(id, indexF, perfilVisi, dep).getStage().show();
                             this.stage.close();
@@ -376,7 +380,7 @@ public class HomeScreen implements Uptable {
                                 }
                             });
 
-                            userName.setOnMouseClicked(event -> {
+                            nameUser.setOnMouseClicked(event -> {
                                 try {
                                     new FriendProfile(id, indexF, perfilVisi, dep).getStage().show();
                                     this.stage.close();
@@ -587,7 +591,7 @@ public class HomeScreen implements Uptable {
                             }
                         });
 
-                        userName.setOnMouseClicked(event -> {
+                        nameUser.setOnMouseClicked(event -> {
                             try {
                                 new FriendProfile(id, indexF, perfilVisi, dep).getStage().show();
                                 this.stage.close();
@@ -1143,6 +1147,13 @@ public class HomeScreen implements Uptable {
         } catch (Exception ie) {
             ie.printStackTrace();
         }
+    }
+
+    @FXML
+    void goToCommunity(MouseEvent event) throws Exception{
+
+        new CommunityScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML

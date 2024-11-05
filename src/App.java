@@ -1,5 +1,9 @@
+import Body.Chat;
+import Body.Community;
 import Body.Depoimento;
+import Body.ManagerCommunitys;
 import Body.ManagerPosts;
+import Body.Message;
 import Body.Post;
 import Body.User;
 import Screens.LoginScreen;
@@ -16,7 +20,7 @@ public class App extends Application{
     @Override
     public void start(Stage arg0) throws Exception {
 
-        //user marcela
+        // user marcela
         User user = new User();
         user.setAge(19);
         user.setCity("Cruzeiro-SP");
@@ -24,8 +28,8 @@ public class App extends Application{
         user.setEmail("mar");
         user.setPassword("1234");
         user.setName("Marcela");
-        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
-        List_User.getPoint(10).add(user); //inicialização da lista de usuarios
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
+        List_User.getPoint(10).add(user); // inicialização da lista de usuarios
 
         Depoimento dep1 = new Depoimento();
         dep1.setDepoimento("Amigo onde esta?");
@@ -34,16 +38,15 @@ public class App extends Application{
         dep2.setDepoimento("Amigo estou aqui...");
         dep2.setIdAmg(0);
 
-
         Post post = new Post();
-        post.setId((short)0);
-        post.setIduser((short)0);
-        post.setImagem("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download_(1).jpg");
+        post.setId((short) 0);
+        post.setIduser((short) 0);
+        post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download_(1).jpg");
         post.setTitle("Titulo para Testes");
-        post.setPostTxt("Texto para testes do Posts Texto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes");
+        post.setPostTxt(
+                "Texto para testes do Posts Texto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes");
         List_User.getPoint(0).user[0].getPosts().add(post);
         ManagerPosts.geralPosts.add(post);
-
 
         user = new User();
         user.setAge(19);
@@ -52,12 +55,12 @@ public class App extends Application{
         user.setEmail("manu");
         user.setPassword("1234");
         user.setName("Manuela");
-        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
         List_User.getPoint(5).add(user);
 
-       // user.getList_Solicit().add(0);
-            List_User.getPoint(0).user[0].AddFriends(1);
-            List_User.getPoint(0).user[1].AddFriends(0);
+        // user.getList_Solicit().add(0);
+        List_User.getPoint(0).user[0].AddFriends(1);
+        List_User.getPoint(0).user[1].AddFriends(0);
 
         List_User.getPoint(2).user[0].getDepoimentos().add(dep1);
         List_User.getPoint(2).user[1].getDepoimentos().add(dep2);
@@ -69,9 +72,74 @@ public class App extends Application{
         user.setEmail("madu");
         user.setPassword("1234");
         user.setName("Maria Eduarda");
-        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download.jpg");
         List_User.getPoint(5).add(user);
 
+        Chat chat = new Chat();
+        Message message = new Message();
+        message.setId((short) 0);
+        message.setSender((short) 0);
+        message.setReceptor((short) 1);
+        message.setTxtMessage(
+                "Amigo estou aqui\r\nSe a fase, é ruim\r\n" + //
+                                        "E são tantos problemas que não tem fim...");
+        chat.add(message);
+
+        List_User.getPoint(0).user[0].getChats().put(1, chat);
+        List_User.getPoint(0).user[1].getChats().put(0, chat);
+        List_User.getPoint(0).user[0].getDequeChat().add(1);
+        List_User.getPoint(0).user[1].getDequeChat().add(0);
+
+        message = new Message();
+        message.setId((short) 0);
+        message.setSender((short) 1);
+        message.setReceptor((short) 0);
+        message.setTxtMessage(
+                "Não se esqueça que ouviu de mim\r\n" + //
+                                        "Amigo estou aqui...");
+        chat.add(message);
+
+        System.out.println(List_User.getPoint(0).user[0].getChats().get(1).getLastMessage().getTxtMessage());
+
+         List_User.getPoint(0).user[1].getChats().put(0, chat);
+         List_User.getPoint(0).user[0].getChats().put(1, chat);
+
+         
+        Community community = new Community();
+        community.setName("Toy Story");
+        community.setTxtCommunity("Ao infinito e além...");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\#TOYYYYY#STORYYY.jpg");
+        community.setIdOwner(1);
+        community.setCommunityVisibility("Público");
+        community.setId(0);
+
+        ManagerCommunitys.allCommunitys.add(community);
+        List_User.getPoint(2).user[1].AddCommunity(0);
+
+        community = new Community();
+        community.setName("Monsters inc.");
+        community.setTxtCommunity("No susto e no grito fazemos bonito!");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\monters.jpg");
+        community.setIdOwner(0);
+        community.setCommunityVisibility("Público");
+        community.setId(1);
+
+        ManagerCommunitys.allCommunitys.add(community);
+        List_User.getPoint(2).user[0].AddCommunity(1);
+
+        community = new Community();
+        community.setName("Smelly cat");
+        community.setTxtCommunity("Smelly Cat, Smelly Cat,\r\n" + //
+                        "What are they feeding you?\r\n" + //
+                        "Smelly Cat, Smelly Cat\r\n" + //
+                        "It's not your fault");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Pheobe Buffay.jpg");
+        community.setIdOwner(2);
+        community.setCommunityVisibility("Público");
+        community.setId(2);
+
+        ManagerCommunitys.allCommunitys.add(community);
+        List_User.getPoint(2).user[0].AddCommunity(2);
             
 
         /*
