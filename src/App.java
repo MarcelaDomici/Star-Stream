@@ -134,12 +134,20 @@ public class App extends Application{
                         "Smelly Cat, Smelly Cat\r\n" + //
                         "It's not your fault");
         community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Pheobe Buffay.jpg");
-        community.setIdOwner(2);
+        community.setIdOwner(0);
         community.setCommunityVisibility("Público");
         community.setId(2);
 
         ManagerCommunitys.allCommunitys.add(community);
         List_User.getPoint(2).user[0].AddCommunity(2);
+
+        post = new Post();
+        post.setId((short)1);
+        post.setIduser((short) 0);
+        post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download (2).jpg");
+        post.setTitle("Teste teste teste teste");
+        post.setPostTxt("Teste teste teste teste teste teste teste teste ");
+        community.getPostCommunity().add(post);
             
 
         /*

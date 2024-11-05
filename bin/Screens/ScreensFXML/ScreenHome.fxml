@@ -217,7 +217,7 @@
       </Pane>
       <ScrollPane fx:id="scrollPosts" layoutX="286.0" layoutY="78.0" prefHeight="659.0" prefWidth="661.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
          <content>
-            <VBox fx:id="vboxPost" prefHeight="636.0" prefWidth="660.0" style="-fx-background-color: white;" />
+            <VBox fx:id="vboxPost" prefHeight="691.0" prefWidth="644.0" style="-fx-background-color: white;" />
          </content>
       </ScrollPane>
       <Pane layoutX="951.0" layoutY="75.0" prefHeight="669.0" prefWidth="353.0" style="-fx-border-color: rgb(123,56,255); -fx-border-width: 3; -fx-background-color: white;">

@@ -2,6 +2,7 @@ package Screens;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 import Body.Community;
 import Body.ManagerCommunitys;
@@ -16,6 +17,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
@@ -117,10 +119,10 @@ public class CommunityScreen {
 
             for (int i = ManagerCommunitys.allCommunitys.size() - 1; i >= 0; --i) {
 
-                // participa da comunidade ou é dono
-                if (userNow.checkCommunity(i) == 0) {
+                Community community = ManagerCommunitys.allCommunitys.get(i);
 
-                    Community community = ManagerCommunitys.allCommunitys.get(i);
+                // participa da comunidade ou é dono
+                if (userNow.checkCommunity(i) == 0 || community.getCommunityUsers().contains(id)) {
 
                     HBox hBoxCom = new HBox(2);
                     hBoxCom.setSpacing(3);// conjunto da comunidade
@@ -176,7 +178,6 @@ public class CommunityScreen {
                     this.vBoxComun.getChildren().addAll(hBoxCom, new Separator());
 
                 } else {
-                    Community community = ManagerCommunitys.allCommunitys.get(i);
 
                     HBox hBoxCom = new HBox(2);
                     hBoxCom.setSpacing(3);// conjunto da comunidade
@@ -234,6 +235,15 @@ public class CommunityScreen {
 
                     imgAddCommunity.setOnMouseClicked(event -> {
 
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Aviso!");
+                        alert.setContentText("Parabéns, você agora faz parte da comunidade " + community.getName()
+                                + "! \nSeja bem-vindo(a) e aproveite para se conectar com \noutros membros!");
+                        alert.showAndWait();
+
+                        community.getCommunityUsers().add(id);
+                        initialize();
                     });
 
                     VBox auxToImage = new VBox();
@@ -267,9 +277,9 @@ public class CommunityScreen {
 
             for (int i = ManagerCommunitys.allCommunitys.size() - 1; i >= 0; --i) {
 
-                if (userNow.getCommunitysUser().contains((Integer) i)) {
+                Community community = ManagerCommunitys.allCommunitys.get(i);
 
-                    Community community = ManagerCommunitys.allCommunitys.get(i);
+                if (userNow.getCommunitysUser().contains((Integer) i) || community.getCommunityUsers().contains(id)) {
 
                     HBox hBoxCom = new HBox(2);
                     hBoxCom.setSpacing(3);// conjunto da comunidade
@@ -326,6 +336,48 @@ public class CommunityScreen {
                     imgLeaveCommunity.setCursor(Cursor.HAND);
 
                     imgLeaveCommunity.setOnMouseClicked(event -> {
+
+                        if (id != community.getIdOwner()) {
+
+                            Alert alert = new Alert(AlertType.WARNING);
+                            alert.setTitle("Aviso!");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Tem certeza de que deseja sair desta comunidade?");
+
+                            ButtonType buttonTypeOne = new ButtonType("Sim");
+                            ButtonType buttonTypeTwo = new ButtonType("Não");
+
+                            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == buttonTypeOne) {
+
+                                int indexU = community.getCommunityUsers().indexOf(id);
+                                community.getCommunityUsers().remove(indexU);
+
+                                initialize();
+                            }
+                        }else{
+
+                            Alert alert = new Alert(AlertType.WARNING);
+                            alert.setTitle("Aviso!");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Tem certeza de que deseja deletar essa comunidade?");
+
+                            ButtonType buttonTypeOne = new ButtonType("Sim");
+                            ButtonType buttonTypeTwo = new ButtonType("Não");
+
+                            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == buttonTypeOne) {
+                                
+                                ManagerCommunitys.allCommunitys.remove(community);
+
+                                initialize();
+                            }
+
+                        }
 
                     });
 

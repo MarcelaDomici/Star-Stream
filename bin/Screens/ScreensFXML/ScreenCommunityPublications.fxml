@@ -10,10 +10,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: rgb(245, 245, 245);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
@@ -40,7 +41,7 @@
             </ImageView>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="21.0" layoutY="11.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/home.png" />
+                  <Image url="@Imagens/backTo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -61,7 +62,7 @@
                                     <Image url="@Imagens/communityPhoto.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="btnEditarCommunity" fitHeight="28.0" fitWidth="32.0" layoutX="210.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="btnEditarCommunity" fitHeight="28.0" fitWidth="32.0" layoutX="210.0" layoutY="130.0" onMouseClicked="#goToEditCommunity" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/edit.png" />
                                  </image>
@@ -91,7 +92,7 @@
                         <Insets left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenFriends" onMouseClicked="#goToFriends" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenMembers" onMouseClicked="#goToFriends" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="58.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -121,7 +122,7 @@
                         <Insets left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenChatCom" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -148,7 +149,7 @@
                         <Insets left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenChat" onMouseClicked="#goToChat" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenPublic" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -175,7 +176,7 @@
                         <Insets bottom="10.0" left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenPublic" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenSolicit" onMouseClicked="#goToSolicit" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -201,17 +202,18 @@
             </VBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollPosts" layoutX="366.0" layoutY="132.0" prefHeight="589.0" prefWidth="842.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
+      <ScrollPane fx:id="scrollPosts" layoutX="468.0" layoutY="134.0" prefHeight="609.0" prefWidth="634.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
          <content>
-            <VBox fx:id="vboxPost" prefHeight="586.0" prefWidth="839.0" style="-fx-background-color: white;">
+            <VBox fx:id="vboxPost" prefHeight="594.0" prefWidth="630.0" style="-fx-background-color: rgb(245, 245, 245);">
                <children>
                   <HBox fx:id="EditProfile" onMouseClicked="#goToEditProfile" prefHeight="26.0" prefWidth="215.0" />
                </children></VBox>
          </content>
       </ScrollPane>
-      <Text layoutX="312.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feed Comunidade" wrappingWidth="357.5999755859375">
+      <Line endX="847.6160888671875" endY="7.62939453125E-6" layoutX="423.0" layoutY="105.0" startX="-107.0" stroke="#7b38ff" strokeWidth="54.0" />
+      <Text fill="WHITE" layoutX="325.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicações Comunidade" wrappingWidth="447.99993896484375">
          <font>
-            <Font size="36.0" />
+            <Font size="34.0" />
          </font>
       </Text>
    </children>

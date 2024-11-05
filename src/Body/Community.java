@@ -7,8 +7,8 @@ public class Community {
     private String name, txtCommunity, CommunityVisibility = "Perfil público", photoCommunity = null;
     private int idOwner, id;
     private ArrayList<Post> postCommunity = new ArrayList<>();
-    private ArrayList<User> CommunityUsers = new ArrayList<>();
-    //private Chat chat = new Chat();
+    private ArrayList<Integer> CommunityUsers = new ArrayList<>();
+    private Chat chat = new Chat();
 
     public int getId() {
         return id;
@@ -52,7 +52,7 @@ public class Community {
         return postCommunity;
     }
 
-    public ArrayList<User> getCommunityUsers() {
+    public ArrayList<Integer> getCommunityUsers() {
         return CommunityUsers;
     }
 

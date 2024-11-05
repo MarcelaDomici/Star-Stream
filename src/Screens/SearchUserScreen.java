@@ -91,7 +91,7 @@ public class SearchUserScreen {
             this.txtSearchUser.textProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue.isEmpty()) {
                     try {
-                        this.searchUserTrue();
+                        searchUserTrue();
                     } catch (Exception ie) {
                         ie.printStackTrace();
                     }

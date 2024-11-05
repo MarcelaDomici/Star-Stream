@@ -211,6 +211,9 @@ public class EditProfile {
         file.setInitialDirectory(new File(System.getProperty("user.dir")));
         this.photo= file.showOpenDialog(stage).toPath().toString();
         this.profileImage.setImage(new Image(new FileInputStream(photo)));
+
+        Circle circle = new Circle(35.5, 35.5, 35.5);
+        profileImage.setClip(circle);
     }
 
     @FXML
