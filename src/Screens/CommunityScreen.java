@@ -21,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -102,6 +103,8 @@ public class CommunityScreen {
 
     @FXML
     public void initialize() {
+
+        userName.setText(userNow.getName());
 
         scrollComun.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
         scrollComun.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
@@ -231,6 +234,9 @@ public class CommunityScreen {
                     imgAddCommunity.setFitWidth(30);
                     imgAddCommunity.setPreserveRatio(true);
 
+                    Tooltip tooltipAddCommunity = new Tooltip("Participar");
+                    Tooltip.install(imgAddCommunity, tooltipAddCommunity);
+
                     imgAddCommunity.setCursor(Cursor.HAND);
 
                     imgAddCommunity.setOnMouseClicked(event -> {
@@ -333,6 +339,14 @@ public class CommunityScreen {
                     imgLeaveCommunity.setFitWidth(30);
                     imgLeaveCommunity.setPreserveRatio(true);
 
+                    if (id != community.getIdOwner()) {
+                        Tooltip tooltipLeaveCommunity = new Tooltip("Sair");
+                        Tooltip.install(imgLeaveCommunity, tooltipLeaveCommunity);
+                    }else{
+                        Tooltip tooltipLeaveCommunity = new Tooltip("Deletar");
+                        Tooltip.install(imgLeaveCommunity, tooltipLeaveCommunity);
+                    }
+
                     imgLeaveCommunity.setCursor(Cursor.HAND);
 
                     imgLeaveCommunity.setOnMouseClicked(event -> {
@@ -357,7 +371,7 @@ public class CommunityScreen {
 
                                 initialize();
                             }
-                        }else{
+                        } else {
 
                             Alert alert = new Alert(AlertType.WARNING);
                             alert.setTitle("Aviso!");
@@ -371,7 +385,7 @@ public class CommunityScreen {
 
                             Optional<ButtonType> result = alert.showAndWait();
                             if (result.get() == buttonTypeOne) {
-                                
+
                                 ManagerCommunitys.allCommunitys.remove(community);
 
                                 initialize();

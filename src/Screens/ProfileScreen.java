@@ -504,6 +504,13 @@ public class ProfileScreen implements Uptable{
     }
 
     @FXML
+    private void goToCommunity(MouseEvent event) throws Exception{
+
+        new CommunityScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
     private void goToSettings(MouseEvent event)throws Exception {
         new SettingsScreen(id).getStage().show();
         this.stage.close();

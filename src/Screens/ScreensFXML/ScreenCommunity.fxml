@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1300.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
@@ -55,7 +54,7 @@
                <children>
                   <VBox prefHeight="62.0" prefWidth="260.0">
                      <children>
-                        <HBox fx:id="hBoxUserProfile" onMouseClicked="#goToProfile" styleClass="hbox" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Hbox.css">
+                        <HBox fx:id="hBoxUserProfile" onMouseClicked="#goToProfile" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -85,7 +84,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenFriends" onMouseClicked="#goToFriends" styleClass="hbox" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenFriends" onMouseClicked="#goToFriends" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -112,7 +111,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenChat" onMouseClicked="#goToChat" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenChat" onMouseClicked="#goToChat" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -139,7 +138,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenNewCommunity" onMouseClicked="#goToNewCommunity" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenNewCommunity" onMouseClicked="#goToNewCommunity" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -166,7 +165,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenGames" onMouseClicked="#goToGames" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenGames" onMouseClicked="#goToGames" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -192,7 +191,7 @@
             </VBox>
          </children>
       </Pane>
-      <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1004.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@../../../../../Star%20Stream%20VS/Social-Media-Data-Structures/src/Screens/ScreensFXML/CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1004.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Minhas Comunidades">
                <content>

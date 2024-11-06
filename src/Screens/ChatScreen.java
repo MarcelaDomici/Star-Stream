@@ -665,8 +665,15 @@ public class ChatScreen {
     }
 
     @FXML
-    void goToGames(MouseEvent event) throws Exception{
+    private void goToGames(MouseEvent event) throws Exception{
         new GamesScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToCommunity(MouseEvent event) throws Exception{
+
+        new CommunityScreen(id).getStage().show();
         this.stage.close();
     }
 

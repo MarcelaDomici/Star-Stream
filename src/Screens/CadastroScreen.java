@@ -77,7 +77,7 @@ public class CadastroScreen {
 
             {
                 this.comboBoxCivil.getItems().addAll(new String[]{
-                    "Solteiro", "Namorando","Casado","Divorciado", "Viúvo"
+                    "Solteiro(a)", "Namorando","Casado(a)","Divorciado(a)", "Viúvo(a)"
                 });
             }
 

@@ -10,6 +10,7 @@ public class Community {
     private ArrayList<Integer> CommunityUsers = new ArrayList<>();
     private Chat chat = new Chat();
 
+    
     public int getId() {
         return id;
     }
@@ -48,6 +49,8 @@ public class Community {
     }
 
 
+    public Chat getChat() { return chat;}
+    
     public ArrayList<Post> getPostCommunity() {
         return postCommunity;
     }

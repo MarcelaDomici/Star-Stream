@@ -142,7 +142,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox onMouseClicked="#goToCommunity" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

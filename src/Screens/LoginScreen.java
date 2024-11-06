@@ -59,12 +59,12 @@ public class LoginScreen {
             this.passOcult.setLayoutX(this.txtPass.getLayoutX());
             this.passOcult.setLayoutY(this.txtPass.getLayoutY());
 
-/* 
+
                 {
                     this.txtEmail.setText("mar");
                     this.passOcult.setText("1234");
                 }
-*/
+
             
         }
 

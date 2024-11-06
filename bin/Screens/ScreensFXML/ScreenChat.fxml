@@ -99,7 +99,7 @@
                   </VBox>
                   <VBox prefHeight="65.0" prefWidth="265.0">
                      <children>
-                        <HBox prefHeight="56.0" prefWidth="77.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox onMouseClicked="#goToCommunity" prefHeight="56.0" prefWidth="77.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fx:id="imageComunity" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

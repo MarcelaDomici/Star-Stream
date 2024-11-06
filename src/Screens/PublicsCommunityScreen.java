@@ -86,7 +86,6 @@ public class PublicsCommunityScreen {
         stage.setTitle("Posts da comunidade");
         stage.setResizable(false);
 
-        
     }
 
     public Stage getStage() {
@@ -120,8 +119,9 @@ public class PublicsCommunityScreen {
             btnEditarCommunity.setVisible(true);
             btnEditarCommunity.setDisable(false);
 
-            Hbox_to_ScreenSolicit.setVisible(true);
-            Hbox_to_ScreenSolicit.setDisable(false);
+            // solicitaçoes da comunidade
+            // Hbox_to_ScreenSolicit.setVisible(true);
+            // Hbox_to_ScreenSolicit.setDisable(false);
 
             Hbox_to_ScreenPublic.setVisible(true);
             Hbox_to_ScreenPublic.setDisable(false);
@@ -1038,6 +1038,13 @@ public class PublicsCommunityScreen {
     }
 
     @FXML
+    private void goToChatCom(MouseEvent event) throws Exception {
+
+        new ChatCommunity(id, community).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
     private void goToEditProfile(MouseEvent event) throws Exception {
 
     }
@@ -1051,6 +1058,15 @@ public class PublicsCommunityScreen {
     private void goToFriends(MouseEvent event) throws Exception {
         new FriendsScreen(id).getStage().show();
         this.stage.close();
+    }
+
+    @FXML
+    private void goToParticipants(MouseEvent event) throws Exception {
+
+        new CommunityParticipants(id, community, pane, stage).getStage().show();
+        pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+        pane.setDisable(true);
+
     }
 
     @FXML

@@ -96,7 +96,7 @@ public class EditProfile {
         txtName.setText(user.getName());
  
         comboBoxCivil.getItems().clear(); 
-        comboBoxCivil.getItems().addAll("Solteiro", "Namorando", "Casado", "Divorciado", "Viúvo");
+        comboBoxCivil.getItems().addAll("Solteiro(a)", "Namorando", "Casado(a)", "Divorciado(a)", "Viúvo(a)");
 
         String userChoice = user.getCivil();
         if (comboBoxCivil.getItems().contains(userChoice)) {

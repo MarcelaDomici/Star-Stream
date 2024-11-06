@@ -460,6 +460,13 @@ public class FriendProfile {
     }
 
     @FXML
+    void goToCommunity(MouseEvent event) throws Exception{
+
+        new CommunityScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
     void goToChat(MouseEvent event)throws Exception {
         new ChatScreen(id).getStage().show();
         this.stage.close();

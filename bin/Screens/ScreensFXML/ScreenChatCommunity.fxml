@@ -2,9 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -14,41 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: rgb(245, 245, 245);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
-         <children>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagens/NOTIFICACAO.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagens/settings.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="255.0" layoutX="524.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagens/home%20logoStar2.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="21.0" layoutY="11.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Imagens/backTo.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-         </children>
-      </Pane>
       <Pane layoutX="-3.0" layoutY="75.0" prefHeight="660.0" prefWidth="292.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
             <VBox layoutX="11.0" layoutY="4.0" prefHeight="646.0" prefWidth="265.0">
@@ -61,14 +31,6 @@
                                  <image>
                                     <Image url="@Imagens/communityPhoto.png" />
                                  </image>
-                              </ImageView>
-                              <ImageView fx:id="btnEditarCommunity" fitHeight="28.0" fitWidth="32.0" layoutX="210.0" layoutY="130.0" onMouseClicked="#goToEditCommunity" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Imagens/edit.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
                               </ImageView>
                               <Label fx:id="lblCommunity" layoutY="166.0" prefHeight="30.0" prefWidth="266.0" style="-fx-font-family: Poppins; -fx-font-size: 20;" text="Comunidade" />
                            </children>
@@ -92,7 +54,7 @@
                         <Insets left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenMembers" onMouseClicked="#goToParticipants" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenMembers" onMouseClicked="#goToFriends" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="58.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -122,14 +84,14 @@
                         <Insets left="10.0" top="20.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenChatCom" onMouseClicked="#goToChatCom" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenSeePublics" onMouseClicked="#goToPublics" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Imagens/chat.png" />
+                                    <Image url="@Imagens/publicss.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="31.0" prefWidth="181.0" text="Chat comunidade">
+                              <Label prefHeight="31.0" prefWidth="181.0" text="Ver publicações">
                                  <padding>
                                     <Insets left="10.0" top="15.0" />
                                  </padding>
@@ -171,50 +133,59 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="44.0" prefWidth="266.0">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" top="20.0" />
-                     </padding>
-                     <children>
-                        <HBox fx:id="Hbox_to_ScreenSolicit" onMouseClicked="#goToSolicit" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Imagens/solicitacoes.png" />
-                                 </image>
-                              </ImageView>
-                              <Label prefHeight="31.0" prefWidth="181.0" text="Solicitações">
-                                 <padding>
-                                    <Insets left="10.0" top="15.0" />
-                                 </padding>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </HBox>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollPosts" layoutX="468.0" layoutY="134.0" prefHeight="609.0" prefWidth="634.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
-         <content>
-            <VBox fx:id="vboxPost" prefHeight="594.0" prefWidth="630.0" style="-fx-background-color: rgb(245, 245, 245);">
-               <children>
-                  <HBox fx:id="EditProfile" onMouseClicked="#goToEditProfile" prefHeight="26.0" prefWidth="215.0" />
-               </children></VBox>
-         </content>
-      </ScrollPane>
+      <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/NOTIFICACAO.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/settings.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="255.0" layoutX="524.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/home%20logoStar2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="21.0" layoutY="11.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/backTo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </Pane>
       <Line endX="847.6160888671875" endY="7.62939453125E-6" layoutX="423.0" layoutY="105.0" startX="-107.0" stroke="#7b38ff" strokeWidth="54.0" />
-      <Text fill="WHITE" layoutX="325.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicações Comunidade" wrappingWidth="447.99993896484375">
+      <Text fill="WHITE" layoutX="325.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat Comunidade" wrappingWidth="447.99993896484375">
          <font>
             <Font size="34.0" />
          </font>
       </Text>
+      <ScrollPane fx:id="ScrollViewChat" layoutX="291.0" layoutY="134.0" prefHeight="530.0" prefWidth="994.0" stylesheets="@CSS/ScrollPane.css" vvalue="1.0">
+         <content>
+            <VBox fx:id="vboxViewChat" prefHeight="527.0" prefWidth="991.0" style="-fx-background-color: white;" />
+         </content>
+      </ScrollPane>
+      <TextField fx:id="mensageToChat" layoutX="301.0" layoutY="672.0" prefHeight="36.0" prefWidth="848.0" promptText="Converse por aqui..." stylesheets="@CSS/txtEmailLogin.css" />
+      <Button fx:id="btnSendMessage" layoutX="1163.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#sendMessage" prefHeight="36.0" prefWidth="110.0" stylesheets="@CSS/ButtonSendMessage.css" text="Enviar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>
