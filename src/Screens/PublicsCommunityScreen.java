@@ -1025,7 +1025,7 @@ public class PublicsCommunityScreen {
     @FXML
     void goToPublic(MouseEvent event) throws Exception {
 
-        new PublicPostCommunity(id, community, this).getStage().show();
+        new PublicPostCommunity(id, community, this, null).getStage().show();
         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
         pane.setDisable(true);
     }

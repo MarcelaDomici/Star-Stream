@@ -24,8 +24,9 @@ public class PublicPostCommunity {
     private static int id = 0;
     private Stage stage = new Stage();
     private String photo = null;
-    private PublicsCommunityScreen _screenCommunity;
+    private PublicsCommunityScreen _screenCommunity = null;
     private Community community;
+    private ChatCommunity _screenCoChatCommunity;
 
     @FXML
     private ImageView imagePost;
@@ -36,10 +37,12 @@ public class PublicPostCommunity {
     @FXML
     private TextField txtTitulo;
 
-    public PublicPostCommunity(int newId, Community newCommunity, PublicsCommunityScreen newScreen) throws Exception {
+    public PublicPostCommunity(int newId, Community newCommunity, PublicsCommunityScreen newScreen,
+            ChatCommunity screenNew) throws Exception {
         id = newId;
         community = newCommunity;
         _screenCommunity = newScreen;
+        _screenCoChatCommunity = screenNew;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenCommunityPublish.fxml"));
         loader.setController(this);
@@ -55,6 +58,7 @@ public class PublicPostCommunity {
         });
 
     }
+
     public Stage getStage() {
         return this.stage;
     }
@@ -62,10 +66,20 @@ public class PublicPostCommunity {
     @FXML
     private void CancelPost(MouseEvent event) throws Exception {
 
-        _screenCommunity.getPane().effectProperty().set(null);
-        _screenCommunity.getPane().toFront();
-        _screenCommunity.getPane().setDisable(false);
-        this.stage.close();
+        if (_screenCommunity != null) {
+            _screenCommunity.getPane().effectProperty().set(null);
+            _screenCommunity.getPane().toFront();
+            _screenCommunity.getPane().setDisable(false);
+            this.stage.close();
+        } else {
+
+            _screenCoChatCommunity.getPane().effectProperty().set(null);
+            _screenCoChatCommunity.getPane().toFront();
+            _screenCoChatCommunity.getPane().setDisable(false);
+            this.stage.close();
+
+        }
+
     }
 
     private static short p = 0;
@@ -90,9 +104,12 @@ public class PublicPostCommunity {
         post.setPostTxt(txtText.getText());
         community.getPostCommunity().add(post);
 
-        //System.out.println(community.getPostCommunity().get(0).getTitle());
+        // System.out.println(community.getPostCommunity().get(0).getTitle());
 
-        _screenCommunity.initialize();
+        if(_screenCommunity != null){
+            _screenCommunity.initialize();
+        }
+        
         CancelPost(event);
     }
 

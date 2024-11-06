@@ -101,6 +101,10 @@ public class ChatCommunity {
         return this.stage;
     }
 
+    public Pane getPane() {
+        return this.pane;
+    }
+
     @FXML
     private void initialize(){
 
@@ -250,9 +254,20 @@ public class ChatCommunity {
     }
 
     @FXML
+    private void goToParticipants(MouseEvent event) throws Exception {
+
+        new CommunityParticipants(id, comunnity, pane, stage).getStage().show();
+        pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+        pane.setDisable(true);
+
+    }
+
+    @FXML
     private void goToPublic(MouseEvent event) throws Exception{
 
-        
+        new PublicPostCommunity(id, comunnity, null, this).getStage().show();
+        pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+        pane.setDisable(true);
         
     }
 
