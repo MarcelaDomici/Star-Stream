@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -44,6 +45,8 @@ public class DepoimentoScreen {
             pane = loader.load();
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Depoimento");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             this.stage.setResizable(false);
             this.stage.initStyle(StageStyle.UNDECORATED);
 

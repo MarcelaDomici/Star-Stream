@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -24,6 +26,9 @@ public class SettingsScreen {
     private ImageView imageSetProfile;
 
     @FXML
+    private ImageView eyePass;
+
+    @FXML
     private Button ChangeData;
 
     @FXML
@@ -35,6 +40,9 @@ public class SettingsScreen {
     @FXML
     private TextField txtPass;
 
+    @FXML
+    private PasswordField txtpassOcult;
+
         public SettingsScreen(int i)throws Exception{
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("./ScreensFXML/ScreenSettings.fxml"));
@@ -42,6 +50,8 @@ public class SettingsScreen {
             Pane pane = loader.load();
             stage.setScene(new Scene(pane));
             stage.setTitle("Settings");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             stage.setResizable(false);
             pane.requestFocus();
             pane.setOnMouseClicked(event->{
@@ -56,6 +66,21 @@ public class SettingsScreen {
     private void deleteData(MouseEvent event)throws Exception {
 
     }
+
+    @FXML
+        private void showPassword(MouseEvent event) {
+            if(txtpassOcult.isVisible()){
+                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye-off.png")));
+                this.txtPass.setText(this.txtpassOcult.getText());
+                this.txtPass.setVisible(true);
+                this.txtpassOcult.setVisible(false);
+            }else{
+                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye.png")));
+                this.txtpassOcult.setText(this.txtPass.getText());
+                this.txtpassOcult.setVisible(true);
+                this.txtPass.setVisible(false);
+            }
+        }
 
     @FXML
     private void setNewData(MouseEvent event) throws Exception{

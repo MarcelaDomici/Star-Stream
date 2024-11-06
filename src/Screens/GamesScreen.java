@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -51,6 +52,8 @@ public class GamesScreen {
             Pane pane = loader.load();
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Jogos");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             this.stage.setResizable(false);
 
             pane.requestFocus();

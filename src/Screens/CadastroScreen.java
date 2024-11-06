@@ -12,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -25,6 +27,12 @@ public class CadastroScreen {
 
     @FXML
     private CheckBox check2;
+
+    @FXML
+    private ImageView eyePass;
+
+    @FXML
+    private ImageView eyePass1;
 
     @FXML
     private TextField txtEmail;
@@ -64,7 +72,9 @@ public class CadastroScreen {
             loader.setController(this);
             Pane pane = loader.load();
             stage.setScene(new Scene(pane));
-            stage.setTitle("Tala Cadastro");
+            stage.setTitle("Tela Cadastro");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             stage.setResizable(false);
             this.txtOcultPass.setVisible(true);
             this.txtOcultPass1.setVisible(true);
@@ -92,29 +102,67 @@ public class CadastroScreen {
 
     @FXML
     private void checkPass(MouseEvent event) {
-            if(this.check1.isSelected()){
-                this.txtOcultPass.setVisible(false);
-                this.txtPass.setVisible(true);
-                this.txtPass.setText(this.txtOcultPass.getText());
-            }else{
-                this.txtPass.setVisible(true);
-                this.txtOcultPass.setVisible(true);
-                this.txtOcultPass.setText(this.txtOcultPass1.getText());
-            }
+    }
+
+    
+    private void checkPassConfirm(MouseEvent event) {
+    
     }
 
     @FXML
-    private void checkPassConfirm(MouseEvent event) {
-            if(this.check2.isSelected()){
-                this.txtOcultPass1.setVisible(false);
-                this.txtPassConfirm.setVisible(true);
-                this.txtPassConfirm.setText(txtOcultPass1.getText());
-            }else{
-                this.txtPassConfirm.setVisible(false);
-                this.txtOcultPass1.setVisible(true);
-                this.txtOcultPass1.setText(this.txtPassConfirm.getText());
-            }
+    private void showPassword(MouseEvent event) {
+        if(txtOcultPass.isVisible()){
+            this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye-off.png")));
+            this.txtPass.setText(this.txtOcultPass.getText());
+            this.txtPass.setVisible(true);
+            this.txtOcultPass.setVisible(false);
+        }else{
+            this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye.png")));
+            this.txtOcultPass.setText(this.txtPass.getText());
+            this.txtOcultPass.setVisible(true);
+            this.txtPass.setVisible(false);
+        }
     }
+
+    @FXML
+    private void showPassword2(MouseEvent event) {
+        if(txtOcultPass1.isVisible()){
+            this.eyePass1.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye-off.png")));
+            this.txtPassConfirm.setText(this.txtOcultPass1.getText());
+            this.txtPassConfirm.setVisible(true);
+            this.txtOcultPass1.setVisible(false);
+        }else{
+            this.eyePass1.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye.png")));
+            this.txtOcultPass1.setText(this.txtPassConfirm.getText());
+            this.txtOcultPass1.setVisible(true);
+            this.txtPassConfirm.setVisible(false);
+        }
+    }
+
+    @FXML
+        private void onlyNumber() {
+        txtIdade.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if(!newValue.equals("")) Integer.parseInt(newValue);
+            } catch (Exception ex) {
+                txtIdade.setText(oldValue);
+            }
+        });
+    }
+
+    @FXML
+        private void onlyChar() {
+        txtName.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if(!newValue.equals("")){ 
+                Integer.parseInt(newValue.substring(newValue.length()-1, newValue.length()));
+                txtName.setText(oldValue);}
+            } catch (Exception ex) {
+                txtName.setText(newValue);
+            }
+        });
+    }
+
 
     @FXML
     private void actionSignUser(MouseEvent event) throws Exception{

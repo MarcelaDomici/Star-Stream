@@ -23,6 +23,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.MotionBlur;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -84,6 +85,8 @@ public class ChatCommunity {
         this.pane = loader.load();
         this.stage.setScene(new Scene(pane));
         this.stage.setTitle("Chat");
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+        stage.getIcons().add(image);
         this.stage.setResizable(false);
 
         this.stage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {

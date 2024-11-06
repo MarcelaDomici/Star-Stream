@@ -84,6 +84,8 @@ public class PublicsCommunityScreen {
         pane.requestFocus();
         stage.setScene(new Scene(pane));
         stage.setTitle("Posts da comunidade");
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
         stage.setResizable(false);
 
     }

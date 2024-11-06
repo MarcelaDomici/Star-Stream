@@ -55,7 +55,10 @@ public class PublicationScreen {
             loader.setController(this);
             Pane pane = loader.load();
             stage.setScene(new Scene(pane));
+            stage.initStyle(javafx.stage.StageStyle.UNDECORATED);
             stage.setTitle("Tela de Publicação");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             stage.setResizable(false);
             pane.requestFocus();
             pane.setOnMouseClicked(event->{
@@ -138,7 +141,6 @@ public class PublicationScreen {
 
     @FXML
     private void CancelPost(MouseEvent event)throws Exception {
-        new HomeScreen(id).getStage().show();
         this.stage.close();
     }
 

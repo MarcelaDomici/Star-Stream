@@ -112,6 +112,8 @@ public class ChatScreen {
         this.pane = loader.load();
         this.stage.setScene(new Scene(pane));
         this.stage.setTitle("Chat");
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+        stage.getIcons().add(image);
         this.stage.setResizable(false);
 
         pane.requestFocus();

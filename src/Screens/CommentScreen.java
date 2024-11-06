@@ -94,7 +94,9 @@ public class CommentScreen {
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
             this.stage.setScene(scene);
-            this.stage.setTitle("Comentários"); 
+            this.stage.setTitle("Comentários");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             this.stage.setResizable(false);  
             this.stage.initStyle(StageStyle.UNDECORATED);
             this.stage.setOnCloseRequest(event->{

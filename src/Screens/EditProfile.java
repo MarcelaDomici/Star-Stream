@@ -78,6 +78,8 @@ public class EditProfile {
             Pane pane = loader.load();
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Editar Perfil");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             this.stage.setResizable(false);
             this.stage.initStyle(StageStyle.UNDECORATED);
  
@@ -132,7 +134,29 @@ public class EditProfile {
     }
 
     public Stage getStage(){return this.stage;}
+        @FXML
+        private void onlyNumber() {
+        txtIdade.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if(!newValue.equals("")) Integer.parseInt(newValue);
+            } catch (Exception ex) {
+                txtIdade.setText(oldValue);
+            }
+        });
+    }
 
+    @FXML
+        private void onlyChar() {
+        txtName.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                if(!newValue.equals("")){ 
+                Integer.parseInt(newValue.substring(newValue.length()-1, newValue.length()));
+                txtName.setText(oldValue);}
+            } catch (Exception ex) {
+                txtName.setText(newValue);
+            }
+        });
+    }
 
     @FXML
     private void EditProfilebtn(MouseEvent event) {

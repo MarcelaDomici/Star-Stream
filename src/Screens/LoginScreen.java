@@ -48,7 +48,10 @@ public class LoginScreen {
             pane = loader.load();
             Scene scene = new Scene(pane);
             stage.setScene(scene);
-            stage.setTitle("Tela login:");
+            stage.setTitle("Tela login");
+            //icon da tela
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             stage.setResizable(false);
             pane.toFront();
             pane.requestFocus();
@@ -104,17 +107,21 @@ public class LoginScreen {
         @FXML
         private void showPassword(MouseEvent event) {
             if(passOcult.isVisible()){
-                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye.png")));
+                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye-off.png")));
                 this.txtPass.setText(this.passOcult.getText());
                 this.txtPass.setVisible(true);
                 this.passOcult.setVisible(false);
             }else{
-                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye-off.png")));
+                this.eyePass.setImage(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/eye.png")));
                 this.passOcult.setText(this.txtPass.getText());
                 this.passOcult.setVisible(true);
                 this.txtPass.setVisible(false);
             }
         }
+
+
+
+        
         @FXML
         private void getNewPassword(MouseEvent event)throws Exception {
             new GenarateEmail(this.pane).getStage().show();

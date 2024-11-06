@@ -98,6 +98,8 @@ public class HomeScreen implements Uptable {
         pane.requestFocus();
         stage.setScene(new Scene(pane));
         stage.setTitle("Home about " + List_User.getPoint(0).user[newId].getName());
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
         stage.setResizable(false);
     }
 

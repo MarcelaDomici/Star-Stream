@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -14,12 +13,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="txtName" layoutX="161.0" layoutY="101.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu nome" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtName" layoutX="161.0" layoutY="101.0" onKeyPressed="#onlyChar" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu nome" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtEmail" layoutX="161.0" layoutY="167.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
-      <TextField fx:id="txtIdade" layoutX="161.0" layoutY="234.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite sua idade" stylesheets="@CSS/txtEmailLogin.css" />
-      <TextField fx:id="txtLocal" layoutX="161.0" layoutY="295.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu local de Nascimento" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtIdade" layoutX="161.0" layoutY="234.0" onKeyPressed="#onlyNumber" prefHeight="40.0" prefWidth="335.0" promptText="Digite sua idade" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtLocal" layoutX="161.0" layoutY="295.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite sua cidade" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtPass" layoutX="161.0" layoutY="424.0" prefHeight="40.0" prefWidth="335.0" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtPassConfirm" layoutX="161.0" layoutY="492.0" prefHeight="40.0" prefWidth="335.0" stylesheets="@CSS/txtEmailLogin.css" />
       <Button fx:id="btnCadastrar" layoutX="122.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#actionSignUser" prefHeight="42.0" prefWidth="407.0" style="-fx-font-style: 20;" stylesheets="@CSS/ButtonsLogin.css" text="Cadastrar-se" textFill="WHITE">
@@ -36,11 +35,9 @@
       </ImageView>
       <ImageView fitHeight="478.0" fitWidth="478.0" layoutX="715.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Imagens/logoStar%201.png" />
+            <Image url="@Imagens/logoStar1.png" />
          </image>
       </ImageView>
-      <CheckBox fx:id="check1" layoutX="509.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#checkPass" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
-      <CheckBox fx:id="check2" layoutX="509.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#checkPassConfirm" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
       <Label layoutX="151.0" layoutY="646.0" prefHeight="28.0" prefWidth="226.0" text="Já possui uma conta?" textFill="#3f3c3c">
          <font>
             <Font name="Poppins Regular" size="20.0" />
@@ -94,5 +91,21 @@
          </image>
       </ImageView>
       <ComboBox fx:id="comboBoxCivil" layoutX="161.0" layoutY="366.0" prefHeight="33.0" prefWidth="335.0" promptText="Selecione seu estado civil" stylesheets="@CSS/ComboBox.css" />
+      <ImageView fx:id="eyePass" fitHeight="30.0" fitWidth="22.0" layoutX="508.0" layoutY="434.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/eye.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="eyePass1" fitHeight="30.0" fitWidth="22.0" layoutX="508.0" layoutY="504.0" onMouseClicked="#showPassword2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/eye.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </Pane>

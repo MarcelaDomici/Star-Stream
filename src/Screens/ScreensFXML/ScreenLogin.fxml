@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtEmail" layoutX="818.0" layoutY="217.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtPass" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
@@ -31,7 +31,7 @@
       </ImageView>
       <ImageView fitHeight="463.0" fitWidth="487.0" layoutX="88.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Imagens/logoStar%201.png" />
+            <Image url="@Imagens/logoStar1.png" />
          </image>
       </ImageView>
       <Label layoutX="895.0" layoutY="70.0" prefHeight="78.0" prefWidth="200.0" style="-fx-font-size: 52; -fx-font-weight: bold;" text="Entrar">
@@ -62,7 +62,7 @@
       </ImageView>
       <ImageView fx:id="eyePass" fitHeight="30.0" fitWidth="22.0" layoutX="1200.0" layoutY="305.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Imagens/eye-off.png" />
+            <Image url="@Imagens/eye.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

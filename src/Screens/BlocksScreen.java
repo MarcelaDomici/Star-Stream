@@ -54,6 +54,8 @@ public class BlocksScreen {
             pane = loader.load();
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Usu´rios Bloqueados");
+            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+            stage.getIcons().add(image);
             this.stage.setResizable(false);
             this.stage.initStyle(StageStyle.UNDECORATED);
 
