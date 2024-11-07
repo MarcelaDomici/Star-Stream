@@ -1,5 +1,8 @@
 package Screens;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import Structs.List_User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,7 +52,7 @@ public class SettingsScreen {
             loader.setController(this);
             Pane pane = loader.load();
             stage.setScene(new Scene(pane));
-            stage.setTitle("Settings");
+            stage.setTitle("Configurações");
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
             stage.setResizable(false);
@@ -57,6 +60,7 @@ public class SettingsScreen {
             pane.setOnMouseClicked(event->{
                 pane.requestFocus();
             });
+            this.txtPass.setVisible(false);
         }
     public Stage getStage(){
         return this.stage;
@@ -84,13 +88,23 @@ public class SettingsScreen {
 
     @FXML
     private void setNewData(MouseEvent event) throws Exception{
-        if(txtEmail.getText().length()!=0||txtPass.getText().length()!=0){
+        String txt = (this.txtpassOcult.isVisible())?this.txtpassOcult.getText():this.txtPass.getText();
+        if(txtEmail.getText().length()!=0||txt.length()!=0){
+            
             if(txtEmail.getText().length()!=0){
-                List_User.getPoint(0).user[id].setEmail(this.txtEmail.getText());
+                if (!validateEmail()) {
+                    return;
+                } try {
+                    List_User.getPoint(0).user[id].setEmail(this.txtEmail.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return;
+                }
             }
             if(txtPass.getText().length()!=0){
                 List_User.getPoint(0).user[id].setPassword(txtPass.getText());
             }
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Aviso!");
             alert.setContentText("Dados Alterados com Sucesso!!!");
@@ -106,6 +120,22 @@ public class SettingsScreen {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private boolean validateEmail() {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(txtEmail.getText());
+        if (m.find() && m.group(0).equals(txtEmail.getText())) { 
+            return true;
+            } else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validação de e-mail");
+                alert.setHeaderText(null);
+                alert.setContentText("Formato do e-mail incorreto, por favor, corrija e tente novamente.");
+                alert.showAndWait();
+                return false;
+            }
+        }
 
     @FXML
     private void backToLogin(MouseEvent event)throws Exception {

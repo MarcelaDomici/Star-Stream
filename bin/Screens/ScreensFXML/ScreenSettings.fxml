@@ -46,8 +46,7 @@
          </children>
       </Pane>
       <Label layoutX="76.0" layoutY="94.0" prefHeight="108.0" prefWidth="309.0" style="-fx-font-family: Poppins; -fx-font-size: 30;" text="Alterar Dados" />
-      <TextField fx:id="txtEmail" layoutX="197.0" layoutY="263.0" prefHeight="43.0" prefWidth="419.0" promptText="user@email.com" stylesheets="@CSS/txtEmailLogin.css" />
-      <TextField fx:id="txtPass" layoutX="197.0" layoutY="336.0" prefHeight="43.0" prefWidth="419.0" promptText="Senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtEmail" layoutX="199.0" layoutY="263.0" prefHeight="43.0" prefWidth="419.0" promptText="user@email.com" stylesheets="@CSS/txtEmailLogin.css" />
       <Button fx:id="ChangeData" layoutX="433.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#setNewData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonsLogin.css" text="Alterar Dados" textFill="WHITE" />
       <Button fx:id="DeleteAccount" layoutX="154.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#deleteData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonRed.css" text="Excluir Conta" textFill="WHITE" />
       <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="154.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
@@ -93,6 +92,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <PasswordField fx:id="txtpassOcult" layoutX="197.0" layoutY="336.0" prefHeight="43.0" prefWidth="419.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtPass" layoutX="198.0" layoutY="340.0" prefHeight="43.0" prefWidth="419.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <PasswordField fx:id="txtpassOcult" layoutX="198.0" layoutY="340.0" prefHeight="43.0" prefWidth="419.0" promptText="Senha" stylesheets="@CSS/txtEmailLogin.css" />
    </children>
 </Pane>

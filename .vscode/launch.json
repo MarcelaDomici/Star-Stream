@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SnakeGame",
+            "request": "launch",
+            "mainClass": "Screens.SnakeGame",
+            "projectName": "Social-Media-Data-Structures_bf8feaa8"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

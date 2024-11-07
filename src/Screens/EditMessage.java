@@ -41,7 +41,7 @@ public class EditMessage {
             loader.setController(this);
             Pane pane = loader.load();
             this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Editar Mensagem");
+            this.stage.setTitle("Editar mensagem");
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
             this.stage.setResizable(false);

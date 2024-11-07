@@ -76,7 +76,7 @@ public class FriendsScreen {
             loader.setController(this);
             pane = loader.load();
             stage.setScene(new Scene(pane));
-            stage.setTitle("Tela Amigos");
+            stage.setTitle("Amigos");
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
             stage.setResizable(false);

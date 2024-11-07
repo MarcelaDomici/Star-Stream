@@ -52,7 +52,7 @@ public class SearchCommunitys {
         loader.setController(this);
         Pane pane = loader.load();
         this.stage.setScene(new Scene(pane));
-        this.stage.setTitle("Pesquisar Comunidades");
+        this.stage.setTitle("Pesquisar comunidades");
         Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
         this.stage.setResizable(false);

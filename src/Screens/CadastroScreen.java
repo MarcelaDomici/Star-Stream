@@ -1,5 +1,8 @@
 package Screens;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import Body.User;
 import Structs.List_User;
 import javafx.fxml.FXML;
@@ -72,7 +75,7 @@ public class CadastroScreen {
             loader.setController(this);
             Pane pane = loader.load();
             stage.setScene(new Scene(pane));
-            stage.setTitle("Tela Cadastro");
+            stage.setTitle("Cadastro");
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
             stage.setResizable(false);
@@ -163,6 +166,23 @@ public class CadastroScreen {
         });
     }
 
+    @FXML
+        private boolean validateEmail() {
+            Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+            Matcher m = p.matcher(txtEmail.getText());
+            if (m.find() && m.group(0).equals(txtEmail.getText())) { 
+                return true;
+            } else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validação de e-mail");
+                alert.setHeaderText(null);
+                alert.setContentText("Formato do e-mail incorreto, por favor, corrija e tente novamente.");
+                alert.showAndWait();
+
+                return false;
+            }
+        }
+
 
     @FXML
     private void actionSignUser(MouseEvent event) throws Exception{
@@ -236,18 +256,24 @@ public class CadastroScreen {
                 return;
             }
         }
-
-        User user = new User();
-        user.setName(txtName.getText());
-        user.setPassword(pass);
-        user.setAge(Integer.parseInt(txtIdade.getText()));
-        user.setCity(txtLocal.getText());
-        user.setCivil(comboBoxCivil.getValue());
-        user.setEmail(txtEmail.getText());
-        List_User.getPoint(10).add(user);
         
-        new LoginScreen().getStage().show();
-        this.stage.close();
+        if (validateEmail()) {
+            try {
+            User user = new User();
+            user.setName(txtName.getText());
+            user.setPassword(pass);
+            user.setAge(Integer.parseInt(txtIdade.getText()));
+            user.setCity(txtLocal.getText());
+            user.setCivil(comboBoxCivil.getValue());
+            user.setEmail(txtEmail.getText());
+            List_User.getPoint(10).add(user);
+            
+            new LoginScreen().getStage().show();
+            this.stage.close();
+            } catch(Exception e){
+                return;
+            }
+        }
     }
 
 }

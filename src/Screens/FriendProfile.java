@@ -99,7 +99,7 @@ public class FriendProfile {
             loader.setController(this);
             pane = loader.load();
             this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Perfil Amigo");
+            this.stage.setTitle("Perfil amigo");
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
             this.stage.setResizable(false);

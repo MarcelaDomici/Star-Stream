@@ -68,6 +68,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <PasswordField fx:id="passOcult" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <PasswordField fx:id="passOcult" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Senha" stylesheets="@CSS/txtEmailLogin.css" />
    </children>
 </Pane>

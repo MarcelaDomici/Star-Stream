@@ -25,7 +25,7 @@ public class App extends Application{
         user.setAge(19);
         user.setCity("Cruzeiro-SP");
         user.setCivil("Solteiro");
-        user.setEmail("mar");
+        user.setEmail("mar@gmail.com");
         user.setPassword("1234");
         user.setName("Marcela");
         //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
@@ -52,7 +52,7 @@ public class App extends Application{
         user.setAge(19);
         user.setCity("Cruzeiro-SP");
         user.setCivil("Solteiro");
-        user.setEmail("manu");
+        user.setEmail("manu@gmail.com");
         user.setPassword("1234");
         user.setName("Manuela");
         //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
@@ -69,14 +69,14 @@ public class App extends Application{
         user.setAge(18);
         user.setCity("Cruzeiro-SP");
         user.setCivil("Solteiro");
-        user.setEmail("madu");
+        user.setEmail("madu@gmail.com");
         user.setPassword("1234");
         user.setName("Maria Eduarda");
         //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download.jpg");
         List_User.getPoint(5).add(user);
 
         Chat chat = new Chat();
-        Message message = new Message();
+        /*Message message = new Message();
         message.setId((short) 0);
         message.setSender((short) 0);
         message.setReceptor((short) 1);
@@ -102,7 +102,7 @@ public class App extends Application{
         System.out.println(List_User.getPoint(0).user[0].getChats().get(1).getLastMessage().getTxtMessage());
 
          List_User.getPoint(0).user[1].getChats().put(0, chat);
-         List_User.getPoint(0).user[0].getChats().put(1, chat);
+         List_User.getPoint(0).user[0].getChats().put(1, chat);*/
 
          
         Community community = new Community();

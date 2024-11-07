@@ -1,5 +1,8 @@
 package Screens;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import Structs.List_User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +51,7 @@ public class LoginScreen {
             pane = loader.load();
             Scene scene = new Scene(pane);
             stage.setScene(scene);
-            stage.setTitle("Tela login");
+            stage.setTitle("Login");
             //icon da tela
             Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
             stage.getIcons().add(image);
@@ -59,12 +62,11 @@ public class LoginScreen {
                 pane.requestFocus();
             });
             this.txtPass.setVisible(false);
-            this.passOcult.setLayoutX(this.txtPass.getLayoutX());
-            this.passOcult.setLayoutY(this.txtPass.getLayoutY());
+
 
 
                 {
-                    this.txtEmail.setText("mar");
+                    this.txtEmail.setText("mar@gmail.com");
                     this.passOcult.setText("1234");
                 }
 
@@ -85,6 +87,8 @@ public class LoginScreen {
                 alert.setContentText("Há campos vazios");
                 alert.showAndWait();
                 return;
+            }if(!validateEmail()){
+                return;
             }
                 if(List_User.getPoint(0).checkUser(this.txtEmail.getText(), (this.passOcult.isVisible())?this.passOcult.getText():this.txtPass.getText())){
                     new HomeScreen(List_User.getPoint(0).getId(this.txtEmail.getText(),(this.passOcult.isVisible())?this.passOcult.getText():this.txtPass.getText())).getStage().show();
@@ -96,6 +100,22 @@ public class LoginScreen {
                     alert.setContentText("Usuário ou Senha inválidos");
                     alert.showAndWait();
                 }
+        }
+
+        @FXML
+        private boolean validateEmail() {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(txtEmail.getText());
+        if (m.find() && m.group(0).equals(txtEmail.getText())) { 
+            return true;
+            } else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validação de e-mail");
+                alert.setHeaderText(null);
+                alert.setContentText("Formato do e-mail incorreto, por favor, corrija e tente novamente.");
+                alert.showAndWait();
+                return false;
+            }
         }
         
         @FXML
