@@ -102,7 +102,7 @@ public class ChatScreen {
 
     private ImageView chatProfileImage;
 
-    //codigo tela 1
+    // codigo tela 1
     public ChatScreen(int newId) throws Exception {
         id = newId;
         this.chats = new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
@@ -203,7 +203,7 @@ public class ChatScreen {
 
                         vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
 
-                        Hyperlink postLink = new Hyperlink("Ver post: "+thePost.getTitle());
+                        Hyperlink postLink = new Hyperlink("Ver post: " + thePost.getTitle());
                         postLink.setCache(false);
                         postLink.setCacheShape(false);
                         postLink.setBorder(null);
@@ -211,8 +211,10 @@ public class ChatScreen {
                         postLink.setPadding(new Insets(6, 0, 0, 2));
                         postLink.setUnderline(true);
                         postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;");
-                        postLink.setOnMouseEntered(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
-                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
+                        postLink.setOnMouseEntered(
+                                event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
+                        postLink.setOnMouseExited(
+                                event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
                         postLink.setOnAction(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
 
                         postLink.setOnMouseClicked(event -> {
@@ -246,7 +248,7 @@ public class ChatScreen {
 
                         vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
 
-                        Hyperlink postLink = new Hyperlink("Ver post: "+thePost.getTitle());
+                        Hyperlink postLink = new Hyperlink("Ver post: " + thePost.getTitle());
                         postLink.setCache(false);
                         postLink.setCacheShape(false);
                         postLink.setBorder(null);
@@ -254,8 +256,10 @@ public class ChatScreen {
                         postLink.setPadding(new Insets(6, 0, 0, 2));
                         postLink.setUnderline(true);
                         postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;");
-                        postLink.setOnMouseEntered(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
-                        postLink.setOnMouseExited(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
+                        postLink.setOnMouseEntered(
+                                event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
+                        postLink.setOnMouseExited(
+                                event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: #00E5EE;"));
                         postLink.setOnAction(event -> postLink.setStyle("-fx-font-size: 17; -fx-text-fill: white;"));
 
                         postLink.setOnMouseClicked(event -> {
@@ -298,7 +302,8 @@ public class ChatScreen {
 
                     menu1.setOnAction(event -> {
                         try {
-                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this, null).getStage()
+                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this, null)
+                                    .getStage()
                                     .show();
                             this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
                             pane.setDisable(true);
@@ -323,7 +328,7 @@ public class ChatScreen {
                         vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
                         Text text = new Text(chat.get(i).getTxtMessage());
                         text.setStyle("-fx-font-size: 17;");
-                        //text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                        // text.setFill(Paint.valueOf("rgb(255,255,255)"));
                         text.setFill(Paint.valueOf("rgb(255,255,255)"));
                         TextFlow textFlow = new TextFlow(text);
                         textFlow.setStyle(
@@ -335,7 +340,7 @@ public class ChatScreen {
                         textFlow.setPadding(new Insets(5, 20, 5, 20));
 
                         Text dateTimeText = new Text(chat.get(i).getFormattedDateTime());
-                        dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                        dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
                         TextFlow dateTimeFlow = new TextFlow(dateTimeText);
                         dateTimeFlow.setPadding(new Insets(0, 0, 0, 308));
 
@@ -355,7 +360,7 @@ public class ChatScreen {
                         textFlow.setPadding(new Insets(5, 20, 5, 20));
 
                         Text dateTimeText = new Text(chat.get(i).getFormattedDateTime());
-                        dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                        dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
                         TextFlow dateTimeFlow = new TextFlow(dateTimeText);
                         dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
 
@@ -483,9 +488,11 @@ public class ChatScreen {
             label.setPadding(new Insets(10, 0, 0, 5));
 
             String message;
-            if(user.getChats().get(id).getLastMessage().getPost()==null){
+            if (user.getChats().get(id).getLastMessage().getPost() == null) {
                 message = user.getChats().get(id).getLastMessage().getTxtMessage();
-            }else {message = user.getChats().get(id).getLastMessage().getPost().getTitle();}
+            } else {
+                message = user.getChats().get(id).getLastMessage().getPost().getTitle();
+            }
 
             Label msg = new Label(message);
             msg.setStyle(
@@ -630,7 +637,6 @@ public class ChatScreen {
         this.pane.requestFocus();
     }
 
-    
     @FXML
     private void backToLogin(MouseEvent event) throws Exception {
 
@@ -653,13 +659,13 @@ public class ChatScreen {
     @FXML
     private void goToPublic(MouseEvent event) throws Exception {
         try {
-            
+
             PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), null);
             publicationScreen.getStage().show();
 
             pane.effectProperty().set(new MotionBlur(3.0, 15.0));
             publicationScreen.getStage().setOnHidden(event1 -> {
-                pane.effectProperty().set(null); 
+                pane.effectProperty().set(null);
             });
 
         } catch (Exception ie) {
@@ -668,13 +674,13 @@ public class ChatScreen {
     }
 
     @FXML
-    private void goToGames(MouseEvent event) throws Exception{
+    private void goToGames(MouseEvent event) throws Exception {
         new GamesScreen(id).getStage().show();
         this.stage.close();
     }
 
     @FXML
-    private void goToCommunity(MouseEvent event) throws Exception{
+    private void goToCommunity(MouseEvent event) throws Exception {
 
         new CommunityScreen(id).getStage().show();
         this.stage.close();

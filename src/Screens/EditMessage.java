@@ -55,6 +55,8 @@ public class EditMessage {
             pane.requestFocus();
         });
 
+
+
         this.textMessage.setText(messageT.getTxtMessage());
     }
 

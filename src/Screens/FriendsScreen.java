@@ -346,10 +346,7 @@ public class FriendsScreen {
                 imgIconProfile.setFitHeight(50);
                 imgIconProfile.setFitWidth(50);
 
-                // Criar um círculo para o clipping
                 Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
                 imgIconProfile.setClip(circle);
 
                 int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");
