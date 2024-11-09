@@ -349,8 +349,9 @@ public class ChatCommunity {
     }
 
     @FXML
-    private void goToSettings(MouseEvent event) {
-
+    private void goToSettings(MouseEvent event) throws Exception{
+        new SettingsScreen(id).getStage().show();
+        stage.close();
     }
 
     @FXML
