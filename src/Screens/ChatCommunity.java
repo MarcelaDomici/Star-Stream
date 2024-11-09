@@ -151,7 +151,7 @@ public class ChatCommunity {
 
                 menu1.setOnAction(event -> {
                     try {
-                        new EditMessage(0, chat, chatC.get(index), null, this).getStage().show();
+                        new EditMessage(0, community.getChat(), chatC.get(index), null, this).getStage().show();
                         this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
                         pane.setDisable(true);
 
