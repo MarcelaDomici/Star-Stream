@@ -77,7 +77,6 @@ public class PublicsCommunityScreen {
         id = newId;
         community = newCommunity;
         userNow = List_User.getPoint(2).user[id];
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenCommunityPublications.fxml"));
         loader.setController(this);
         pane = loader.load();

@@ -202,9 +202,9 @@
             </VBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollPosts" layoutX="468.0" layoutY="134.0" prefHeight="609.0" prefWidth="634.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
+      <ScrollPane fx:id="scrollPosts" layoutX="468.0" layoutY="134.0" prefHeight="589.0" prefWidth="634.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
          <content>
-            <VBox fx:id="vboxPost" prefHeight="594.0" prefWidth="630.0" style="-fx-background-color: rgb(245, 245, 245);">
+            <VBox fx:id="vboxPost" prefHeight="587.0" prefWidth="632.0" style="-fx-background-color: rgb(245, 245, 245);">
                <children>
                   <HBox fx:id="EditProfile" onMouseClicked="#goToEditProfile" prefHeight="26.0" prefWidth="215.0" />
                </children></VBox>

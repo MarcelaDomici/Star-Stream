@@ -8,7 +8,7 @@ public class Community {
     private int idOwner, id;
     private ArrayList<Post> postCommunity = new ArrayList<>();
     private ArrayList<Integer> CommunityUsers = new ArrayList<>();
-    private Chat chat = new Chat();
+    private final Chat chat = new Chat();
 
     
     public int getId() {

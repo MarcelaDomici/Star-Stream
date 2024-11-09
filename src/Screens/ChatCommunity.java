@@ -1,5 +1,6 @@
 package Screens;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -40,9 +42,8 @@ public class ChatCommunity {
     private static int id = 0;
     private Stage stage = new Stage();
     private Pane pane;
-    private Community comunnity;
+    public Community community;
     Chat chat;
-
 
     @FXML
     private HBox Hbox_to_ScreenMembers;
@@ -74,11 +75,9 @@ public class ChatCommunity {
     @FXML
     private VBox vboxViewChat;
 
-
-
-    public ChatCommunity(int newId, Community newComunnity)throws Exception{
+    public ChatCommunity(int newId, Community newComunnity) throws Exception {
         id = newId;
-        comunnity = newComunnity;
+        community = newComunnity;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenChatCommunity.fxml"));
         loader.setController(this);
@@ -93,6 +92,7 @@ public class ChatCommunity {
             if (key.getCode() == KeyCode.ENTER && this.mensageToChat.getText().length() != 0) {
                 try {
                     this.sendMessage(this.mensageToChat.getText());
+                    mensageToChat.requestFocus();
                 } catch (Exception ie) {
                     ie.printStackTrace();
                 }
@@ -109,101 +109,113 @@ public class ChatCommunity {
     }
 
     @FXML
-    private void initialize(){
+    public void initialize() {
 
         try {
+
+            txtTextCommunity.setText(community.getTxtCommunity());
+            lblCommunity.setText(community.getName());
+
+            if (community.getPhotoCommunity() != null) {
+                this.imageCommunity.setImage(new Image(new FileInputStream(community.getPhotoCommunity())));
+                this.imageCommunity.setFitHeight(159);
+                this.imageCommunity.setFitWidth(159);
+
+                Circle circle = new Circle(75.5, 75.5, 75.5);
+                imageCommunity.setClip(circle);
+            }
+
             this.genareteViewChat();
         } catch (Exception ei) {
             ei.printStackTrace();
         }
     }
 
-
     public void genareteViewChat() {
         this.vboxViewChat.getChildren().clear();
 
-        if (comunnity.getChat().size() != 0) {
+        if (community.getChat().size() != 0) {
 
-            ArrayList<Message> chatC = comunnity.getChat().getMessages();
+            ArrayList<Message> chatC = community.getChat().getMessages();
+            // System.out.println(chatC.size());
 
-            for (int i = 0; i < chat.size(); ++i) {
+            for (int i = 0; i < chatC.size(); ++i) {
                 int index = i;
 
-                    VBox vBox = new VBox(2);
+                VBox vBox = new VBox(2);
 
-                    ContextMenu contecContextMenu = new ContextMenu();
-                    MenuItem menu = new MenuItem("Delete");
-                    MenuItem menu1 = new MenuItem("Edit");
-                    contecContextMenu.getItems().addAll(menu1, menu);
+                ContextMenu contecContextMenu = new ContextMenu();
+                MenuItem menu = new MenuItem("Delete");
+                MenuItem menu1 = new MenuItem("Edit");
+                contecContextMenu.getItems().addAll(menu1, menu);
 
-                    /* 
-                    menu1.setOnAction(event -> {
-                        try {
-                            new EditMessage(0, chat, chatC.get(index), this).getStage().show();
-                            this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
-                            pane.setDisable(true);
-                        } catch (Exception ie) {
-                            ie.printStackTrace();
+                menu1.setOnAction(event -> {
+                    try {
+                        new EditMessage(0, chat, chatC.get(index), null, this).getStage().show();
+                        this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                        pane.setDisable(true);
+
+                    } catch (Exception ie) {
+                        ie.printStackTrace();
+                    }
+                });
+
+                menu.setOnAction(event -> {
+                    community.getChat().remove(chatC.get(index).getId());
+                    this.genareteViewChat();
+                });
+
+                if (chatC.get(i).getSender() == id) {
+
+                    vBox.setOnMouseClicked(event -> {
+                        if (event.getButton().name().compareTo("SECONDARY") == 0) {
+                            contecContextMenu.show(vBox, event.getScreenX(), event.getScreenY());
                         }
-                    });*/
-
-                    menu.setOnAction(event -> {
-                        comunnity.getChat().remove(chatC.get(index).getId());
-                        this.genareteViewChat();
                     });
 
-                    if (chatC.get(i).getSender() == id) {
+                    vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
+                    Text text = new Text(chatC.get(i).getTxtMessage());
+                    text.setStyle("-fx-font-size: 17;");
+                    // text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                    text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                    TextFlow textFlow = new TextFlow(text);
+                    textFlow.setStyle(
+                            "-fx-background-radius: 20px;" +
+                                    "-fx-background-color: rgb(123,56,255);" +
+                                    "-fx-border-color: transparent;" +
+                                    "-fx-border-radius: 20px;");
+                    textFlow.setCursor(Cursor.HAND);
+                    textFlow.setPadding(new Insets(5, 20, 5, 20));
 
-                        vBox.setOnMouseClicked(event -> {
-                            if (event.getButton().name().compareTo("SECONDARY") == 0) {
-                                contecContextMenu.show(vBox, event.getScreenX(), event.getScreenY());
-                            }
-                        });
+                    Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                    dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 308));
 
-                        vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
-                        Text text = new Text(chatC.get(i).getTxtMessage());
-                        text.setStyle("-fx-font-size: 17;");
-                        //text.setFill(Paint.valueOf("rgb(255,255,255)"));
-                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle(
-                                "-fx-background-radius: 20px;" +
-                                        "-fx-background-color: rgb(123,56,255);" +
-                                        "-fx-border-color: transparent;" +
-                                        "-fx-border-radius: 20px;");
-                        textFlow.setCursor(Cursor.HAND);
-                        textFlow.setPadding(new Insets(5, 20, 5, 20));
+                    vBox.getChildren().addAll(textFlow, dateTimeFlow);
+                } else {
 
-                        Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
-                        dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
-                        TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                        dateTimeFlow.setPadding(new Insets(0, 0, 0, 308));
+                    vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
+                    Text text = new Text(chatC.get(i).getTxtMessage());
+                    text.setStyle("-fx-font-size: 17;");
+                    text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                    TextFlow textFlow = new TextFlow(text);
+                    textFlow.setStyle(
+                            "-fx-background-radius: 20px;" +
+                                    "-fx-background-color: #323739;" +
+                                    "-fx-border-color: transparent;" +
+                                    "-fx-border-radius: 20px;");
+                    textFlow.setPadding(new Insets(5, 20, 5, 20));
 
-                        vBox.getChildren().addAll(textFlow, dateTimeFlow);
-                    } else {
+                    Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                    dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
 
-                        vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
-                        Text text = new Text(chatC.get(i).getTxtMessage());
-                        text.setStyle("-fx-font-size: 17;");
-                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle(
-                                "-fx-background-radius: 20px;" +
-                                        "-fx-background-color: #323739;" +
-                                        "-fx-border-color: transparent;" +
-                                        "-fx-border-radius: 20px;");
-                        textFlow.setPadding(new Insets(5, 20, 5, 20));
+                    vBox.getChildren().addAll(textFlow, dateTimeFlow);
+                }
 
-                        Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
-                        dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
-                        TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                        dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
-
-                        vBox.getChildren().addAll(textFlow, dateTimeFlow);
-                    }
-
-                    this.vboxViewChat.getChildren().add(vBox);
-                
+                this.vboxViewChat.getChildren().add(vBox);
 
             }
 
@@ -228,13 +240,12 @@ public class ChatCommunity {
         }
     }
 
-
     private void sendMessage(String newMeString) throws Exception {
-        
-        chat = comunnity.getChat();
+
+        chat = community.getChat();
         Message message = new Message();
         message.setSender((short) id);
-        message.setReceptor((short)99);
+        message.setReceptor((short) 99);
         message.setTxtMessage(this.mensageToChat.getText());
         chat.add(message);
 
@@ -243,41 +254,42 @@ public class ChatCommunity {
         this.pane.requestFocus();
     }
 
-    //voltar ´para comunidades
+    // voltar ´para comunidades
     @FXML
-    private void backToHome(MouseEvent event) throws Exception{
+    private void backToHome(MouseEvent event) throws Exception {
         new CommunityScreen(id).getStage().show();
         this.stage.close();
     }
 
-    //participantes 
+   
     @FXML
     private void goToFriends(MouseEvent event) {
 
     }
 
+    // participantes
     @FXML
     private void goToParticipants(MouseEvent event) throws Exception {
 
-        new CommunityParticipants(id, comunnity, pane, stage).getStage().show();
+        new CommunityParticipants(id, community, pane, stage).getStage().show();
         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
         pane.setDisable(true);
 
     }
 
     @FXML
-    private void goToPublic(MouseEvent event) throws Exception{
+    private void goToPublic(MouseEvent event) throws Exception {
 
-        new PublicPostCommunity(id, comunnity, null, this).getStage().show();
+        new PublicPostCommunity(id, community, null, this).getStage().show();
         pane.effectProperty().set(new MotionBlur(3.0, 15.0));
         pane.setDisable(true);
-        
+
     }
 
     @FXML
-    private void goToPublics(MouseEvent event) throws Exception{
+    private void goToPublics(MouseEvent event) throws Exception {
 
-        new PublicsCommunityScreen(id, comunnity).getStage().show();
+        new PublicsCommunityScreen(id, community).getStage().show();
         this.stage.close();
     }
 
@@ -287,10 +299,7 @@ public class ChatCommunity {
     }
 
     @FXML
-
-    private void sendMessage(MouseEvent event) {
-
+    private void sendMessage(MouseEvent event) throws Exception {
+        sendMessage(this.mensageToChat.getText());
     }
 }
-
-

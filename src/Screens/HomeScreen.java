@@ -22,6 +22,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -99,7 +100,7 @@ public class HomeScreen implements Uptable {
         stage.setScene(new Scene(pane));
         stage.setTitle("Início");
         Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
-            stage.getIcons().add(image);
+        stage.getIcons().add(image);
         stage.setResizable(false);
     }
 
@@ -795,7 +796,7 @@ public class HomeScreen implements Uptable {
                         Text text = new Text(post.getPostTxt());
                         TextFlow txtPost = new TextFlow();
                         txtPost.setStyle("-fx-font-size: 14px");
-                        txtPost.setMaxWidth(400);//tamanho do texto post
+                        txtPost.setMaxWidth(400);// tamanho do texto post
                         txtPost.getChildren().add(text);
                         txtPost.setCache(false);
                         txtPost.setCacheShape(false);
@@ -1019,6 +1020,9 @@ public class HomeScreen implements Uptable {
                 imgAddFriend.setFitWidth(30);
                 imgAddFriend.setPreserveRatio(true);
 
+                Tooltip addFriend = new Tooltip("Solicitar amizade");
+                Tooltip.install(imgAddFriend, addFriend);
+
                 imgAddFriend.setCursor(Cursor.HAND);
 
                 imgAddFriend.setOnMouseClicked(event -> {
@@ -1143,7 +1147,7 @@ public class HomeScreen implements Uptable {
 
             pane.effectProperty().set(new MotionBlur(3.0, 15.0));
             publicationScreen.getStage().setOnHidden(event1 -> {
-                pane.effectProperty().set(null); 
+                pane.effectProperty().set(null);
             });
 
         } catch (Exception ie) {
@@ -1152,7 +1156,7 @@ public class HomeScreen implements Uptable {
     }
 
     @FXML
-    void goToCommunity(MouseEvent event) throws Exception{
+    void goToCommunity(MouseEvent event) throws Exception {
 
         new CommunityScreen(id).getStage().show();
         this.stage.close();

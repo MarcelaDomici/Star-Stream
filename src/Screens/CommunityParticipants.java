@@ -17,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -239,6 +240,9 @@ public class CommunityParticipants {
                     imgAddFriend.setFitHeight(30);
                     imgAddFriend.setFitWidth(30);
                     imgAddFriend.setPreserveRatio(true);
+
+                    Tooltip addFriend = new Tooltip("Solicitar amizade");
+                    Tooltip.install(imgAddFriend, addFriend);
 
                     imgAddFriend.setCursor(Cursor.HAND);
 

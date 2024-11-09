@@ -297,6 +297,9 @@ public class FriendsScreen {
                     ImageView imgAddFriend = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
                     imgAddFriend.setCursor(Cursor.HAND);
 
+                    Tooltip addFriend = new Tooltip("Solicitar amizade");
+                    Tooltip.install(imgAddFriend, addFriend);
+
                     
                     imgAddFriend.setOnMouseClicked(event->{
                         User _user = List_User.getPoint(0).user[index];

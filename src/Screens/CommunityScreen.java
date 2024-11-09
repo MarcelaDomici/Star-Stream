@@ -152,6 +152,7 @@ public class CommunityScreen {
                     imgIConCom.setCursor(Cursor.HAND);
                     comName.setCursor(Cursor.HAND);
 
+                    
                     imgIConCom.setOnMouseClicked(event -> {
                         try {
                             new PublicsCommunityScreen(id, community).getStage().show();

@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -57,55 +58,58 @@ public class SearchUserScreen {
     @FXML
     private TextField txtSearchUser;
 
-    public SearchUserScreen(int newId, FriendsScreen newScreen)throws Exception{
+    public SearchUserScreen(int newId, FriendsScreen newScreen) throws Exception {
         id = newId;
         _FriendsScreen = newScreen;
         userNow = List_User.getPoint(2).user[id];
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenSearchUser.fxml"));
-            loader.setController(this);
-            pane = loader.load();
-            this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Pesquisar usuário");
-            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
-            stage.getIcons().add(image);
-            this.stage.setResizable(false);
-            this.stage.initStyle(StageStyle.UNDECORATED);
+        loader.setController(this);
+        pane = loader.load();
+        this.stage.setScene(new Scene(pane));
+        this.stage.setTitle("Pesquisar usuário");
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+        stage.getIcons().add(image);
+        this.stage.setResizable(false);
+        this.stage.initStyle(StageStyle.UNDECORATED);
 
+        pane.requestFocus();
+        pane.setOnMouseClicked(event -> {
             pane.requestFocus();
-            pane.setOnMouseClicked(event ->{
-                pane.requestFocus();
-            });
+        });
 
-            //atualizando a partir do enter
-            /* 
-             this.stage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-                if(key.getCode()==KeyCode.ENTER && this.txtSearchUser.getText().length()!=0){
-                    try{    
-                        this.searchUserTrue();
-                    }catch(Exception ie){
-                        ie.printStackTrace();
-                    }
-                }
-            });*/
+        // atualizando a partir do enter
+        /*
+         * this.stage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+         * if(key.getCode()==KeyCode.ENTER && this.txtSearchUser.getText().length()!=0){
+         * try{
+         * this.searchUserTrue();
+         * }catch(Exception ie){
+         * ie.printStackTrace();
+         * }
+         * }
+         * });
+         */
 
-            //atualiza campo de pesquisa dinamicamente
-            this.txtSearchUser.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.isEmpty()) {
-                    try {
-                        searchUserTrue();
-                    } catch (Exception ie) {
-                        ie.printStackTrace();
-                    }
+        // atualiza campo de pesquisa dinamicamente
+        this.txtSearchUser.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.isEmpty()) {
+                try {
+                    searchUserTrue();
+                } catch (Exception ie) {
+                    ie.printStackTrace();
                 }
-            });
-            
+            }
+        });
 
     }
-    public Stage getStage(){return this.stage;}
+
+    public Stage getStage() {
+        return this.stage;
+    }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
         VboxUsers.getChildren().clear();
     }
@@ -114,8 +118,8 @@ public class SearchUserScreen {
         Map<Integer, User> matchedUsers = new HashMap<>();
         for (int i = 0; i < userList.length; i++) {
             User user = userList[i];
-            
-            if (user != null && i != id) {  // Verifica se o usuário não é nulo e se o índice é diferente de id
+
+            if (user != null && i != id) { // Verifica se o usuário não é nulo e se o índice é diferente de id
                 if (user.getName().toLowerCase().contains(partialName.toLowerCase())) {
                     matchedUsers.put(i, user);
                 }
@@ -123,7 +127,6 @@ public class SearchUserScreen {
         }
         return matchedUsers;
     }
-
 
     @FXML
     private void ExitSearchUsersScreen(MouseEvent event) {
@@ -136,49 +139,52 @@ public class SearchUserScreen {
 
     @FXML
     private void SearchUser(MouseEvent event) throws FileNotFoundException {
-        
+
         searchUserTrue();
-       
+
     }
 
-    private void searchUserTrue() throws FileNotFoundException{
+    private void searchUserTrue() throws FileNotFoundException {
 
         initialize();
 
-        Map<Integer, User> matchedUsers = findUsersByPartialName(List_User.getPoint(id).getListaDeUsuarios(), txtSearchUser.getText(), id);
+        Map<Integer, User> matchedUsers = findUsersByPartialName(List_User.getPoint(id).getListaDeUsuarios(),
+                txtSearchUser.getText(), id);
 
-       if (!matchedUsers.isEmpty()) {
-        
+        if (!matchedUsers.isEmpty()) {
+
             for (Map.Entry<Integer, User> entry : matchedUsers.entrySet()) {
                 User user = entry.getValue();
                 int index = entry.getKey();
-                //System.out.println("Usuário encontrado: " + user.getName() +", Índice: " + index);
+                // System.out.println("Usuário encontrado: " + user.getName() +", Índice: " +
+                // index);
 
-                //é amg do usuario
-                if(userNow.checkFriend(index) == 0){
+                // é amg do usuario
+                if (userNow.checkFriend(index) == 0) {
 
-                    //imagem de perfil amigo
-                    ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
-                    :
-                    new ImageView(new Image(new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
+                    // imagem de perfil amigo
+                    ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile() == null)
+                            ? new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                            : new ImageView(new Image(
+                                    new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
                     imgIConFriend.setFitHeight(48);
                     imgIConFriend.setFitWidth(48);
 
                     Circle circle = new Circle(24, 24, 24);
                     imgIConFriend.setClip(circle);
 
-                    //nome do amigo
+                    // nome do amigo
                     Label userName = new Label(List_User.getPoint(2).user[index].getName());
                     userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
-                    userName.setPadding(new Insets(15,0,0,10));
+                    userName.setPadding(new Insets(15, 0, 0, 10));
 
                     imgIConFriend.setCursor(Cursor.HAND);
                     userName.setCursor(Cursor.HAND);
 
                     String dep = "pode";
                     String perfilVisi = "amigos <3";
-                    
-                    imgIConFriend.setOnMouseClicked(event->{
+
+                    imgIConFriend.setOnMouseClicked(event -> {
                         try {
                             new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                             ExitSearchUsersScreen(event);
@@ -189,7 +195,7 @@ public class SearchUserScreen {
                         }
                     });
 
-                    userName.setOnMouseClicked(event->{
+                    userName.setOnMouseClicked(event -> {
                         try {
                             new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                             ExitSearchUsersScreen(event);
@@ -200,138 +206,49 @@ public class SearchUserScreen {
                         }
                     });
 
-                    HBox hBoxLeft = new HBox(10); 
+                    HBox hBoxLeft = new HBox(10);
                     hBoxLeft.getChildren().addAll(imgIConFriend, userName);
-                    hBoxLeft.setPadding(new Insets(5,10,5,10));
-                    
-                    this.VboxUsers.getChildren().addAll(new Separator(),hBoxLeft,new Separator());
-                }else{
-                    
-                    if(List_User.getPoint(2).user[id].checkFriend(index)!=0
-                        &&
-                        !List_User.getPoint(2).user[id].getSolicit().contains((Integer)index)
-                        &&
-                        index!=id
-                        &&
-                        List_User.getPoint(2).checkExistUser(index)==0
-                        &&
-                        !List_User.getPoint(2).user[id].getList_Solicit().contains((Integer)index)
-                        ){
-                            if(!List_User.getPoint(2).user[id].getUsersBlocks().containsKey(index)){
-                                
-                                HBox hBoxSugest = new HBox(2);
-                                hBoxSugest.setSpacing(3);//conjunto da sugestao de amizade
+                    hBoxLeft.setPadding(new Insets(5, 10, 5, 10));
 
-                                //imagem de perfil amigo
-                                ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
-                                :
-                                new ImageView(new Image(new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
-                                imgIConFriend.setFitHeight(48);
-                                imgIConFriend.setFitWidth(48);
+                    this.VboxUsers.getChildren().addAll(new Separator(), hBoxLeft, new Separator());
+                } else {
 
-                                Circle circle = new Circle(24, 24, 24);
-                                imgIConFriend.setClip(circle);
-                                //nome do amigo
-                                Label userName = new Label(List_User.getPoint(2).user[index].getName());
-                                userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
-                                userName.setPadding(new Insets(15,0,0,10));
+                    if (List_User.getPoint(2).user[id].checkFriend(index) != 0
+                            &&
+                            !List_User.getPoint(2).user[id].getSolicit().contains((Integer) index)
+                            &&
+                            index != id
+                            &&
+                            List_User.getPoint(2).checkExistUser(index) == 0
+                            &&
+                            !List_User.getPoint(2).user[id].getList_Solicit().contains((Integer) index)) {
+                        if (!List_User.getPoint(2).user[id].getUsersBlocks().containsKey(index)) {
 
-                                imgIConFriend.setCursor(Cursor.HAND);
-                                userName.setCursor(Cursor.HAND);
+                            HBox hBoxSugest = new HBox(2);
+                            hBoxSugest.setSpacing(3);// conjunto da sugestao de amizade
 
-                                String dep = "nao pode";
-                                String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
-                                imgIConFriend.setOnMouseClicked(event->{
-                                    try {
-                                        new FriendProfile(id, index, perfilVisi, dep).getStage().show();
-                                        ExitSearchUsersScreen(event);
-                                        _FriendsScreen.getStage().close();
-                                        this.stage.close();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                });
-
-                                userName.setOnMouseClicked(event->{
-                                    try {
-                                        new FriendProfile(id, index, perfilVisi, dep).getStage().show();
-                                        ExitSearchUsersScreen(event);
-                                        _FriendsScreen.getStage().close();
-                                        this.stage.close();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                });
-
-                                //icone de enviar solicitação de amizade
-                                ImageView imgAddFriend = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
-                                imgAddFriend.setFitHeight(30);
-                                imgAddFriend.setFitWidth(30);
-                                imgAddFriend.setPreserveRatio(true);
-
-                                imgAddFriend.setCursor(Cursor.HAND);
-
-                                imgAddFriend.setOnMouseClicked(event->{
-                                    User _user = List_User.getPoint(0).user[index];
-                                    _user.sendSolict(id);
-                                    Alert alert = new Alert(AlertType.INFORMATION);
-                                    alert.setHeaderText(null);
-                                    alert.setTitle("Aviso!");
-                                    alert.setContentText("Solicitação enviada com sucesso para: \n\t"+_user.getName());
-                                    alert.showAndWait();
-                                    _user=List_User.getPoint(index).user[id];
-                                    _user.getList_Solicit().add(index);
-
-                                    try {
-                                        searchUserTrue();
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    }
-                                });
-
-                                VBox auxToImage = new VBox();
-                                auxToImage.getChildren().add(imgAddFriend);
-
-                                auxToImage.setPadding(new Insets(10, 0, 0, 0));
-                                auxToImage.setAlignment(Pos.TOP_CENTER);
-
-                                HBox hBoxLeft = new HBox(10); 
-                                hBoxLeft.getChildren().addAll(imgIConFriend, userName);
-
-                                Region spacer = new Region();
-                                HBox.setHgrow(spacer, Priority.ALWAYS); 
-
-                                hBoxSugest = new HBox();
-                                hBoxSugest.getChildren().addAll(hBoxLeft, spacer, auxToImage);
-                                hBoxSugest.setPadding(new Insets(10, 15, 10, 10)); 
-                                
-                                this.VboxUsers.getChildren().addAll(hBoxSugest);
-                            }
-                        }
-
-                        if(List_User.getPoint(2).user[id].getSolicit().contains((Integer)index) || List_User.getPoint(2).user[id].getList_Solicit().contains((Integer)index)){
-                            //imagem de perfil amigo
-                            ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
-                            :
-                            new ImageView(new Image(new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
+                            // imagem de perfil amigo
+                            ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile() == null)
+                                    ? new ImageView(
+                                            new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                                    : new ImageView(new Image(
+                                            new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
                             imgIConFriend.setFitHeight(48);
                             imgIConFriend.setFitWidth(48);
 
                             Circle circle = new Circle(24, 24, 24);
                             imgIConFriend.setClip(circle);
-
-                            //nome do amigo
+                            // nome do amigo
                             Label userName = new Label(List_User.getPoint(2).user[index].getName());
                             userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
-                            userName.setPadding(new Insets(15,0,0,10));
+                            userName.setPadding(new Insets(15, 0, 0, 10));
 
                             imgIConFriend.setCursor(Cursor.HAND);
                             userName.setCursor(Cursor.HAND);
 
                             String dep = "nao pode";
                             String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
-                            
-                            imgIConFriend.setOnMouseClicked(event->{
+                            imgIConFriend.setOnMouseClicked(event -> {
                                 try {
                                     new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                                     ExitSearchUsersScreen(event);
@@ -342,7 +259,7 @@ public class SearchUserScreen {
                                 }
                             });
 
-                            userName.setOnMouseClicked(event->{
+                            userName.setOnMouseClicked(event -> {
                                 try {
                                     new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                                     ExitSearchUsersScreen(event);
@@ -353,16 +270,113 @@ public class SearchUserScreen {
                                 }
                             });
 
-                            HBox hBoxLeft = new HBox(10); 
+                            // icone de enviar solicitação de amizade
+                            ImageView imgAddFriend = new ImageView(
+                                    new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
+                            imgAddFriend.setFitHeight(30);
+                            imgAddFriend.setFitWidth(30);
+                            imgAddFriend.setPreserveRatio(true);
+
+                            Tooltip addFriend = new Tooltip("Solicitar amizade");
+                            Tooltip.install(imgAddFriend, addFriend);
+
+                            imgAddFriend.setCursor(Cursor.HAND);
+
+                            imgAddFriend.setOnMouseClicked(event -> {
+                                User _user = List_User.getPoint(0).user[index];
+                                _user.sendSolict(id);
+                                Alert alert = new Alert(AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setTitle("Aviso!");
+                                alert.setContentText("Solicitação enviada com sucesso para: \n\t" + _user.getName());
+                                alert.showAndWait();
+                                _user = List_User.getPoint(index).user[id];
+                                _user.getList_Solicit().add(index);
+
+                                try {
+                                    searchUserTrue();
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+
+                            VBox auxToImage = new VBox();
+                            auxToImage.getChildren().add(imgAddFriend);
+
+                            auxToImage.setPadding(new Insets(10, 0, 0, 0));
+                            auxToImage.setAlignment(Pos.TOP_CENTER);
+
+                            HBox hBoxLeft = new HBox(10);
                             hBoxLeft.getChildren().addAll(imgIConFriend, userName);
-                            hBoxLeft.setPadding(new Insets(5,10,5,10));
-                            
-                            this.VboxUsers.getChildren().addAll(new Separator(),hBoxLeft,new Separator());
+
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                            hBoxSugest = new HBox();
+                            hBoxSugest.getChildren().addAll(hBoxLeft, spacer, auxToImage);
+                            hBoxSugest.setPadding(new Insets(10, 15, 10, 10));
+
+                            this.VboxUsers.getChildren().addAll(hBoxSugest);
                         }
+                    }
+
+                    if (List_User.getPoint(2).user[id].getSolicit().contains((Integer) index)
+                            || List_User.getPoint(2).user[id].getList_Solicit().contains((Integer) index)) {
+                        // imagem de perfil amigo
+                        ImageView imgIConFriend = (List_User.getPoint(2).user[index].getPhotoProfile() == null)
+                                ? new ImageView(
+                                        new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                                : new ImageView(new Image(
+                                        new FileInputStream(List_User.getPoint(2).user[index].getPhotoProfile())));
+                        imgIConFriend.setFitHeight(48);
+                        imgIConFriend.setFitWidth(48);
+
+                        Circle circle = new Circle(24, 24, 24);
+                        imgIConFriend.setClip(circle);
+
+                        // nome do amigo
+                        Label userName = new Label(List_User.getPoint(2).user[index].getName());
+                        userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
+                        userName.setPadding(new Insets(15, 0, 0, 10));
+
+                        imgIConFriend.setCursor(Cursor.HAND);
+                        userName.setCursor(Cursor.HAND);
+
+                        String dep = "nao pode";
+                        String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
+
+                        imgIConFriend.setOnMouseClicked(event -> {
+                            try {
+                                new FriendProfile(id, index, perfilVisi, dep).getStage().show();
+                                ExitSearchUsersScreen(event);
+                                _FriendsScreen.getStage().close();
+                                this.stage.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+                        userName.setOnMouseClicked(event -> {
+                            try {
+                                new FriendProfile(id, index, perfilVisi, dep).getStage().show();
+                                ExitSearchUsersScreen(event);
+                                _FriendsScreen.getStage().close();
+                                this.stage.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+                        HBox hBoxLeft = new HBox(10);
+                        hBoxLeft.getChildren().addAll(imgIConFriend, userName);
+                        hBoxLeft.setPadding(new Insets(5, 10, 5, 10));
+
+                        this.VboxUsers.getChildren().addAll(new Separator(), hBoxLeft, new Separator());
+                    }
 
                 }
             }
-        
+
         } else {
             System.out.println("Nenhum usuário encontrado.");
         }

@@ -28,7 +28,7 @@ public class App extends Application{
         user.setEmail("mar@gmail.com");
         user.setPassword("1234");
         user.setName("Marcela");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
         List_User.getPoint(10).add(user); // inicialização da lista de usuarios
 
         Depoimento dep1 = new Depoimento();
@@ -41,7 +41,7 @@ public class App extends Application{
         Post post = new Post();
         post.setId((short) 0);
         post.setIduser((short) 0);
-        //post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download_(1).jpg");
+        post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download_(1).jpg");
         post.setTitle("Titulo para Testes");
         post.setPostTxt(
                 "Texto para testes do Posts Texto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes");
@@ -55,7 +55,7 @@ public class App extends Application{
         user.setEmail("manu@gmail.com");
         user.setPassword("1234");
         user.setName("Manuela");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
         List_User.getPoint(5).add(user);
 
         // user.getList_Solicit().add(0);
@@ -72,7 +72,7 @@ public class App extends Application{
         user.setEmail("madu@gmail.com");
         user.setPassword("1234");
         user.setName("Maria Eduarda");
-        //user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download.jpg");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download.jpg");
         List_User.getPoint(5).add(user);
 
         Chat chat = new Chat();
@@ -108,7 +108,7 @@ public class App extends Application{
         Community community = new Community();
         community.setName("Toy Story");
         community.setTxtCommunity("Ao infinito e além...");
-        //community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\#TOYYYYY#STORYYY.jpg");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\#TOYYYYY#STORYYY.jpg");
         community.setIdOwner(1);
         community.setCommunityVisibility("Público");
         community.setId(0);
@@ -119,7 +119,7 @@ public class App extends Application{
         community = new Community();
         community.setName("Monsters inc.");
         community.setTxtCommunity("No susto e no grito fazemos bonito!");
-        //community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\monters.jpg");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\monters.jpg");
         community.setIdOwner(0);
         community.setCommunityVisibility("Público");
         community.setId(1);
@@ -133,7 +133,7 @@ public class App extends Application{
                         "What are they feeding you?\r\n" + //
                         "Smelly Cat, Smelly Cat\r\n" + //
                         "It's not your fault");
-        //community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Pheobe Buffay.jpg");
+        community.setPhotoCommunity("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Pheobe Buffay.jpg");
         community.setIdOwner(0);
         community.setCommunityVisibility("Público");
         community.setId(2);
@@ -144,7 +144,7 @@ public class App extends Application{
         post = new Post();
         post.setId((short)1);
         post.setIduser((short) 0);
-        //post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download (2).jpg");
+        post.setImagem("\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\download (2).jpg");
         post.setTitle("Teste teste teste teste");
         post.setPostTxt("Teste teste teste teste teste teste teste teste ");
         community.getPostCommunity().add(post);

@@ -457,7 +457,7 @@ public class FriendProfile {
     //vai para a tela friends
     @FXML
     void backToHome(MouseEvent event)throws Exception {
-        new FriendsScreen(id).getStage().show();
+        new HomeScreen(id).getStage().show();
         this.stage.close();
     }
 

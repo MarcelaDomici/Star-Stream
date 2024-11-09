@@ -122,6 +122,7 @@ public class ChatScreen {
             if (key.getCode() == KeyCode.ENTER && this.mensageToChat.getText().length() != 0) {
                 try {
                     this.sendMessage(idFriend, this.mensageToChat.getText());
+                    mensageToChat.requestFocus();
                 } catch (Exception ie) {
                     ie.printStackTrace();
                 }
@@ -297,7 +298,7 @@ public class ChatScreen {
 
                     menu1.setOnAction(event -> {
                         try {
-                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage()
+                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this, null).getStage()
                                     .show();
                             this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
                             pane.setDisable(true);
