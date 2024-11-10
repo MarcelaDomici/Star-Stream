@@ -119,7 +119,7 @@ public class SearchUserScreen {
         for (int i = 0; i < userList.length; i++) {
             User user = userList[i];
 
-            if (user != null && i != id) { // Verifica se o usuário não é nulo e se o índice é diferente de id
+            if (user != null && i != id) { 
                 if (user.getName().toLowerCase().contains(partialName.toLowerCase())) {
                     matchedUsers.put(i, user);
                 }

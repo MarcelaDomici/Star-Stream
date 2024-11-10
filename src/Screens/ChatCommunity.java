@@ -144,10 +144,13 @@ public class ChatCommunity {
             ArrayList<Message> chatC = community.getChat().getMessages();
             // System.out.println(chatC.size());
 
+            int lastSenderId = -1;
+
             for (int i = 0; i < chatC.size(); ++i) {
                 int index = i;
 
-                VBox vBox = new VBox(2);
+                VBox vBox = new VBox(1);
+                vBox.setSpacing(3);
 
                 ContextMenu contecContextMenu = new ContextMenu();
                 MenuItem menu = new MenuItem("Delete");
@@ -174,6 +177,7 @@ public class ChatCommunity {
                     }
                 });
 
+                // userNow mensagens
                 if (chatC.get(i).getSender() == id) {
 
                     vBox.setOnMouseClicked(event -> {
@@ -197,78 +201,192 @@ public class ChatCommunity {
                     textFlow.setCursor(Cursor.HAND);
                     textFlow.setPadding(new Insets(5, 20, 5, 20));
 
-                    Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
-                    dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
-                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 375));
-
                     VBox messageBox = new VBox();
-                    messageBox.setSpacing(3);
-                    messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+
+                    // verificando proxima mensagem
+                    if (i + 1 < chatC.size()) {
+                        int nextSenderId = chatC.get(i + 1).getSender();
+
+                        if (nextSenderId == id) {
+
+                            messageBox.setSpacing(3);
+                            messageBox.getChildren().addAll(textFlow);
+                        } else {
+
+                            Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                            dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                            TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                            dateTimeFlow.setPadding(new Insets(0, 0, 0, 380));
+
+                            messageBox.setSpacing(3);
+                            messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+                        }
+                    } else {
+                        Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                        dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                        TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                        dateTimeFlow.setPadding(new Insets(0, 0, 0, 380));
+
+                        messageBox.setSpacing(3);
+                        messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+                    }
 
                     vBox.getChildren().addAll(messageBox);
 
+                    lastSenderId = chatC.get(index).getSender();
+
+                    // outro participante da comunidade
                 } else {
 
                     User userMember = List_User.getPoint(2).user[chatC.get(index).getSender()];
+                    int currentSenderId = chatC.get(index).getSender();
 
-                    // Configuração da imagem do perfil
-                    ImageView imgIconProfile = (userMember.getPhotoProfile() == null)
-                            ? new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
-                            : new ImageView(new Image(new FileInputStream(userMember.getPhotoProfile())));
+                    // primeira mensagem
+                    if (currentSenderId != lastSenderId) {
 
-                    imgIconProfile.setFitHeight(45);
-                    imgIconProfile.setFitWidth(45);
-                    Circle circle = new Circle(22.5, 22.5, 22.5); // Raio do círculo é metade da imagem
-                    imgIconProfile.setClip(circle);
+                        // imagem perfil
+                        ImageView imgIconProfile = (userMember.getPhotoProfile() == null)
+                                ? new ImageView(
+                                        new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                                : new ImageView(new Image(new FileInputStream(userMember.getPhotoProfile())));
 
-                    // VBox para alinhar imagem ao centro
-                    VBox auxToImage = new VBox(imgIconProfile);
-                    auxToImage.setPadding(new Insets(10, 0, 0, 0));
-                    auxToImage.setAlignment(Pos.TOP_CENTER);
+                        imgIconProfile.setFitHeight(45);
+                        imgIconProfile.setFitWidth(45);
+                        Circle circle = new Circle(22.5, 22.5, 22.5);
+                        imgIconProfile.setClip(circle);
 
-                    // Nome do usuário
+                        VBox auxToImage = new VBox(imgIconProfile);
+                        auxToImage.setPadding(new Insets(10, 0, 0, 0));
+                        auxToImage.setAlignment(Pos.TOP_CENTER);
 
-                    Label lblName = new Label(userMember.getName());
-                    lblName.setStyle("-fx-font-size: 15; -fx-fill: #888888;");
-                    lblName.setPadding(new Insets(0, 0, 0, 18));
+                        // nome do usuario
+                        Label lblName = new Label(userMember.getName());
+                        lblName.setStyle("-fx-font-size: 15; -fx-fill: #888888;");
+                        lblName.setPadding(new Insets(0, 0, 0, 18));
 
-                    HBox hBoxName = new HBox(lblName);
-                    hBoxName.setSpacing(10);
+                        HBox hBoxName = new HBox(lblName);
+                        hBoxName.setSpacing(10);
 
-                    vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 12, 12));
-                    Text text = new Text(chatC.get(i).getTxtMessage());
-                    text.setStyle("-fx-font-size: 17;");
-                    text.setFill(Paint.valueOf("rgb(255,255,255)"));
-                    TextFlow textFlow = new TextFlow(text);
-                    textFlow.setStyle(
-                            "-fx-background-radius: 20px;" +
-                                    "-fx-background-color: #323739;" +
-                                    "-fx-border-color: transparent;" +
-                                    "-fx-border-radius: 20px;");
-                    textFlow.setPadding(new Insets(5, 20, 5, 20));
+                        // mensagem
+                        vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 12, 12));
+                        Text text = new Text(chatC.get(i).getTxtMessage());
+                        text.setStyle("-fx-font-size: 17;");
+                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                        TextFlow textFlow = new TextFlow(text);
+                        textFlow.setStyle(
+                                "-fx-background-radius: 20px;" +
+                                        "-fx-background-color: #323739;" +
+                                        "-fx-border-color: transparent;" +
+                                        "-fx-border-radius: 20px;");
+                        textFlow.setPadding(new Insets(5, 20, 5, 20));
+                        textFlow.setMaxWidth(400);
+                        textFlow.setPrefWidth(400);
 
-                    textFlow.setMaxWidth(400); // Ajuste o valor conforme necessário
-                    textFlow.setPrefWidth(400); // Define a largura desejada
+                        VBox messageBox = new VBox();
 
-                    Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
-                    dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
-                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+                        // verificando proxima mensagem
+                        if (i + 1 < chatC.size()) {
+                            int nextSenderId = chatC.get(i + 1).getSender();
+                            if (nextSenderId == currentSenderId) {
 
-                    // VBox para organizar o nome, mensagem e hora
-                    VBox messageBox = new VBox();
-                    messageBox.setSpacing(3);
-                    messageBox.getChildren().addAll(hBoxName, textFlow, dateTimeFlow);
+                                messageBox.setSpacing(3);
+                                messageBox.getChildren().addAll(hBoxName, textFlow);
+                            } else {
 
-                    // HBox para alinhar imagem e caixa de mensagem
-                    HBox hBox = new HBox();
-                    hBox.setSpacing(10);
-                    hBox.getChildren().addAll(auxToImage, messageBox);
+                                Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                                dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                                dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
 
-                    // Adicionando tudo ao vBox principal
-                    vBox.getChildren().addAll(hBox);
-                    vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
+                                messageBox.setSpacing(3);
+                                messageBox.getChildren().addAll(hBoxName, textFlow, dateTimeFlow);
+                            }
+                        } else {
+                            Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                            dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                            TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                            dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+
+                            messageBox.setSpacing(3);
+                            messageBox.getChildren().addAll(hBoxName, textFlow, dateTimeFlow);
+                        }
+
+                        HBox hBox = new HBox();
+                        hBox.setSpacing(10);
+                        hBox.getChildren().addAll(auxToImage, messageBox);
+
+                        vBox.getChildren().addAll(hBox);
+                        vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
+
+                        // proxima mensagem do mesmo usuario
+                    } else {
+
+                        HBox auxToImage = new HBox();
+                        auxToImage.setSpacing(5);
+
+                        Region spacer = new Region();
+                        spacer.setPrefWidth(45); // Largura igual ao tamanho da imagem de perfil
+                        spacer.setMinWidth(45);
+                        spacer.setMaxWidth(45);
+                        auxToImage.getChildren().add(spacer);
+
+                        vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 12, 12));
+                        Text text = new Text(chatC.get(i).getTxtMessage());
+                        text.setStyle("-fx-font-size: 17;");
+                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                        TextFlow textFlow = new TextFlow(text);
+                        textFlow.setStyle(
+                                "-fx-background-radius: 20px;" +
+                                        "-fx-background-color: #323739;" +
+                                        "-fx-border-color: transparent;" +
+                                        "-fx-border-radius: 20px;");
+                        textFlow.setPadding(new Insets(5, 20, 5, 20));
+
+                        textFlow.setMaxWidth(400); // Ajuste o valor conforme necessário
+                        textFlow.setPrefWidth(400); // Define a largura desejada
+
+                        VBox messageBox = new VBox();
+
+                        // verificando proxima mensagem
+                        if (i + 1 < chatC.size()) {
+                            int nextSenderId = chatC.get(i + 1).getSender();
+
+                            if (nextSenderId == currentSenderId) {
+
+                                messageBox.setSpacing(3);
+                                messageBox.getChildren().addAll(textFlow);
+                            } else {
+
+                                Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                                dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                                dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+
+                                messageBox.setSpacing(3);
+                                messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+                            }
+                        } else {
+                            Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
+                                dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                                dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+
+                                messageBox.setSpacing(3);
+                                messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+                        }
+
+                        // HBox para alinhar imagem e caixa de mensagem
+                        HBox hBox = new HBox();
+                        hBox.setSpacing(10);
+                        hBox.getChildren().addAll(auxToImage, messageBox);
+
+                        // Adicionando tudo ao vBox principal
+                        vBox.getChildren().addAll(hBox);
+                        vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
+                    }
+
+                    lastSenderId = chatC.get(index).getSender();
+
                 }
 
                 this.vboxViewChat.getChildren().add(vBox);
@@ -349,7 +467,7 @@ public class ChatCommunity {
     }
 
     @FXML
-    private void goToSettings(MouseEvent event) throws Exception{
+    private void goToSettings(MouseEvent event) throws Exception {
         new SettingsScreen(id).getStage().show();
         stage.close();
     }
