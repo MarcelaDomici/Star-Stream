@@ -90,7 +90,7 @@ public class CommunityScreen {
         stage.setScene(new Scene(pane));
         stage.setTitle("Comunidades");
         Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
-            stage.getIcons().add(image);
+        stage.getIcons().add(image);
         stage.setResizable(false);
 
     }
@@ -152,7 +152,6 @@ public class CommunityScreen {
                     imgIConCom.setCursor(Cursor.HAND);
                     comName.setCursor(Cursor.HAND);
 
-                    
                     imgIConCom.setOnMouseClicked(event -> {
                         try {
                             new PublicsCommunityScreen(id, community).getStage().show();
@@ -345,7 +344,7 @@ public class CommunityScreen {
                     if (id != community.getIdOwner()) {
                         Tooltip tooltipLeaveCommunity = new Tooltip("Sair");
                         Tooltip.install(imgLeaveCommunity, tooltipLeaveCommunity);
-                    }else{
+                    } else {
                         Tooltip tooltipLeaveCommunity = new Tooltip("Deletar");
                         Tooltip.install(imgLeaveCommunity, tooltipLeaveCommunity);
                     }

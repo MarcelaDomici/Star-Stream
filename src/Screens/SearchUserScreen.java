@@ -127,22 +127,7 @@ public class SearchUserScreen {
         }
         return matchedUsers;
     }
-
-    @FXML
-    private void ExitSearchUsersScreen(MouseEvent event) {
-
-        _FriendsScreen.getPane().effectProperty().set(null);
-        _FriendsScreen.getPane().toFront();
-        _FriendsScreen.getPane().setDisable(false);
-        this.stage.close();
-    }
-
-    @FXML
-    private void SearchUser(MouseEvent event) throws FileNotFoundException {
-
-        searchUserTrue();
-
-    }
+ 
 
     private void searchUserTrue() throws FileNotFoundException {
 
@@ -382,6 +367,23 @@ public class SearchUserScreen {
         }
 
         _FriendsScreen.initialize();
+
+    }
+
+
+    @FXML
+    private void ExitSearchUsersScreen(MouseEvent event) {
+
+        _FriendsScreen.getPane().effectProperty().set(null);
+        _FriendsScreen.getPane().toFront();
+        _FriendsScreen.getPane().setDisable(false);
+        this.stage.close();
+    }
+
+    @FXML
+    private void SearchUser(MouseEvent event) throws FileNotFoundException {
+
+        searchUserTrue();
 
     }
 
