@@ -50,6 +50,12 @@ public class ChatScreen {
     private ScrollPane ScrollViewChat;
 
     @FXML
+    private ScrollPane ScrollC;
+
+    @FXML
+    private ScrollPane ScrollCaC;
+
+    @FXML
     private HBox Hbox_to_ScreenFriends;
 
     @FXML
@@ -133,6 +139,16 @@ public class ChatScreen {
 
     @FXML
     private void initialize() {
+
+        ScrollCaC.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollCaC.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollCaC.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+        ScrollC.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollC.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollC.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
 
         Tooltip tooltipComunity = new Tooltip("Comunidade");
         Tooltip tooltipFriends = new Tooltip("Amigos");
@@ -507,17 +523,37 @@ public class ChatScreen {
 
     // lista de amigos que nao se tem a conversa ainda
     private void genarateNewChats() throws FileNotFoundException {
+        /*
+         * this.vboxStartChat.getChildren().clear();
+         * ArrayDeque<Integer> users = new ArrayDeque<>();
+         * User user1 = List_User.getPoint(id).user[id];
+         * 
+         * for (int i = 0; i < user1.getFriends().size(); ++i) {
+         * if (!user1.getChats().containsKey(i) && user1.checkFriend(i) == 0 && i != id)
+         * {
+         * users.add(i);
+         * }
+         * }
+         * 
+         * for (int i = 0; i < users.size(); ++i) {
+         * 
+         * User user = List_User.getPoint(id).user[users.element() + i];
+         */
+
         this.vboxStartChat.getChildren().clear();
+
         ArrayDeque<Integer> users = new ArrayDeque<>();
         User user1 = List_User.getPoint(id).user[id];
-        for (int i = 0; i <= user1.getFriends().size(); ++i) {
-            if (!user1.getChats().containsKey(i) && user1.checkFriend(i) == 0 && i != id) {
-                users.add(i);
+
+        for (Integer friendId : user1.getFriends()) {
+            if (!user1.getChats().containsKey(friendId) && user1.checkFriend(friendId) == 0 && friendId != id) {
+                users.add(friendId);
             }
         }
 
-        for (int i = 0; i < users.size(); ++i) {
-            User user = List_User.getPoint(id).user[users.element() + i];
+        for (Integer friendId : users) {
+            User user = List_User.getPoint(id).user[friendId];
+
             HBox Hbox = new HBox();
             Hbox.setPadding(new Insets(3, 0, 2, 3));
             Hbox.setCursor(Cursor.HAND);

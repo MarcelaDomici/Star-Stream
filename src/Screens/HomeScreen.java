@@ -111,6 +111,11 @@ public class HomeScreen implements Uptable {
     @FXML
     private void initialize() {
 
+        scrollSugest.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        scrollSugest.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        scrollSugest.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
         vboxPost.getChildren().clear();
         vboxSugest.getChildren().clear();
 

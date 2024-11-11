@@ -367,12 +367,12 @@ public class ChatCommunity {
                             }
                         } else {
                             Text dateTimeText = new Text(chatC.get(i).getFormattedDateTime());
-                                dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
-                                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
-                                dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+                            dateTimeText.setStyle("-fx-font-size: 11.5; -fx-fill: gray;");
+                            TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                            dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
 
-                                messageBox.setSpacing(3);
-                                messageBox.getChildren().addAll(textFlow, dateTimeFlow);
+                            messageBox.setSpacing(3);
+                            messageBox.getChildren().addAll(textFlow, dateTimeFlow);
                         }
 
                         // HBox para alinhar imagem e caixa de mensagem

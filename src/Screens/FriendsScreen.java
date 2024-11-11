@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
@@ -70,6 +71,15 @@ public class FriendsScreen {
     @FXML
     private HBox hboxSearchUser;
 
+    @FXML
+    private ScrollPane ScrollA;
+
+    @FXML
+    private ScrollPane ScrollS;
+
+    @FXML
+    private ScrollPane ScrollSA;
+
         public FriendsScreen(int i)throws Exception{
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenFriends.fxml"));
@@ -88,6 +98,24 @@ public class FriendsScreen {
 
     @FXML
     public void initialize(){
+
+
+        ScrollA.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+        ScrollS.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollS.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollS.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+        ScrollSA.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollSA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollSA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+
         try{
             this.vboxFrinds.getChildren().clear();
             this.vboxNoticeFriends.getChildren().clear();
@@ -217,7 +245,7 @@ public class FriendsScreen {
 
                 hBox.getChildren().addAll(imgProfileFriend,userName,hBox1);
                 hBox.setPadding(new Insets(5,10,5,10));
-                this.vboxFrinds.getChildren().addAll(new Separator(),hBox,new Separator());
+                this.vboxFrinds.getChildren().addAll(hBox,new Separator());
             }//final hbox amigo
             
 
@@ -322,7 +350,11 @@ public class FriendsScreen {
                     hBox2.setPadding(new Insets(0,0,0,20));
                     
                     hbox1.getChildren().addAll(imgIConFriend,userName,hBox2);
+                    hbox1.setMaxWidth(380); // Define o limite máximo em pixels
+                    hbox1.setPrefWidth(380); // Define a largura preferida, mas respeita o máximo
+                    
                     hBox.getChildren().addAll(hbox1);
+                    
                     segs.remove(0);
 
                     if(segs.isEmpty())break;

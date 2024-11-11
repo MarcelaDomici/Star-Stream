@@ -112,6 +112,11 @@ public class SearchUserScreen {
     private void initialize() {
 
         VboxUsers.getChildren().clear();
+
+        ScrollUsers.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        ScrollUsers.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        ScrollUsers.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
     }
 
     public Map<Integer, User> findUsersByPartialName(User[] userList, String partialName, int id) {
@@ -119,7 +124,7 @@ public class SearchUserScreen {
         for (int i = 0; i < userList.length; i++) {
             User user = userList[i];
 
-            if (user != null && i != id) { 
+            if (user != null && i != id) {
                 if (user.getName().toLowerCase().contains(partialName.toLowerCase())) {
                     matchedUsers.put(i, user);
                 }
@@ -127,7 +132,6 @@ public class SearchUserScreen {
         }
         return matchedUsers;
     }
- 
 
     private void searchUserTrue() throws FileNotFoundException {
 
@@ -195,7 +199,7 @@ public class SearchUserScreen {
                     hBoxLeft.getChildren().addAll(imgIConFriend, userName);
                     hBoxLeft.setPadding(new Insets(5, 10, 5, 10));
 
-                    this.VboxUsers.getChildren().addAll(new Separator(), hBoxLeft, new Separator());
+                    this.VboxUsers.getChildren().addAll(hBoxLeft, new Separator());
                 } else {
 
                     if (List_User.getPoint(2).user[id].checkFriend(index) != 0
@@ -301,7 +305,7 @@ public class SearchUserScreen {
                             hBoxSugest.getChildren().addAll(hBoxLeft, spacer, auxToImage);
                             hBoxSugest.setPadding(new Insets(10, 15, 10, 10));
 
-                            this.VboxUsers.getChildren().addAll(hBoxSugest);
+                            this.VboxUsers.getChildren().addAll(hBoxSugest, new Separator());
                         }
                     }
 
@@ -356,7 +360,7 @@ public class SearchUserScreen {
                         hBoxLeft.getChildren().addAll(imgIConFriend, userName);
                         hBoxLeft.setPadding(new Insets(5, 10, 5, 10));
 
-                        this.VboxUsers.getChildren().addAll(new Separator(), hBoxLeft, new Separator());
+                        this.VboxUsers.getChildren().addAll(hBoxLeft, new Separator());
                     }
 
                 }
@@ -369,7 +373,6 @@ public class SearchUserScreen {
         _FriendsScreen.initialize();
 
     }
-
 
     @FXML
     private void ExitSearchUsersScreen(MouseEvent event) {

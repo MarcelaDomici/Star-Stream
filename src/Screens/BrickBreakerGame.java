@@ -16,7 +16,7 @@ public class BrickBreakerGame extends Application {
     private static final int WIDTH = 12;
     private static final int HEIGHT = 24;
     private static final int PADDLE_WIDTH = 4;
-    private static final int BALL_SIZE = 1; 
+    private static final int BALL_SIZE = 1;
 
     private int[][] bricks = new int[HEIGHT / 2][WIDTH];
     private double ballX = WIDTH / 2.0;
@@ -40,7 +40,7 @@ public class BrickBreakerGame extends Application {
 
         for (int y = 0; y < bricks.length; y++) {
             for (int x = 0; x < bricks[y].length; x++) {
-                bricks[y][x] = 1; 
+                bricks[y][x] = 1;
             }
         }
 
@@ -67,18 +67,20 @@ public class BrickBreakerGame extends Application {
         ballX += ballDX;
         ballY += ballDY;
 
-        if (ballX < 0 || ballX >= WIDTH) ballDX *= -1;
-        if (ballY < 0) ballDY *= -1;
+        if (ballX < 0 || ballX >= WIDTH)
+            ballDX *= -1;
+        if (ballY < 0)
+            ballDY *= -1;
 
         if (ballY >= HEIGHT - 3 && ballX >= paddleX && ballX < paddleX + PADDLE_WIDTH) {
             ballDY *= -1;
-            ballY = HEIGHT - 3; 
+            ballY = HEIGHT - 3;
         }
 
         int brickX = (int) ballX;
         int brickY = (int) ballY;
         if (brickY < bricks.length && brickX >= 0 && brickX < WIDTH && bricks[brickY][brickX] == 1) {
-            bricks[brickY][brickX] = 0; 
+            bricks[brickY][brickX] = 0;
             ballDY *= -1;
         }
 
@@ -91,7 +93,6 @@ public class BrickBreakerGame extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, WIDTH * TILE_SIZE, HEIGHT * TILE_SIZE);
 
-        
         for (int y = 0; y < bricks.length; y++) {
             for (int x = 0; x < bricks[y].length; x++) {
                 if (bricks[y][x] == 1) {
@@ -104,7 +105,7 @@ public class BrickBreakerGame extends Application {
         gc.setFill(Color.WHITE);
         gc.fillOval(ballX * TILE_SIZE, ballY * TILE_SIZE, BALL_SIZE * TILE_SIZE, BALL_SIZE * TILE_SIZE);
 
-        gc.setFill(Color.rgb(123,56,255));
+        gc.setFill(Color.rgb(123, 56, 255));
         gc.fillRect(paddleX * TILE_SIZE, (HEIGHT - 2) * TILE_SIZE, PADDLE_WIDTH * TILE_SIZE, TILE_SIZE);
 
         if (gameOver) {

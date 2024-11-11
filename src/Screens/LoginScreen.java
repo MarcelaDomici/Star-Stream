@@ -63,10 +63,8 @@ public class LoginScreen {
             });
             this.txtPass.setVisible(false);
 
-
-
                 {
-                    this.txtEmail.setText("mar@gmail.com");
+                    this.txtEmail.setText("marcela@gmail.com");
                     this.passOcult.setText("1234");
                 }
 
@@ -139,9 +137,6 @@ public class LoginScreen {
             }
         }
 
-
-
-        
         @FXML
         private void getNewPassword(MouseEvent event)throws Exception {
             new GenarateEmail(this.pane).getStage().show();

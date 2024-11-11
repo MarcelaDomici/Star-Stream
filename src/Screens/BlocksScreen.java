@@ -27,7 +27,6 @@ import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 
-
 public class BlocksScreen {
     private static int id = 0;
     private Stage stage = new Stage();
@@ -44,72 +43,77 @@ public class BlocksScreen {
     @FXML
     private VBox VboxBlock;
 
-    public BlocksScreen(int newId, FriendsScreen newScreen)throws Exception{
+    public BlocksScreen(int newId, FriendsScreen newScreen) throws Exception {
         id = newId;
         _FriendsScreen = newScreen;
         user = List_User.getPoint(2).user[id];
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenBlockUsers.fxml"));
-            loader.setController(this);
-            pane = loader.load();
-            this.stage.setScene(new Scene(pane));
-            this.stage.setTitle("Usu´rios Bloqueados");
-            Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
-            stage.getIcons().add(image);
-            this.stage.setResizable(false);
-            this.stage.initStyle(StageStyle.UNDECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenBlockUsers.fxml"));
+        loader.setController(this);
+        pane = loader.load();
+        this.stage.setScene(new Scene(pane));
+        this.stage.setTitle("Usu´rios Bloqueados");
+        Image image = new Image(getClass().getResource("/Screens/ScreensFXML/Imagens/logoStar1.png").toExternalForm());
+        stage.getIcons().add(image);
+        this.stage.setResizable(false);
+        this.stage.initStyle(StageStyle.UNDECORATED);
 
+        pane.requestFocus();
+        pane.setOnMouseClicked(event -> {
             pane.requestFocus();
-            pane.setOnMouseClicked(event ->{
-                pane.requestFocus();
-            });
+        });
     }
 
-    public Stage getStage(){return this.stage;}
-    public Pane getPane(){return this.pane;}
+    public Stage getStage() {
+        return this.stage;
+    }
+
+    public Pane getPane() {
+        return this.pane;
+    }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
-        try{
+        try {
 
             VboxBlock.getChildren().clear();
             ExitBlockScreen.setCursor(Cursor.HAND);
-            
+
             for (Integer userId : user.getUsersBlocks().keySet()) {
                 Boolean isBlocked = user.getUsersBlocks().get(userId);
                 System.out.println("User ID: " + userId + ", Blocked: " + isBlocked);
 
-                if(isBlocked == false){
+                if (isBlocked == false) {
 
                     int idBlock = userId;
 
                     User userBlock = List_User.getPoint(2).user[idBlock];
 
                     HBox hBoxSugest = new HBox(2);
-                    hBoxSugest.setSpacing(3);//conjunto da sugestao de amizade
+                    hBoxSugest.setSpacing(3);// conjunto da sugestao de amizade
 
-                    //imagem de perfil amigo
-                    ImageView imgIConFriend = (userBlock.getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
-                    :
-                    new ImageView(new Image(new FileInputStream(userBlock.getPhotoProfile()))) ;
+                    // imagem de perfil amigo
+                    ImageView imgIConFriend = (userBlock.getPhotoProfile() == null)
+                            ? new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                            : new ImageView(new Image(new FileInputStream(userBlock.getPhotoProfile())));
                     imgIConFriend.setFitHeight(50);
                     imgIConFriend.setFitWidth(50);
 
                     Circle circle = new Circle(25, 25, 25);
                     imgIConFriend.setClip(circle);
 
-                    //nome do amigo
+                    // nome do amigo
                     Label userName = new Label(userBlock.getName());
                     userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
-                    userName.setPadding(new Insets(15,0,0,10));
+                    userName.setPadding(new Insets(15, 0, 0, 10));
 
                     imgIConFriend.setCursor(Cursor.HAND);
                     userName.setCursor(Cursor.HAND);
 
                     String dep = "nao pode";
                     String perfilVisi = List_User.getPoint(2).user[idBlock].getProfileVisibility();
-                    imgIConFriend.setOnMouseClicked(event->{
+                    imgIConFriend.setOnMouseClicked(event -> {
                         try {
                             new FriendProfile(id, idBlock, perfilVisi, dep).getStage().show();
                             ExitBlockScreen(event);
@@ -119,7 +123,7 @@ public class BlocksScreen {
                         }
                     });
 
-                    userName.setOnMouseClicked(event->{
+                    userName.setOnMouseClicked(event -> {
                         try {
                             new FriendProfile(id, idBlock, perfilVisi, dep).getStage().show();
                             ExitBlockScreen(event);
@@ -129,8 +133,9 @@ public class BlocksScreen {
                         }
                     });
 
-                    //icone de enviar solicitação de amizade
-                    ImageView imgUnblockUser = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/unblock_user.png")));
+                    // icone de enviar solicitação de amizade
+                    ImageView imgUnblockUser = new ImageView(
+                            new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/unblock_user.png")));
                     imgUnblockUser.setFitHeight(30);
                     imgUnblockUser.setFitWidth(30);
                     imgUnblockUser.setPreserveRatio(true);
@@ -141,10 +146,10 @@ public class BlocksScreen {
 
                     Tooltip.install(imgUnblockUser, tooltipUnlock);
 
-                    imgUnblockUser.setOnMouseClicked(event->{
+                    imgUnblockUser.setOnMouseClicked(event -> {
 
-                        List_User.getPoint(0).user[id].removeBlock(idBlock);//usuario
-                        List_User.getPoint(0).user[idBlock].removeBlock(id);//amigo
+                        List_User.getPoint(0).user[id].removeBlock(idBlock);// usuario
+                        List_User.getPoint(0).user[idBlock].removeBlock(id);// amigo
 
                         initialize();
                         _FriendsScreen.initialize();
@@ -156,27 +161,25 @@ public class BlocksScreen {
                     auxToImage.setPadding(new Insets(20, 0, 0, 0));
                     auxToImage.setAlignment(Pos.CENTER);
 
-                    HBox hBoxLeft = new HBox(10); 
+                    HBox hBoxLeft = new HBox(10);
                     hBoxLeft.getChildren().addAll(imgIConFriend, userName);
 
                     Region spacer = new Region();
-                    HBox.setHgrow(spacer, Priority.ALWAYS); 
+                    HBox.setHgrow(spacer, Priority.ALWAYS);
 
                     hBoxSugest = new HBox();
                     hBoxSugest.getChildren().addAll(hBoxLeft, spacer, auxToImage);
-                    hBoxSugest.setPadding(new Insets(10, 15, 10, 10)); 
-                    
+                    hBoxSugest.setPadding(new Insets(10, 15, 10, 10));
+
                     this.VboxBlock.getChildren().addAll(hBoxSugest);
                 }
 
             }
-            
 
-        }catch(Exception ie){
+        } catch (Exception ie) {
             ie.printStackTrace();
         }
     }
-    
 
     @FXML
     public void ExitBlockScreen(MouseEvent event) {
