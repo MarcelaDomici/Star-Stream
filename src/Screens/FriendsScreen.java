@@ -350,8 +350,8 @@ public class FriendsScreen {
                     hBox2.setPadding(new Insets(0,0,0,20));
                     
                     hbox1.getChildren().addAll(imgIConFriend,userName,hBox2);
-                    hbox1.setMaxWidth(380); // Define o limite máximo em pixels
-                    hbox1.setPrefWidth(380); // Define a largura preferida, mas respeita o máximo
+                    //hbox1.setMaxWidth(380); // Define o limite máximo em pixels
+                    //hbox1.setPrefWidth(380); // Define a largura preferida, mas respeita o máximo
                     
                     hBox.getChildren().addAll(hbox1);
                     
