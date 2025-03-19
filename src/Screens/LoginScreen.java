@@ -62,11 +62,11 @@ public class LoginScreen {
                 pane.requestFocus();
             });
             this.txtPass.setVisible(false);
-
+/* 
                 {
                     this.txtEmail.setText("marcela@gmail.com");
                     this.passOcult.setText("1234");
-                }
+                }*/
 
             
         }

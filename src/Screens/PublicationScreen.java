@@ -65,16 +65,15 @@ public class PublicationScreen {
             pane.requestFocus();
         });
 
-        // Definir o stage principal como "dono" da nova janela
-        stage.initOwner(ownerStage); // Aqui a janela é "filha" da tela que a chamou
-        stage.initModality(javafx.stage.Modality.WINDOW_MODAL); // Faz com que a janela seja modal
+        stage.initOwner(ownerStage); 
+        stage.initModality(javafx.stage.Modality.WINDOW_MODAL); 
         pane.requestFocus();
         pane.setOnMouseClicked(event -> {
             pane.requestFocus();
         });
 
         id = i;
-        this._uptableScreen = uptableScreen; // Inicializar com a tela que chamou
+        this._uptableScreen = uptableScreen;
 
         this.photoPublic.setOnDragOver(event -> {
             System.out.println(event.getDragboard().getString());
@@ -114,9 +113,8 @@ public class PublicationScreen {
         ManagerPosts.geralPosts.add(post);
         this.stage.close();
 
-        // Chamar o método de atualização na tela que chamou
         if (_uptableScreen != null) {
-            _uptableScreen.update(); // Atualiza a tela que chamou
+            _uptableScreen.update(); 
         }
     }
 

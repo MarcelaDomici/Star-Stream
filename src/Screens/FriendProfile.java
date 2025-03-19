@@ -135,13 +135,13 @@ public class FriendProfile {
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         scroolPaneDep.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
 
         User user = List_User.getPoint(idFriend).user[idFriend];
@@ -155,15 +155,11 @@ public class FriendProfile {
                 this.imageSetProfile.setFitHeight(159);
                 this.imageSetProfile.setFitWidth(159);
 
-                // Criar um círculo para o clipping
                 Circle circle = new Circle(75.5, 75.5, 75.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
                 imageSetProfile.setClip(circle);
             }
 
             
-            //mexendo aquiiiiiiiiiiii
             if(visibilidadeProfile != "Perfil privado"){
             PanePrivProfile.setVisible(false);
             PanePrivProfile.setManaged(false);
@@ -187,10 +183,7 @@ public class FriendProfile {
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
 
-                // Criar um círculo para o clipping
-                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
+                Circle circle = new Circle(25, 25, 25); 
                 imageView.setClip(circle);
                 
                 imageView.setPreserveRatio(true);

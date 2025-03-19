@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 public class Message {
     private short id=0,receptor=0,sender=0;  
     private String txtMessage=null, photoToMessage=null;
-    private LocalDateTime dateTimeSent;// mudei aqui
+    private LocalDateTime dateTimeSent;
     private Post post=null;
 
     

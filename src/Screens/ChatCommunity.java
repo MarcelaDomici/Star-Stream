@@ -342,8 +342,8 @@ public class ChatCommunity {
                                         "-fx-border-radius: 20px;");
                         textFlow.setPadding(new Insets(5, 20, 5, 20));
 
-                        textFlow.setMaxWidth(400); // Ajuste o valor conforme necessário
-                        textFlow.setPrefWidth(400); // Define a largura desejada
+                        textFlow.setMaxWidth(400); // ajusta o valor conforme necessário
+                        textFlow.setPrefWidth(400); // define a largura desejada
 
                         VBox messageBox = new VBox();
 
@@ -428,7 +428,7 @@ public class ChatCommunity {
         this.pane.requestFocus();
     }
 
-    // voltar ´para comunidades
+    // voltar para comunidades
     @FXML
     private void backToHome(MouseEvent event) throws Exception {
         new CommunityScreen(id).getStage().show();
@@ -440,7 +440,6 @@ public class ChatCommunity {
 
     }
 
-    // participantes
     @FXML
     private void goToParticipants(MouseEvent event) throws Exception {
 

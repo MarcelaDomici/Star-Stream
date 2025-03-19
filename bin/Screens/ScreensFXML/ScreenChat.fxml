@@ -202,7 +202,7 @@
       <Pane layoutX="103.0" layoutY="78.0" prefHeight="309.0" prefWidth="308.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="16.0" layoutY="6.0" prefHeight="35.0" prefWidth="62.0" style="-fx-font-family: Poppins; -fx-font-weight: bold; -fx-font-size: 24;" text="Chat" />
-            <ScrollPane layoutX="-1.0" layoutY="51.0" prefHeight="255.0" prefWidth="308.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
+            <ScrollPane fx:id="ScrollC" layoutX="-1.0" layoutY="51.0" prefHeight="255.0" prefWidth="308.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
                <content>
                   <VBox fx:id="vboxSelectChat" prefHeight="252.0" prefWidth="305.0" spacing="2.0" style="-fx-background-color: white;">
                      <padding>
@@ -216,7 +216,7 @@
       <Pane layoutX="105.0" layoutY="410.0" prefHeight="309.0" prefWidth="308.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="16.0" layoutY="6.0" prefHeight="35.0" prefWidth="260.0" style="-fx-font-family: Poppins; -fx-font-weight: bold; -fx-font-size: 24;" text="Comece a conversar:" />
-            <ScrollPane layoutX="-1.0" layoutY="51.0" prefHeight="255.0" prefWidth="308.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
+            <ScrollPane fx:id="ScrollCaC" layoutX="-1.0" layoutY="51.0" prefHeight="255.0" prefWidth="308.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
                <content>
                   <VBox fx:id="vboxStartChat" prefHeight="252.0" prefWidth="306.0" style="-fx-background-color: white;" />
                </content>

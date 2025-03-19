@@ -115,8 +115,8 @@ public class SearchUserScreen {
 
         ScrollUsers.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        ScrollUsers.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        ScrollUsers.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        ScrollUsers.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        ScrollUsers.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
     }
 
     public Map<Integer, User> findUsersByPartialName(User[] userList, String partialName, int id) {

@@ -113,8 +113,8 @@ public class CommunityScreen {
         scrollComun.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
 
         scrollMyCom.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-        scrollMyCom.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scrollMyCom.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scrollMyCom.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scrollMyCom.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         vBoxComun.getChildren().clear();
         vBoxMyCom.getChildren().clear();

@@ -20,6 +20,8 @@ public class App extends Application {
     @Override
     public void start(Stage arg0) throws Exception {
 
+        
+
         // -------------------- USERS ---------------------
 
         // user marcela 0
@@ -78,9 +80,9 @@ public class App extends Application {
         user.setAge(22);
         user.setCity("Cruzeiro-SP");
         user.setCivil("Solteiro(a)");
-        user.setEmail("samuel@gmail.com");
+        user.setEmail("Rafael@gmail.com");
         user.setPassword("1234");
-        user.setName("Samuel");
+        user.setName("Rafael");
         user.setPhotoProfile(
                 "\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Profile\\samuel.jpeg");
         List_User.getPoint(5).add(user);
@@ -110,59 +112,10 @@ public class App extends Application {
                 "\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Profile\\julia.jpeg");
         List_User.getPoint(5).add(user);
 
-        /* 
-        // user carlos 4
-        user = new User();
-        user.setAge(25);
-        user.setCity("Cruzeiro-SP");
-        user.setCivil("Namorando");
-        user.setEmail("carlos@gmail.com");
-        user.setPassword("1234");
-        user.setName("Carlos");
-        user.setPhotoProfile(
-                "\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Profile\\carlos.jpg");
-        List_User.getPoint(5).add(user);
-
-        // user carolina 5 fora
-        user = new User();
-        user.setAge(21);
-        user.setCity("Cruzeiro-SP");
-        user.setCivil("Namorando");
-        user.setEmail("carolina@gmail.com");
-        user.setPassword("1234");
-        user.setName("Carolina");
-        user.setPhotoProfile(
-                "\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Profile\\carolina.jpg");
-        List_User.getPoint(5).add(user);
-
-        // user Felipe 7 fora
-        user = new User();
-        user.setAge(27);
-        user.setCity("Cruzeiro-SP");
-        user.setCivil("Solteiro(a)");
-        user.setEmail("felipe@gmail.com");
-        user.setPassword("1234");
-        user.setName("Felipe");
-        // user.setPhotoProfile("\\Users\\Dell\\Desktop\\version Star
-        // Stream\\Social-Media-Data-Structures\\Photos\\download.jpg");
-        List_User.getPoint(5).add(user);
-
-        // user Natalia 8 fora
-        user = new User();
-        user.setAge(18);
-        user.setCity("Cruzeiro-SP");
-        user.setCivil("Namorando");
-        user.setEmail("nathalia@gmail.com");
-        user.setPassword("1234");
-        user.setName("Nathalia");
-        user.setPhotoProfile(
-                "\\Users\\Dell\\Desktop\\version Star Stream\\Social-Media-Data-Structures\\Photos\\Profile\\nathalia.jpg");
-        List_User.getPoint(5).add(user);*/
-
         
         //-------------------------- POSTS --------------------------------
 
-        //Samuel
+        //Rafael
         Post post = new Post();
         post.setId((short) 0);
         post.setIduser((short) 4);

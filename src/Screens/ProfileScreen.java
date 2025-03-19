@@ -107,13 +107,13 @@ public class ProfileScreen implements Uptable{
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         scroolPaneDep.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
 
         //infos do perfil
@@ -489,15 +489,14 @@ public class ProfileScreen implements Uptable{
     @FXML
     private void goToPublic(MouseEvent event)throws Exception {
         try {
-            // Crie a tela de publicação e passe a HomeScreen como parâmetro
+            
             PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), this);
             publicationScreen.getStage().show();
     
-            // Efeito de MotionBlur
             pane.effectProperty().set(new MotionBlur(3.0, 15.0));
     
             publicationScreen.getStage().setOnHidden(event1 -> {
-                pane.effectProperty().set(null);  // Remove o efeito após fechar
+                pane.effectProperty().set(null);  
             });
     
         } catch (Exception ie) {

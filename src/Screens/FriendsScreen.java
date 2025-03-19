@@ -102,19 +102,18 @@ public class FriendsScreen {
 
         ScrollA.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        ScrollA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        ScrollA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        ScrollA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        ScrollA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         ScrollS.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        ScrollS.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        ScrollS.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        ScrollS.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        ScrollS.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         ScrollSA.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        ScrollSA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        ScrollSA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
-
+        ScrollSA.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        ScrollSA.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         try{
             this.vboxFrinds.getChildren().clear();
@@ -144,10 +143,7 @@ public class FriendsScreen {
                 imgProfileFriend.setFitHeight(50);
                 imgProfileFriend.setFitWidth(50);
 
-                // Criar um círculo para o clipping
-                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
+                Circle circle = new Circle(25, 25, 25); 
                 imgProfileFriend.setClip(circle);
 
                 Label userName = new Label(user[sort.get(i)].getName());
@@ -284,10 +280,7 @@ public class FriendsScreen {
                     imgIConFriend.setFitHeight(50);
                     imgIConFriend.setFitWidth(50);
 
-                    // Criar um círculo para o clipping
-                    Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                    // Aplicar o círculo como um clip na ImageView
+                    Circle circle = new Circle(25, 25, 25); 
                     imgIConFriend.setClip(circle);
 
                     Label userName = new Label(user[segs.get(0)].getName());
@@ -350,8 +343,8 @@ public class FriendsScreen {
                     hBox2.setPadding(new Insets(0,0,0,20));
                     
                     hbox1.getChildren().addAll(imgIConFriend,userName,hBox2);
-                    //hbox1.setMaxWidth(380); // Define o limite máximo em pixels
-                    //hbox1.setPrefWidth(380); // Define a largura preferida, mas respeita o máximo
+                    //hbox1.setMaxWidth(380); 
+                    //hbox1.setPrefWidth(380); 
                     
                     hBox.getChildren().addAll(hbox1);
                     
@@ -378,7 +371,7 @@ public class FriendsScreen {
                 imgIconProfile.setFitHeight(50);
                 imgIconProfile.setFitWidth(50);
 
-                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+                Circle circle = new Circle(25, 25, 25); 
                 imgIconProfile.setClip(circle);
 
                 int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");

@@ -167,8 +167,8 @@ public class PublicsCommunityScreen {
 
         scrollPosts.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scrollPosts.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scrollPosts.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scrollPosts.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scrollPosts.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         // posts comunidade
 
@@ -197,10 +197,7 @@ public class PublicsCommunityScreen {
                     imageView.setFitHeight(50);
                     imageView.setFitWidth(50);
 
-                    // Criar um círculo para o clipping
-                    Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                    // Aplicar o círculo como um clip na ImageView
+                    Circle circle = new Circle(25, 25, 25); 
                     imageView.setClip(circle);
 
                     imageView.setPreserveRatio(true);

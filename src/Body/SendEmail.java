@@ -47,11 +47,8 @@ public class SendEmail{
 
     public void sendPasswordEmail(String userEmail, int id) {
 
-        String meuEmail = "flashlearn34@gmail.com";
-        String minhaSenha = "bcdl labl cgjc fzgg";
-
-        //String meuEmail = "speedconnection24@gmail.com";
-        //String minhaSenha = "ueut hbsz hclv ytts";
+        String meuEmail = ""; //adicionar email
+        String minhaSenha = ""; //adicionar senha do email
 
         SimpleEmail email = new SimpleEmail();
         email.setHostName("smtp.gmail.com");

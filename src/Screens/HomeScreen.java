@@ -113,8 +113,8 @@ public class HomeScreen implements Uptable {
 
         scrollSugest.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scrollSugest.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
-        scrollSugest.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+        scrollSugest.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
+        scrollSugest.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); 
 
         vboxPost.getChildren().clear();
         vboxSugest.getChildren().clear();
@@ -146,10 +146,7 @@ public class HomeScreen implements Uptable {
                     imageView.setFitHeight(50);
                     imageView.setFitWidth(50);
 
-                    // Criar um círculo para o clipping
-                    Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                    // Aplicar o círculo como um clip na ImageView
+                    Circle circle = new Circle(25, 25, 25); 
                     imageView.setClip(circle);
 
                     imageView.setPreserveRatio(true);
@@ -1146,7 +1143,7 @@ public class HomeScreen implements Uptable {
     @FXML
     private void goToPublic(MouseEvent event) throws Exception {
         try {
-            // Crie a tela de publicação e passe a HomeScreen como parâmetro
+            
             PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), this);
             publicationScreen.getStage().show();
 
