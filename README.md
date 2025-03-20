@@ -1,18 +1,26 @@
-## Getting Started
+## Star Stream - Projeto de Desenvolvimento de Software
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto de rede social foi desenvolvido no 3º semestre do curso de Análise e Desenvolvimento de Sistemas (ADS), em grupo. 
+A aplicação foi criada para simular o funcionamento de uma rede social, armazenando dados temporariamente na memória principal 
+da máquina, ou seja, todos os dados eram perdidos quando a aplicação era fechada.
 
-## Folder Structure
+## Descrição
 
-The workspace contains two folders by default, where:
+A rede social oferece uma variedade de funcionalidades para interação entre os usuários. Além das ações básicas de criar conta, 
+fazer postagens e curtir, a aplicação também inclui recursos como jogos interativos, a possibilidade de os usuários deixarem
+depoimentos uns para os outros e criarem ou participarem de comunidades temáticas. A ausência de banco de dados faz com que todos 
+os dados sejam armazenados na memória e apagados ao encerrar a aplicação.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Tecnologias utilizadas
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+* Java: Linguagem principal para o desenvolvimento da aplicação.
+* JavaFX: Framework utilizado para a construção da interface gráfica (GUI).
+* CSS: Utilizado para estilizar a interface gráfica e melhorar a aparência visual dos componentes da aplicação.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Colaboradores
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+* Bruno Lima - Documentação.
+* Daniel Faria - Documentação e design.
+* Eduarda Pontes - Front-end e design.
+* Marcela Domciano - Desenvolvimento Full-Stack.
+* Yasmim de Deus - Documentação.
