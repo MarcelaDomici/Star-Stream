@@ -22,5 +22,5 @@ os dados sejam armazenados na memória e apagados ao encerrar a aplicação.
 * Bruno Lima - Documentação.
 * Daniel Faria - Documentação e design.
 * Eduarda Pontes - Front-end e design.
-* Marcela Domciano - Desenvolvimento Full-Stack.
+* Marcela Domiciano - Desenvolvimento Full-Stack.
 * Yasmim de Deus - Documentação.
